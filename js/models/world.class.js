@@ -48,7 +48,8 @@ class World{
     }
 
     addObjectsToMap(objects) {
-        objects.forEach(object => {
+        objects.forEach((object) => {
+            console.log(objects);
             this.addToMap(object);
         })
     }

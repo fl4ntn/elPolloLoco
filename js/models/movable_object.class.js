@@ -12,9 +12,11 @@ class MovableObject {
     }
 
     loadImages(arr) {
-        arr.forEach(path => {
+        console.log(arr);
+        arr.forEach((path) => {
+            console.log(path);
             let img = new Image();
-            img.scr = path;
+            img.src = path;
             this.imageCache[path] = img;
         });
         
