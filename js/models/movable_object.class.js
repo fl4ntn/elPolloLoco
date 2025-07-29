@@ -29,6 +29,10 @@ class MovableObject {
         this.img.src = path;
     }
 
+    drawCtx(ctx){
+        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    }
+
     loadImages(arr) {
         arr.forEach((path) => {
             let img = new Image();
@@ -46,13 +50,17 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Moving right');
+         this.x += this.speed;
+        
     }
 
     moveLeft() {
-        setInterval( () => {
-            this.x -= this.speed;
-        }, 1000 / 60);
+        this.x -= this.speed;
+        
+    }
+
+      jump(){
+        this.speedY = 30;
     }
 
 
