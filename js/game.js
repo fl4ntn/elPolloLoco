@@ -11,14 +11,6 @@ let keyboard = new Keyboard();
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-    
-    // ctx = canvas.getContext('2d');
-
-    // console.log('My Character is', world.character);
-
-    // character.src = '../img/2_character_pepe/2_walk/W-21.png'
-
-    // ctx.drawImage(character, 20, 20, 50, 150);
 }
 
 window.addEventListener('keydown', (event) => {

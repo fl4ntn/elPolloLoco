@@ -60,6 +60,8 @@ class World{
 
         mo.drawCtx(this.ctx);
 
+        // this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+
         
         this.draw();
         this.ctx.beginPath();
