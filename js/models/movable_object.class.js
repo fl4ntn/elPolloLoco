@@ -9,6 +9,14 @@ class MovableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
+    energy = 100;
+    offset = {
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+
+    };
 
     applyGravity() {
             
@@ -43,8 +51,25 @@ class MovableObject {
         }
     }
 
+    drawOffsetFrame(ctx) {
+        if (this instanceof Character) {
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.right, this.height - this.offset.bottom);
+            ctx.stroke();  
+        }
+    }
+
+    // isColliding(mo) {
+    //     return this.x + this.width - this.offset.right > mo.x + mo.offset.left &&
+    //     this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
+    //     this.x + this.offset.left < mo.x + mo.width - mo.offset.right &&
+    //     this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
+    // }
+
     isColliding(mo) {
-        return this.x + this.width > mo.x &&
+      return this.x + this.width > mo.x &&
         this.y + this.height > mo.y &&
         this.x < mo.x &&
         this.y < mo.y + mo.height

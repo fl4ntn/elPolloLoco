@@ -7,7 +7,7 @@ class World{
     enemies = level1.enemies;
     clouds = level1.clouds;
     backgroundObjects = level1.backgroundObjects;
-
+   
 
     canvas;
     ctx;
@@ -32,6 +32,9 @@ class World{
             this.level.enemies.forEach((enemy) => {
                 if(this.character.isColliding(enemy)) {
                     console.log('Collusion with character', enemy);
+                    this.character.playAnimation(this.character.IMAGES_HURT);
+                    this.character.energy -= 5;
+                    console.log('energy character : ', this.character.energy);
                 }
             });
         }, 200);
@@ -68,6 +71,7 @@ class World{
 
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
+        mo.drawOffsetFrame(this.ctx)
 
         if(mo.otherDirection){
             this.flipImageBack(mo);

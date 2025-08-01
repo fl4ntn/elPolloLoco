@@ -3,6 +3,14 @@ class Character extends MovableObject {
     y = 80;
     speed = 10;
 
+     offset = {
+        top: 85,
+        left: 20,
+        right: 40,
+        bottom: 90
+
+    };
+
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
         'img/2_character_pepe/2_walk/W-22.png',
@@ -22,7 +30,13 @@ class Character extends MovableObject {
         'img/2_character_pepe/3_jump/J-37.png',
         'img/2_character_pepe/3_jump/J-38.png',
         'img/2_character_pepe/3_jump/J-39.png'
-    ]
+    ];
+
+    IMAGES_HURT = [
+        'img/2_character_pepe/4_hurt/H-41.png',
+        'img/2_character_pepe/4_hurt/H-42.png',
+        'img/2_character_pepe/4_hurt/H-43.png'
+    ];
 
     world;
 
@@ -32,6 +46,7 @@ class Character extends MovableObject {
     super().loadImg('img/2_character_pepe/2_walk/W-21.png');
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
+    this.loadImages(this.IMAGES_HURT);
     this.applyGravity();
     this.animate();
     this.width = 120;
