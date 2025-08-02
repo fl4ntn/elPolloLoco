@@ -33,7 +33,7 @@ class World{
                 if(this.character.isColliding(enemy)) {
                     console.log('Collusion with character', enemy);
                     this.character.playAnimation(this.character.IMAGES_HURT);
-                    this.character.energy -= 5;
+                    this.character.hit();
                     console.log('energy character : ', this.character.energy);
                 }
             });

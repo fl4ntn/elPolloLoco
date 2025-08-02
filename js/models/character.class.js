@@ -8,7 +8,6 @@ class Character extends MovableObject {
         left: 20,
         right: 40,
         bottom: 90
-
     };
 
     IMAGES_WALKING = [
@@ -38,6 +37,16 @@ class Character extends MovableObject {
         'img/2_character_pepe/4_hurt/H-43.png'
     ];
 
+    IMAGES_DEAD = [
+        'img/2_character_pepe/5_dead/D-51.png',
+        'img/2_character_pepe/5_dead/D-52.png',
+        'img/2_character_pepe/5_dead/D-53.png',
+        'img/2_character_pepe/5_dead/D-54.png',
+        'img/2_character_pepe/5_dead/D-55.png',
+        'img/2_character_pepe/5_dead/D-56.png',
+        'img/2_character_pepe/5_dead/D-57.png',
+    ]
+
     world;
 
     currentImage = 0;
@@ -47,6 +56,7 @@ class Character extends MovableObject {
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
     this.loadImages(this.IMAGES_HURT);
+    this.loadImages(this.IMAGES_DEAD);
     this.applyGravity();
     this.animate();
     this.width = 120;
@@ -72,8 +82,11 @@ class Character extends MovableObject {
     }, 1000 / 60);
 
     setInterval(() => {
-
-        if(this.isAboveGround()) {
+        if (this.isDead()) {
+            this.playAnimation(this.IMAGES_DEAD);
+        } else if(this.isHurt()) {
+            this.playAnimation(this.IMAGES_HURT);
+        } else if(this.isAboveGround()) {
             this.playAnimation(this.IMAGES_JUMPING);
         } else {
             if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT) { 
@@ -84,8 +97,6 @@ class Character extends MovableObject {
 
    
    }
-
-  
 
 
 }
