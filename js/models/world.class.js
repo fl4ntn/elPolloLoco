@@ -7,7 +7,7 @@ class World{
     enemies = level1.enemies;
     clouds = level1.clouds;
     backgroundObjects = level1.backgroundObjects;
-   
+    statusBar = new StatusBar();
 
     canvas;
     ctx;
@@ -34,7 +34,9 @@ class World{
                     console.log('Collusion with character', enemy);
                     this.character.playAnimation(this.character.IMAGES_HURT);
                     this.character.hit();
-                    console.log('energy character : ', this.character.energy);
+                    this.statusBar.setPercentage(this.character.energy);
+                    // console.log(this.statusBar.percentage);
+                    // console.log('energy character : ', this.character.energy);
                 }
             });
         }, 200);
@@ -46,6 +48,9 @@ class World{
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.backgroundObjects);
+        this.ctx.translate(-this.camera_x, 0);
+        this.addToMap(this.statusBar);
+        this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
