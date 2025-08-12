@@ -1,4 +1,6 @@
 class World{
+  
+
 
     character = new Character();
 
@@ -7,7 +9,10 @@ class World{
     enemies = level1.enemies;
     clouds = level1.clouds;
     backgroundObjects = level1.backgroundObjects;
-    statusBar = new StatusBar();
+    statusBarEnergy = new StatusBar("energy", 10);
+    statusBarCoins = new StatusBar("coins", 55);
+    statusBarBottles = new StatusBar("bottles", 100);
+    throwableObjects = [new ThrowableObject()];
 
     canvas;
     ctx;
@@ -31,12 +36,9 @@ class World{
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if(this.character.isColliding(enemy)) {
-                    console.log('Collusion with character', enemy);
                     this.character.playAnimation(this.character.IMAGES_HURT);
                     this.character.hit();
-                    this.statusBar.setPercentage(this.character.energy);
-                    // console.log(this.statusBar.percentage);
-                    // console.log('energy character : ', this.character.energy);
+                    this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY); 
                 }
             });
         }, 200);
@@ -49,12 +51,15 @@ class World{
 
         this.addObjectsToMap(this.level.backgroundObjects);
         this.ctx.translate(-this.camera_x, 0);
-        this.addToMap(this.statusBar);
+        this.addToMap(this.statusBarEnergy);
+        this.addToMap(this.statusBarCoins);
+        this.addToMap(this.statusBarBottles);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
+        
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
-        
+        this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
         let self = this;
         requestAnimationFrame(function() {

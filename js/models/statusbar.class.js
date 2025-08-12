@@ -30,41 +30,29 @@ class StatusBar extends DrawableObject{
 
 
 
-
     percentage = 100;
 
-    constructor() {
+    constructor(barType, y) {
         super();
-        this.loadImages(this.IMAGES_ENERGY);
-        this.loadImages(this.IMAGES_COINS);
-        this.loadImages(this.IMAGES_BOTTLES);
+
         this.x = 0;
-        // this.y = 20;
+        this.y = y;
         this.width = 150;
         this.height = 45;
-        
-        // this.showStatusBarEnergy();
-        // this.showStatusBarCoins();
-        this.showStatusBarBottles();
-        // this.setPercentage(100, this.IMAGES_ENERGY);
-        // this.setPercentage(100, this.IMAGES_COINS);
-        // this.setPercentage(100, this.IMAGES_BOTTLES);
+
+        if (barType == "energy") {
+           this.loadImages(this.IMAGES_ENERGY);
+           this.setPercentage(100, this.IMAGES_ENERGY);
+        } else if (barType == "coins") {
+            this.loadImages(this.IMAGES_COINS);
+            this.setPercentage(100, this.IMAGES_COINS);
+        } else if (barType == "bottles") {
+            this.loadImages(this.IMAGES_BOTTLES);
+            this.setPercentage(100, this.IMAGES_BOTTLES);
+        }
+       
     }
 
-    showStatusBarEnergy() {
-        this.y = 20;
-        this.setPercentage(100, this.IMAGES_ENERGY);
-    }
-
-    showStatusBarCoins() {
-        this.y = 60;
-        this.setPercentage(100, this.IMAGES_COINS);
-    }
-
-    showStatusBarBottles() {
-        this.y = 90;
-        this.setPercentage(100, this.IMAGES_BOTTLES);
-    }
 
     setPercentage(percentage, arr) {
         this.percentage = percentage;
