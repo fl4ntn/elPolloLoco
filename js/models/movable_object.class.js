@@ -5,6 +5,7 @@ class MovableObject extends DrawableObject {
     acceleration = 2.5;
     energy = 100;
     lastHit = 0;
+    // lastMovedRight = 0;
     offset = {
         top: 0,
         left: 0,
@@ -23,7 +24,11 @@ class MovableObject extends DrawableObject {
     }
 
     isAboveGround() {
-        return this.y < 200;
+        if (this instanceof ThrowableObject) {
+            return true;
+        } else {
+            return this.y < 200;
+        }
     }
 
     // isColliding(mo) {
@@ -68,7 +73,7 @@ class MovableObject extends DrawableObject {
 
     moveRight() {
          this.x += this.speed;
-        
+        // this.lastMovedRight = new Date().getTime();
     }
 
     moveLeft() {
@@ -76,7 +81,13 @@ class MovableObject extends DrawableObject {
         
     }
 
-      jump(){
+    jump() {
         this.speedY = 30;
     }
+
+    // isMoving() {
+    //     let timepassed = new Date().getTime() - this.lastMovedRight;
+    //     timepassed = timepassed / 1000;
+    //     return timepassed < 1;
+    // }
 }

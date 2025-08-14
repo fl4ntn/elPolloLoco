@@ -12,7 +12,7 @@ class World{
     statusBarEnergy = new StatusBar("energy", 10);
     statusBarCoins = new StatusBar("coins", 55);
     statusBarBottles = new StatusBar("bottles", 100);
-    throwableObjects = [new ThrowableObject()];
+    throwableObjects = [];
 
     canvas;
     ctx;
@@ -25,23 +25,36 @@ class World{
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
     setWorld(){
         this.character.world = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if(this.character.isColliding(enemy)) {
-                    this.character.playAnimation(this.character.IMAGES_HURT);
-                    this.character.hit();
-                    this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY); 
-                }
-            });
+            this.checkCollisions();
+            this.checkThrowableObjects();
+            
         }, 200);
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if(this.character.isColliding(enemy)) {
+                this.character.playAnimation(this.character.IMAGES_HURT);
+                this.character.hit();
+                this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY); 
+            }
+        });
+    }
+
+    checkThrowableObjects() {
+        if (this.keyboard.D) {
+            let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70);
+            this.throwableObjects.push(bottle);
+        }
     }
 
     draw(){
