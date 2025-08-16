@@ -15,8 +15,15 @@ class ThrowableObject extends MovableObject {
     throw() {
         this.speedY = 30;
         this.applyGravity();
+
         // if (this.isMoving()) {
         //         console.log('is moving');
+        //     } 
+        // if (this.otherDirection = true) {
+        //         console.log('other dircectio is true');
+        //     }
+        //     if (this.otherDirection = false) {
+        //         console.log('other dircectio is false');
         //     }
         setInterval(() => {
             
@@ -33,12 +40,7 @@ class ThrowableObject extends MovableObject {
                 
             // }
 
-            // if (this.otherDirection = true) {
-            //     console.log('other dircectio is true');
-            // }
-            // if (this.otherDirection = false) {
-            //     console.log('other dircectio is false');
-            // }
+           
         }, 25);
     }
 
