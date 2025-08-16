@@ -13,6 +13,8 @@ class World{
     statusBarCoins = new StatusBar("coins", 55);
     statusBarBottles = new StatusBar("bottles", 100);
     throwableObjects = [];
+    audio = new backgroundSound();
+    
 
     canvas;
     ctx;
@@ -52,7 +54,7 @@ class World{
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
-            let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70);
+            let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection);
             this.throwableObjects.push(bottle);
         }
     }
@@ -67,6 +69,7 @@ class World{
         this.addToMap(this.statusBarEnergy);
         this.addToMap(this.statusBarCoins);
         this.addToMap(this.statusBarBottles);
+        this.addToMap(this.audio);
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         

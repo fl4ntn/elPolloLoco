@@ -1,11 +1,15 @@
 class ThrowableObject extends MovableObject {
-    constructor(x, y){
+
+    audio = new Audio('audio/flamenco-loop-1-382455.mp3');
+  
+    constructor(x, y, direction){
         super().loadImg('img/6_salsa_bottle/salsa_bottle.png');
         this.x = x;
         this.y = y;
         this.width = 50;
         this.height = 60;
         this.throw();
+        this.otherDirection = direction;
 
     }
 
@@ -15,16 +19,24 @@ class ThrowableObject extends MovableObject {
     throw() {
         this.speedY = 30;
         this.applyGravity();
-
+        // this.audio.play();
         // if (this.isMoving()) {
         //         console.log('is moving');
         //     } 
-        // if (this.otherDirection = true) {
+        // if (this.otherDirection == true) {
         //         console.log('other dircectio is true');
         //     }
-        //     if (this.otherDirection = false) {
+        //     if (this.otherDirection == false) {
         //         console.log('other dircectio is false');
         //     }
+
+             if (this.otherDirection == true) {
+                console.log('other dircectio is true');
+            }
+            if (this.otherDirection == false) {
+                console.log('other dircectio is false');
+            }
+       
         setInterval(() => {
             
             // this.x += 10;
