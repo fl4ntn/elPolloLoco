@@ -1,8 +1,9 @@
 class World{
   
 
-
-    character = new Character();
+music = new Audio('audio/flamenco-loop-1-382455.mp3');
+    sound;
+    character = new Character(sound);
 
     level = level1;
 
@@ -13,23 +14,28 @@ class World{
     statusBarCoins = new StatusBar("coins", 55);
     statusBarBottles = new StatusBar("bottles", 100);
     throwableObjects = [];
-    audio = new backgroundSound();
     
+    audioImg = new SoundImage('audio/speaker-31227_1280.png');
+    noAudioImg = new SoundImage('audio/mute-1628277_1280.png');
 
     canvas;
     ctx;
     keyboard;
+   
     camera_x = 0;
+    
 
-    constructor(canvas, keyboard){
+    constructor(canvas, keyboard, sound){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.sound = sound;
         this.draw();
         this.setWorld();
         this.run();
     }
-
+  
+    
     setWorld(){
         this.character.world = this;
     }
@@ -69,13 +75,23 @@ class World{
         this.addToMap(this.statusBarEnergy);
         this.addToMap(this.statusBarCoins);
         this.addToMap(this.statusBarBottles);
-        this.addToMap(this.audio);
+       
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
-
+        this.ctx.translate(-this.camera_x, 0);
+        if (sound.sound) {
+           this.addToMap(this.audioImg);
+           this.music.play(); 
+           this.music.volume = 0.1;
+        } else {
+            this.addToMap(this.noAudioImg); 
+            this.music.pause();
+        }
+        this.ctx.translate(this.camera_x, 0);
+        
         this.addObjectsToMap(this.throwableObjects);
 
         this.ctx.translate(-this.camera_x, 0);
@@ -98,8 +114,6 @@ class World{
         }
 
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
-        mo.drawOffsetFrame(this.ctx)
 
         if(mo.otherDirection){
             this.flipImageBack(mo);

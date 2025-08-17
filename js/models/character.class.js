@@ -2,6 +2,7 @@ class Character extends MovableObject {
     x = 90;
     y = 80;
     speed = 10;
+    
 
      offset = {
         top: 85,
@@ -48,10 +49,10 @@ class Character extends MovableObject {
     ]
 
     world;
-
+    sound;
     currentImage = 0;
 
-   constructor() {
+   constructor(sound) {
     super().loadImg('img/2_character_pepe/2_walk/W-21.png');
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
@@ -61,6 +62,7 @@ class Character extends MovableObject {
     this.animate();
     this.width = 120;
     this.height = 220;
+    this.sound = sound;
    
    }
 
@@ -80,7 +82,7 @@ class Character extends MovableObject {
             this.direction = false;
         }
         if (this.world.keyboard.SPACE && !this.isAboveGround() || this.world.keyboard.UP && !this.isAboveGround()) {
-            this.jump();
+            this.jump(this.sound);
         }
         this.world.camera_x = -this.x + 100;
     }, 1000 / 60);

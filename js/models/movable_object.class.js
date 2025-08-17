@@ -1,5 +1,6 @@
 class MovableObject extends DrawableObject {
     speed = 0.15;
+    jumpingSound = new Audio('audio/jumping_sound.m4a');
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
@@ -81,8 +82,13 @@ class MovableObject extends DrawableObject {
         
     }
 
-    jump() {
+    jump(sound) {
         this.speedY = 30;
+        if (sound.sound) {
+            this.jumpingSound.play(); 
+        }
+        
+   
     }
 
     // isMoving() {
