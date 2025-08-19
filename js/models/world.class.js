@@ -58,8 +58,8 @@ class World{
                 this.character.playAnimation(this.character.IMAGES_HURT);
                 this.character.hit();
                 this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
-                if (this.coinsCollected >= 3){
-                    this.coinsCollected += -3;
+                if (this.coinsCollected >= 12.5){
+                    this.coinsCollected += -12.5;
                     this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarEnergy.IMAGES_COINS);
                 }
 
@@ -67,15 +67,19 @@ class World{
         });
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
-                this.coinsCollected += 1;
-                this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarEnergy.IMAGES_COINS); 
+                this.coinsCollected += 12.5;
+                this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS); 
+                for (let index = 0; index < this.coins.length; index++) {
+                    if (coin.number == this.coins[index].number) {
+                      this.coins.splice(index, 1);
+                    }
+                }
                 if (sound.sound) {
                     this.CoinsEarnedAudio.play();
                     this.CoinsEarnedAudio.volume = 0.1; 
                 } else {
                     this.CoinsEarnedAudio.pause();
                 }
-
             }
         });
     }
