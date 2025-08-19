@@ -6,7 +6,6 @@ class MovableObject extends DrawableObject {
     acceleration = 2.5;
     energy = 100;
     lastHit = 0;
-    // lastMovedRight = 0;
     offset = {
         top: 0,
         left: 0,
@@ -74,7 +73,6 @@ class MovableObject extends DrawableObject {
 
     moveRight() {
          this.x += this.speed;
-        // this.lastMovedRight = new Date().getTime();
     }
 
     moveLeft() {
@@ -91,9 +89,4 @@ class MovableObject extends DrawableObject {
    
     }
 
-    // isMoving() {
-    //     let timepassed = new Date().getTime() - this.lastMovedRight;
-    //     timepassed = timepassed / 1000;
-    //     return timepassed < 1;
-    // }
 }

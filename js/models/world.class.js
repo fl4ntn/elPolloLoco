@@ -1,15 +1,19 @@
 class World{
   
 
-music = new Audio('audio/flamenco-loop-1-382455.mp3');
+    music = new Audio('audio/flamenco-loop-1-382455.mp3');
+    CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
     sound;
     character = new Character(sound);
+    bottlesLeft = 100;
+    coinsCollected = 0;
 
     level = level1;
 
     enemies = level1.enemies;
     clouds = level1.clouds;
     backgroundObjects = level1.backgroundObjects;
+    coins = level1.coins;
     statusBarEnergy = new StatusBar("energy", 10);
     statusBarCoins = new StatusBar("coins", 55);
     statusBarBottles = new StatusBar("bottles", 100);
@@ -53,15 +57,35 @@ music = new Audio('audio/flamenco-loop-1-382455.mp3');
             if(this.character.isColliding(enemy)) {
                 this.character.playAnimation(this.character.IMAGES_HURT);
                 this.character.hit();
-                this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY); 
+                this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
+                if (this.coinsCollected >= 3){
+                    this.coinsCollected += -3;
+                    this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarEnergy.IMAGES_COINS);
+                }
+
+            }
+        });
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)) {
+                this.coinsCollected += 1;
+                this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarEnergy.IMAGES_COINS); 
+                if (sound.sound) {
+                    this.CoinsEarnedAudio.play();
+                    this.CoinsEarnedAudio.volume = 0.1; 
+                } else {
+                    this.CoinsEarnedAudio.pause();
+                }
+
             }
         });
     }
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
+            this.bottlesLeft += -3;
             let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection);
             this.throwableObjects.push(bottle);
+            this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES)
         }
     }
 
@@ -80,7 +104,9 @@ music = new Audio('audio/flamenco-loop-1-382455.mp3');
         this.addToMap(this.character);
         
         this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.coins); 
         this.addObjectsToMap(this.level.enemies);
+        
         this.ctx.translate(-this.camera_x, 0);
         if (sound.sound) {
            this.addToMap(this.audioImg);

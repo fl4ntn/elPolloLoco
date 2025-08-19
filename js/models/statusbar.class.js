@@ -45,7 +45,7 @@ class StatusBar extends DrawableObject{
            this.setPercentage(100, this.IMAGES_ENERGY);
         } else if (barType == "coins") {
             this.loadImages(this.IMAGES_COINS);
-            this.setPercentage(100, this.IMAGES_COINS);
+            this.setPercentage(0, this.IMAGES_COINS);
         } else if (barType == "bottles") {
             this.loadImages(this.IMAGES_BOTTLES);
             this.setPercentage(100, this.IMAGES_BOTTLES);
@@ -62,7 +62,7 @@ class StatusBar extends DrawableObject{
     }
 
    resolveImageIndex() {
-        if (this.percentage == 100) {
+        if (this.percentage >= 100) {
             return 5;
         } else if (this.percentage > 80) {
             return 4;
