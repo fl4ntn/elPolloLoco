@@ -3,6 +3,7 @@ class World{
 
     music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
+    // HurtAudio = new Audio('audio/Ouch.m4a');
     sound;
     character = new Character(sound);
     bottlesLeft = 100;
@@ -58,11 +59,15 @@ class World{
                 this.character.playAnimation(this.character.IMAGES_HURT);
                 this.character.hit();
                 this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
+                // if (sound.sound) {
+                //     this.HurtAudio.play();
+                // } else {
+                //     this.HurtAudio.pause();
+                // }
                 if (this.coinsCollected >= 12.5){
                     this.coinsCollected += -12.5;
-                    this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarEnergy.IMAGES_COINS);
+                    this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
                 }
-
             }
         });
         this.level.coins.forEach((coin) => {
@@ -86,10 +91,13 @@ class World{
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
-            this.bottlesLeft += -3;
-            let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection);
-            this.throwableObjects.push(bottle);
-            this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES)
+            if (this.bottlesLeft >=3) {
+              this.bottlesLeft += -3;
+                let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection);
+                this.throwableObjects.push(bottle);
+                this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES)  
+            }
+            
         }
     }
 
@@ -99,12 +107,6 @@ class World{
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.backgroundObjects);
-        this.ctx.translate(-this.camera_x, 0);
-        this.addToMap(this.statusBarEnergy);
-        this.addToMap(this.statusBarCoins);
-        this.addToMap(this.statusBarBottles);
-       
-        this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         
         this.addObjectsToMap(this.level.clouds);
@@ -112,6 +114,15 @@ class World{
         this.addObjectsToMap(this.level.enemies);
         
         this.ctx.translate(-this.camera_x, 0);
+
+
+
+
+        this.addToMap(this.statusBarEnergy);
+        this.addToMap(this.statusBarCoins);
+        this.addToMap(this.statusBarBottles);
+       
+        
         if (sound.sound) {
            this.addToMap(this.audioImg);
            this.music.play(); 
