@@ -10,7 +10,7 @@ class Character extends MovableObject {
         right: 40,
         bottom: 90
     };
-        HurtAudio = new Audio('audio/Ouch.m4a');
+        // HurtAudio = new Audio('audio/Ouch.m4a');
 
     IMAGES_WALKING = [
         'img/2_character_pepe/2_walk/W-21.png',
@@ -91,11 +91,11 @@ class Character extends MovableObject {
             this.playAnimation(this.IMAGES_DEAD);
         } else if(this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
-             if (this.sound.sound) {
-                    this.HurtAudio.play();
-                } else {
-                    this.HurtAudio.pause();
-                }
+            //  if (this.sound.sound) {
+            //         this.HurtAudio.play();
+            //     } else {
+            //         this.HurtAudio.pause();
+            //     }
         } else if(this.isAboveGround()) {
             this.playAnimation(this.IMAGES_JUMPING);
         } else {

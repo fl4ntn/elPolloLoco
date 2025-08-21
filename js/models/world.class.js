@@ -3,11 +3,12 @@ class World{
 
     music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
-    // HurtAudio = new Audio('audio/Ouch.m4a');
+    HurtAudio = new Audio('audio/Ouch.m4a');
     sound;
     character = new Character(sound);
     bottlesLeft = 100;
     coinsCollected = 0;
+    currentEnemey;
 
     level = level1;
 
@@ -58,12 +59,27 @@ class World{
             if(this.character.isColliding(enemy)) {
                 this.character.playAnimation(this.character.IMAGES_HURT);
                 this.character.hit();
-                this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
-                // if (sound.sound) {
-                //     this.HurtAudio.play();
-                // } else {
-                //     this.HurtAudio.pause();
+                
+                if (this.currentEnemey != enemy.number) {
+                    this.currentEnemey = enemy.number;
+                    console.log(this.currentEnemey);
+                    if (sound.sound) {
+                        this.HurtAudio.play();
+                    } else {
+                        this.HurtAudio.pause();
+                    }
+                } 
+                // else if ((new Date().getTime() - this.character.lastHit) > 4000) {
+                //     if (sound.sound) {
+                //         this.HurtAudio.loop = false,
+                //         this.HurtAudio.play();
+                //     } else {
+                //         this.HurtAudio.pause();
+                //     } 
                 // }
+                // console.log('hit with enemy number', enemy.number)
+                this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
+                
                 if (this.coinsCollected >= 12.5){
                     this.coinsCollected += -12.5;
                     this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
