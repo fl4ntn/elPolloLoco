@@ -7,6 +7,7 @@ class Chicken extends MovableObject {
     ];
 
     currentImage = 0;
+    number;
 
     constructor(number){
         super().loadImg('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');

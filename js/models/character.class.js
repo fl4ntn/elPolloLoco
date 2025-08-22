@@ -5,10 +5,10 @@ class Character extends MovableObject {
     
 
      offset = {
-        top: 85,
+        top: 90,
         left: 20,
-        right: 40,
-        bottom: 90
+        right: 20,
+        bottom: 10
     };
         // HurtAudio = new Audio('audio/Ouch.m4a');
 

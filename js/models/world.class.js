@@ -11,7 +11,7 @@ class World{
     currentEnemey;
     hurtAudioPlayed = false;
     level = level1;
-
+    bottleNumber = 0;
     enemies = level1.enemies;
     clouds = level1.clouds;
     backgroundObjects = level1.backgroundObjects;
@@ -20,14 +20,11 @@ class World{
     statusBarCoins = new StatusBar("coins", 55);
     statusBarBottles = new StatusBar("bottles", 100);
     throwableObjects = [];
-    
     audioImg = new SoundImage('audio/speaker-31227_1280.png');
     noAudioImg = new SoundImage('audio/mute-1628277_1280.png');
-
     canvas;
     ctx;
     keyboard;
-   
     camera_x = 0;
     
 
@@ -50,6 +47,7 @@ class World{
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowableObjects();
+            this.collisionWithBottle()
             
         }, 200);
     }
@@ -110,12 +108,25 @@ class World{
         if (this.keyboard.D) {
             if (this.bottlesLeft >=3) {
               this.bottlesLeft += -3;
-                let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection);
+                this.bottleNumber += 1;
+                let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection, this.bottleNumber);
                 this.throwableObjects.push(bottle);
-                this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES)  
+                this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES);  
             }
-            
         }
+    }
+
+    collisionWithBottle() {
+        this.throwableObjects.forEach((ThrowableObject) => {
+            this.level.enemies.forEach((enemy) => {
+                if (ThrowableObject.isColliding(enemy)) {
+                    console.log(ThrowableObject.bottleNumber + 'collided with' + enemy.number);
+                }
+               
+            });
+        });
+
+        
     }
 
     draw(){
@@ -167,18 +178,20 @@ class World{
     }
 
     addToMap(mo) {
+       
         if(mo.otherDirection){
             this.flipImage(mo);
         }
 
         mo.draw(this.ctx);
-
+        mo.drawFrame(this.ctx);
         if(mo.otherDirection){
             this.flipImageBack(mo);
         }
     }
     
     flipImage(mo) {
+        
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
         this.ctx.scale(-1, 1);
