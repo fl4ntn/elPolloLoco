@@ -17,10 +17,10 @@ window.addEventListener('click', function(event) {
 
     
     if (x < 706 && x > 651 && y > 17 && y < 66) {
-        if (sound.sound == false) {
-           sound.sound = true; 
+        if (sound.activated == false) {
+           sound.activated = true; 
         } else {
-            sound.sound = false
+            sound.activated = false
         }   } 
 });
 

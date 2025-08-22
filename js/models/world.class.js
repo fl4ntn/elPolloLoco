@@ -9,7 +9,7 @@ class World{
     bottlesLeft = 100;
     coinsCollected = 0;
     currentEnemey;
-
+    hurtAudioPlayed = false;
     level = level1;
 
     enemies = level1.enemies;
@@ -58,26 +58,20 @@ class World{
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
                 this.character.playAnimation(this.character.IMAGES_HURT);
+                let currentTime = new Date().getTime();
                 this.character.hit();
-                
-                if (this.currentEnemey != enemy.number) {
+                if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
                     this.currentEnemey = enemy.number;
-                    console.log(this.currentEnemey);
-                    if (sound.sound) {
+                    if (!this.character.isDead()) {
+                      if (sound.activated) {
+                        this.HurtAudio.loop = false,
                         this.HurtAudio.play();
-                    } else {
+                        this.hurtAudioPlayed = true;
+                        } else {
                         this.HurtAudio.pause();
+                        }   
                     }
-                } 
-                // else if ((new Date().getTime() - this.character.lastHit) > 4000) {
-                //     if (sound.sound) {
-                //         this.HurtAudio.loop = false,
-                //         this.HurtAudio.play();
-                //     } else {
-                //         this.HurtAudio.pause();
-                //     } 
-                // }
-                // console.log('hit with enemy number', enemy.number)
+                }
                 this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
                 
                 if (this.coinsCollected >= 12.5){
@@ -85,11 +79,11 @@ class World{
                     this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
                 }
                 
-                this.throwableObjects.forEach((throwableObject) => {
-                if (enemy.isColliding(throwableObject)) {
-                    console.log('collided');
-                }
-            });
+                // this.throwableObjects.forEach((throwableObject) => {
+                // if (enemy.isColliding(throwableObject)) {
+                //     console.log('collided');
+            //     }
+            // });
             }
         });
         this.level.coins.forEach((coin) => {
@@ -101,7 +95,7 @@ class World{
                       this.coins.splice(index, 1);
                     }
                 }
-                if (sound.sound) {
+                if (sound.activated) {
                     this.CoinsEarnedAudio.play();
                     this.CoinsEarnedAudio.volume = 0.1; 
                 } else {
@@ -146,7 +140,7 @@ class World{
         this.addToMap(this.statusBarBottles);
        
         
-        if (sound.sound) {
+        if (sound.activated) {
            this.addToMap(this.audioImg);
            this.music.play(); 
            this.music.volume = 0.1;

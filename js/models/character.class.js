@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     x = 90;
     y = 80;
-    speed = 10;
+    speed = 5;
     
 
      offset = {
@@ -91,7 +91,7 @@ class Character extends MovableObject {
             this.playAnimation(this.IMAGES_DEAD);
         } else if(this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
-            //  if (this.sound.sound) {
+            //  if (this.sound.activated) {
             //         this.HurtAudio.play();
             //     } else {
             //         this.HurtAudio.pause();

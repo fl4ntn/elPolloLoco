@@ -1,6 +1,6 @@
 class Sound {
 
-    sound = false;
+    activated = false;
 
    
 
