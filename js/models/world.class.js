@@ -84,6 +84,12 @@ class World{
                     this.coinsCollected += -12.5;
                     this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
                 }
+                
+                this.throwableObjects.forEach((throwableObject) => {
+                if (enemy.isColliding(throwableObject)) {
+                    console.log('collided');
+                }
+            });
             }
         });
         this.level.coins.forEach((coin) => {
@@ -103,6 +109,7 @@ class World{
                 }
             }
         });
+        
     }
 
     checkThrowableObjects() {
