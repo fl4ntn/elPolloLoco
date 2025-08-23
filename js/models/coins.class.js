@@ -18,7 +18,6 @@ class Coin extends MovableObject {
     constructor(number){
         super().loadImg('img/8_coin/coin_1.png');
         this.number = number;
-        console.log(this.number);
         this.x = 200 + Math.random() * 2000;
         this.width = 80;
         this.height = 80;

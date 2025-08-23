@@ -4,6 +4,7 @@ class World{
     music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
     HurtAudio = new Audio('audio/Ouch.m4a');
+    EndbossDeadAudio = new Audio('audio/endboss_dead – Mit Clipchamp erstellt_1755934161346.m4a');
     sound;
     character = new Character(sound);
     bottlesLeft = 100;
@@ -121,6 +122,13 @@ class World{
             this.level.enemies.forEach((enemy) => {
                 if (ThrowableObject.isColliding(enemy)) {
                     console.log(ThrowableObject.bottleNumber + 'collided with' + enemy.number);
+                   setInterval(() => {
+                     ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
+                     enemy.playAnimation(enemy.IMAGES_DEAD);
+                     enemy.isAlive = false;
+                     enemy.speed = 0;
+                     this.EndbossDeadAudio.play();
+                    }, 10);
                 }
                
             });
