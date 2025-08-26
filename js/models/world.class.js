@@ -5,6 +5,7 @@ class World{
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
     HurtAudio = new Audio('audio/Ouch.m4a');
     EndbossDeadAudio = new Audio('audio/endboss_dead – Mit Clipchamp erstellt_1755934161346.m4a');
+    BreakingBottleAudio = new Audio('audio/GlassIsBreaking.m4a');
     sound;
     character = new Character(sound);
     bottlesLeft = 100;
@@ -124,11 +125,9 @@ class World{
                 if (ThrowableObject.isColliding(enemy)) {
                     enemy.isAlive = false;
                     console.log(ThrowableObject.bottleNumber + 'collided with' + enemy.number);
-                    // this.enemy.stopInterval();
                     clearInterval(enemy.walkingAnimation)
-                   setInterval(() => {
+                    setInterval(() => {
                      ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
-                     
                      enemy.playAnimation(enemy.IMAGES_DEAD);
                      enemy.speed = 0;
                    
@@ -138,10 +137,14 @@ class World{
                     if (sound.activated) {
                         this.EndbossDeadAudio.loop = false;
                         this.EndbossDeadAudio.play(); 
+                        this.BreakingBottleAudio.play();
                         this.EndbossDeadAudio.volume = 0.2;
+                        this.BreakingBottleAudio.volume = 0.1;
+            
                          
                     } else {
                         this.EndbossDeadAudio.pause();
+                        this.BreakingBottleAudio.pause();
                     }
                 }
                
