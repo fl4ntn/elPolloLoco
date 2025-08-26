@@ -25,6 +25,7 @@ class World{
     noAudioImg = new SoundImage('audio/mute-1628277_1280.png');
     canvas;
     ctx;
+    
     keyboard;
     camera_x = 0;
     
@@ -121,14 +122,27 @@ class World{
         this.throwableObjects.forEach((ThrowableObject) => {
             this.level.enemies.forEach((enemy) => {
                 if (ThrowableObject.isColliding(enemy)) {
+                    enemy.isAlive = false;
                     console.log(ThrowableObject.bottleNumber + 'collided with' + enemy.number);
+                    // this.enemy.stopInterval();
+                    clearInterval(enemy.walkingAnimation)
                    setInterval(() => {
                      ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
+                     
                      enemy.playAnimation(enemy.IMAGES_DEAD);
-                     enemy.isAlive = false;
                      enemy.speed = 0;
-                     this.EndbossDeadAudio.play();
+                   
                     }, 10);
+                    
+                    
+                    if (sound.activated) {
+                        this.EndbossDeadAudio.loop = false;
+                        this.EndbossDeadAudio.play(); 
+                        this.EndbossDeadAudio.volume = 0.2;
+                         
+                    } else {
+                        this.EndbossDeadAudio.pause();
+                    }
                 }
                
             });
