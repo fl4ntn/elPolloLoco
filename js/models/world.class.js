@@ -137,6 +137,7 @@ class World{
                             ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
                             enemy.playAnimation(enemy.IMAGES_DEAD);
                             enemy.speed = 0;
+                            enemy.y = 480 - enemy.height;
                    
                         }, 10);
                     
