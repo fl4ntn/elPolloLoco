@@ -4,6 +4,7 @@ class World{
     music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
     HurtAudio = new Audio('audio/Ouch.m4a');
+    throwingBottleAudio = new Audio('audio/throwingBottle.m4a');
     EndbossDeadAudio = new Audio('audio/endboss_dead – Mit Clipchamp erstellt_1755934161346.m4a');
     BreakingBottleAudio = new Audio('audio/GlassIsBreaking.m4a');
     sound;
@@ -127,12 +128,20 @@ class World{
                 this.bottleNumber += 1;
                 let bottle;
                 if (!this.character.otherDirection) {
-                    bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection, this.bottleNumber);   
+                    bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection, this.bottleNumber);
+                 
                 } else {
                     bottle = new ThrowableObject(this.character.x - 20, this.character.y + 70, this.character.otherDirection, this.bottleNumber);  
+                 
                 }
+              
                 this.throwableObjects.push(bottle);
                 this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES);  
+                 if (sound.activated) {
+                    this.throwingBottleAudio.play();  
+                } else {
+                    this.throwingBottleAudio.pause();  
+                }
             }
         }
     }
