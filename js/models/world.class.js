@@ -7,6 +7,7 @@ class World{
     EndbossDeadAudio = new Audio('audio/endboss_dead – Mit Clipchamp erstellt_1755934161346.m4a');
     BreakingBottleAudio = new Audio('audio/GlassIsBreaking.m4a');
     sound;
+    endbossWasHit = 0;
     character = new Character(sound);
     bottlesLeft = 100;
     coinsCollected = 0;
@@ -123,15 +124,21 @@ class World{
         this.throwableObjects.forEach((ThrowableObject) => {
             this.level.enemies.forEach((enemy) => {
                 if (ThrowableObject.isColliding(enemy)) {
-                    enemy.isAlive = false;
-                    console.log(ThrowableObject.bottleNumber + 'collided with' + enemy.number);
-                    clearInterval(enemy.walkingAnimation)
-                    setInterval(() => {
-                     ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
-                     enemy.playAnimation(enemy.IMAGES_DEAD);
-                     enemy.speed = 0;
+                    
+                    console.log(enemy);
+                    if (!enemy.number) {
+                        this.endbossWasHit += 1; 
+                    }
+                    console.log(this.endbossWasHit);
+                    if (enemy.number || this.endbossWasHit > 12) {
+                        enemy.isAlive = false;
+                        clearInterval(enemy.walkingAnimation)
+                        setInterval(() => {
+                            ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
+                            enemy.playAnimation(enemy.IMAGES_DEAD);
+                            enemy.speed = 0;
                    
-                    }, 10);
+                        }, 10);
                     
                     
                     if (sound.activated) {
@@ -145,7 +152,9 @@ class World{
                     } else {
                         this.EndbossDeadAudio.pause();
                         this.BreakingBottleAudio.pause();
+                    }   
                     }
+                 
                 }
                
             });
