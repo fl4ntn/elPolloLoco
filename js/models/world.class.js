@@ -125,7 +125,12 @@ class World{
             if (this.bottlesLeft >=3) {
               this.bottlesLeft += -3;
                 this.bottleNumber += 1;
-                let bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection, this.bottleNumber);
+                let bottle;
+                if (!this.character.otherDirection) {
+                    bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection, this.bottleNumber);   
+                } else {
+                    bottle = new ThrowableObject(this.character.x - 20, this.character.y + 70, this.character.otherDirection, this.bottleNumber);  
+                }
                 this.throwableObjects.push(bottle);
                 this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES);  
             }
