@@ -59,6 +59,10 @@ class World{
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy)) {
+                if (this.character.isAboveGround()) {
+                    console.log('Actually I am jumping on you')
+                }
+
                 this.character.playAnimation(this.character.IMAGES_HURT);
                 let currentTime = new Date().getTime();
                 this.character.hit();
