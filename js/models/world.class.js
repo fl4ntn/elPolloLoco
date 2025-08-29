@@ -67,7 +67,6 @@ class World{
                             enemy.playAnimation(enemy.IMAGES_DEAD);
                             enemy.speed = 0;
                             enemy.y = 480 - enemy.height;
-                   
                         }, 10);
                         if (sound.activated) {
                             this.EndbossDeadAudio.loop = false;
