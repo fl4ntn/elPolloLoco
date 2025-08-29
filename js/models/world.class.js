@@ -58,38 +58,47 @@ class World{
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if(this.character.isColliding(enemy)) {
+            if(this.character.isColliding(enemy) && enemy.isAlive) {
                 if (this.character.isAboveGround()) {
-                    console.log('Actually I am jumping on you')
-                }
-
-                this.character.playAnimation(this.character.IMAGES_HURT);
-                let currentTime = new Date().getTime();
-                this.character.hit();
-                if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
-                    this.currentEnemey = enemy.number;
-                    if (!this.character.isDead()) {
-                      if (sound.activated) {
-                        this.HurtAudio.loop = false,
-                        this.HurtAudio.play();
-                        this.hurtAudioPlayed = true;
+                        this.character.jump(this.sound);
+                        enemy.isAlive = false;
+                        clearInterval(enemy.walkingAnimation)
+                        setInterval(() => {
+                            enemy.playAnimation(enemy.IMAGES_DEAD);
+                            enemy.speed = 0;
+                            enemy.y = 480 - enemy.height;
+                   
+                        }, 10);
+                        if (sound.activated) {
+                            this.EndbossDeadAudio.loop = false;
+                            this.EndbossDeadAudio.play(); 
+                            this.EndbossDeadAudio.volume = 0.2;
                         } else {
-                        this.HurtAudio.pause();
-                        }   
-                    }
-                }
-                this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
-                
-                if (this.coinsCollected >= 12.5){
-                    this.coinsCollected += -12.5;
-                    this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
-                }
-                
-                // this.throwableObjects.forEach((throwableObject) => {
-                // if (enemy.isColliding(throwableObject)) {
-                //     console.log('collided');
-            //     }
-            // });
+                            this.EndbossDeadAudio.pause();
+                        }      
+                } else {
+                    this.character.playAnimation(this.character.IMAGES_HURT);
+                        let currentTime = new Date().getTime();
+                        this.character.hit();
+                        if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
+                            this.currentEnemey = enemy.number;
+                            if (!this.character.isDead()) {
+                                if (sound.activated) {
+                                    this.HurtAudio.loop = false,
+                                    this.HurtAudio.play();
+                                    this.hurtAudioPlayed = true;
+                                } else {
+                                    this.HurtAudio.pause();
+                                }   
+                            }
+                        }
+                        this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
+                                    
+                        if (this.coinsCollected >= 12.5){
+                            this.coinsCollected += -12.5;
+                            this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
+                        }
+                } 
             }
         });
         this.level.coins.forEach((coin) => {
@@ -164,9 +173,16 @@ class World{
                
             });
         });
-
         
     }
+
+    enemyDies() {
+
+    }
+
+
+
+
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
