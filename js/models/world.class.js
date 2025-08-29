@@ -130,7 +130,7 @@ class World{
                         this.endbossWasHit += 1; 
                     }
                     console.log(this.endbossWasHit);
-                    if (enemy.number || this.endbossWasHit > 12) {
+                    if (enemy.number || this.endbossWasHit > 14 && this.endbossWasHit < 16) {
                         enemy.isAlive = false;
                         clearInterval(enemy.walkingAnimation)
                         setInterval(() => {
