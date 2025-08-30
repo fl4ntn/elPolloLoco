@@ -13,7 +13,7 @@ class World{
     bottlesLeft = 100;
     coinsCollected = 0;
     currentEnemey;
-    hurtAudioPlayed = false;
+    // hurtAudioPlayed = false;
     level = level1;
     bottleNumber = 0;
     enemies = level1.enemies;
@@ -54,7 +54,7 @@ class World{
             this.checkThrowableObjects();
             this.collisionWithBottle()
             
-        }, 200);
+        }, 200 );
     }
 
     checkCollisions() {
@@ -69,13 +69,7 @@ class World{
                             enemy.speed = 0;
                             enemy.y = 480 - enemy.height;
                         }, 10);
-                        if (sound.activated) {
-                            this.EndbossDeadAudio.loop = false;
-                            this.EndbossDeadAudio.play(); 
-                            this.EndbossDeadAudio.volume = 0.2;
-                        } else {
-                            this.EndbossDeadAudio.pause();
-                        }      
+                        this.playSound(this.EndbossDeadAudio, 0.2);
                 } else {
                     this.character.playAnimation(this.character.IMAGES_HURT);
                         let currentTime = new Date().getTime();
@@ -83,13 +77,8 @@ class World{
                         if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
                             this.currentEnemey = enemy.number;
                             if (!this.character.isDead()) {
-                                if (sound.activated) {
-                                    this.HurtAudio.loop = false,
-                                    this.HurtAudio.play();
-                                    this.hurtAudioPlayed = true;
-                                } else {
-                                    this.HurtAudio.pause();
-                                }   
+                                this.playSound(this.HurtAudio, 1);
+                                // this.hurtAudioPlayed = true; 
                             }
                         }
                         this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
@@ -110,12 +99,8 @@ class World{
                       this.coins.splice(index, 1);
                     }
                 }
-                if (sound.activated) {
-                    this.CoinsEarnedAudio.play();
-                    this.CoinsEarnedAudio.volume = 0.1; 
-                } else {
-                    this.CoinsEarnedAudio.pause();
-                }
+
+                this.playSound(this.CoinsEarnedAudio, 0.1);
             }
         });
         
@@ -123,35 +108,51 @@ class World{
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
-            if (this.bottlesLeft >=3) {
-              this.bottlesLeft += -3;
-                this.bottleNumber += 1;
-                let bottle;
-                if (!this.character.otherDirection) {
-                    bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection, this.bottleNumber);
-                 
-                } else {
-                    bottle = new ThrowableObject(this.character.x - 20, this.character.y + 70, this.character.otherDirection, this.bottleNumber);  
-                 
-                }
-              
-                this.throwableObjects.push(bottle);
-                this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES);  
-                 if (sound.activated) {
-                    this.throwingBottleAudio.play();  
-                } else {
-                    this.throwingBottleAudio.pause();  
-                }
+            if (this.enoughBottlesLeft()) {
+                this.decreaseAwailableBottles();
+                this.addBottleToCanvas();
+                this.updateStatusbar();
+                this.playSound(this.throwingBottleAudio, 1);  
             }
+        }
+    }
+
+    enoughBottlesLeft(){
+        return this.bottlesLeft >=3;
+    }
+
+    decreaseAwailableBottles() {
+        this.bottlesLeft += -3;
+        this.bottleNumber += 1;
+    }
+
+    addBottleToCanvas() {
+        let bottle;
+            if (!this.character.otherDirection) {
+                bottle = new ThrowableObject(this.character.x + 70, this.character.y + 70, this.character.otherDirection, this.bottleNumber);
+            } else {
+                bottle = new ThrowableObject(this.character.x - 20, this.character.y + 70, this.character.otherDirection, this.bottleNumber);  
+            }
+            this.throwableObjects.push(bottle);
+    }
+
+    updateStatusbar() {
+        this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES);
+    }
+
+    playSound(type, volume) {
+        if (sound.activated) {
+            type.play();  
+            type.volume = volume;
+        } else {
+            type.pause();  
         }
     }
 
     collisionWithBottle() {
         this.throwableObjects.forEach((ThrowableObject) => {
             this.level.enemies.forEach((enemy) => {
-                if (ThrowableObject.isColliding(enemy)) {
-                    
-                    console.log(enemy);
+                if (ThrowableObject.isColliding(enemy) && enemy.isAlive) {
                     if (!enemy.number) {
                         this.endbossWasHit += 1; 
                     }
@@ -166,20 +167,8 @@ class World{
                             enemy.y = 480 - enemy.height;
                    
                         }, 10);
-                    
-                    
-                    if (sound.activated) {
-                        this.EndbossDeadAudio.loop = false;
-                        this.EndbossDeadAudio.play(); 
-                        this.BreakingBottleAudio.play();
-                        this.EndbossDeadAudio.volume = 0.2;
-                        this.BreakingBottleAudio.volume = 0.1;
-            
-                         
-                    } else {
-                        this.EndbossDeadAudio.pause();
-                        this.BreakingBottleAudio.pause();
-                    }   
+                        this.playSound(this.EndbossDeadAudio, 0.2);
+                        this.playSound(this.BreakingBottleAudio, 0.1);
                     }
                  
                 }
@@ -189,9 +178,6 @@ class World{
         
     }
 
-    enemyDies() {
-
-    }
 
 
 
@@ -218,14 +204,11 @@ class World{
         this.addToMap(this.statusBarCoins);
         this.addToMap(this.statusBarBottles);
        
-        
+        this.playSound(this.music, 0.1);
         if (sound.activated) {
            this.addToMap(this.audioImg);
-           this.music.play(); 
-           this.music.volume = 0.1;
         } else {
             this.addToMap(this.noAudioImg); 
-            this.music.pause();
         }
         this.ctx.translate(this.camera_x, 0);
         
