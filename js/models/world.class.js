@@ -61,27 +61,11 @@ class World{
         this.level.enemies.forEach((enemy) => {
             if(this.character.isColliding(enemy) && enemy.isAlive) {
                 if (this.character.isAboveGround()) {
-                        this.character.jump(this.sound);
-                        enemy.isAlive = false;
-                        clearInterval(enemy.walkingAnimation)
-                        setInterval(() => {
-                            enemy.playAnimation(enemy.IMAGES_DEAD);
-                            enemy.speed = 0;
-                            enemy.y = 480 - enemy.height;
-                        }, 10);
-                        this.playSound(this.EndbossDeadAudio, 0.2);
+                    this.killEnemy(enemy); 
                 } else {
-                    this.character.playAnimation(this.character.IMAGES_HURT);
-                        let currentTime = new Date().getTime();
-                        this.character.hit();
-                        if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
-                            this.currentEnemey = enemy.number;
-                            if (!this.character.isDead()) {
-                                this.playSound(this.HurtAudio, 1);
-                                // this.hurtAudioPlayed = true; 
-                            }
-                        }
-                        this.statusBarEnergy.setPercentage(this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
+                    this.hurtCharacter(enemy);
+                    this.updateStatusbar(this.statusBarEnergy, this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
+                    
                                     
                         if (this.coinsCollected >= 12.5){
                             this.coinsCollected += -12.5;
@@ -93,7 +77,7 @@ class World{
         this.level.coins.forEach((coin) => {
             if (this.character.isColliding(coin)) {
                 this.coinsCollected += 12.5;
-                this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS); 
+                this.statusBarCoins.setPercentage(this.coinsCollected, this.statusBarCoins.IMAGES_COINS); 
                 for (let index = 0; index < this.coins.length; index++) {
                     if (coin.number == this.coins[index].number) {
                       this.coins.splice(index, 1);
@@ -106,12 +90,36 @@ class World{
         
     }
 
+    killEnemy(enemy) {
+         this.character.jump(this.sound);
+                        enemy.isAlive = false;
+                        clearInterval(enemy.walkingAnimation);
+                        setInterval(() => {
+                            enemy.playAnimation(enemy.IMAGES_DEAD);
+                            enemy.speed = 0;
+                            enemy.y = 480 - enemy.height;
+                        }, 10);
+                        this.playSound(this.EndbossDeadAudio, 0.2);
+    }
+
+    hurtCharacter(enemy) {
+            this.character.playAnimation(this.character.IMAGES_HURT);
+                        let currentTime = new Date().getTime();
+                        this.character.hit();
+                        if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
+                            this.currentEnemey = enemy.number;
+                            if (!this.character.isDead()) {
+                                this.playSound(this.HurtAudio, 1);
+                                // this.hurtAudioPlayed = true; 
+                            } }
+    }
+
     checkThrowableObjects() {
         if (this.keyboard.D) {
             if (this.enoughBottlesLeft()) {
                 this.decreaseAwailableBottles();
                 this.addBottleToCanvas();
-                this.updateStatusbar();
+                this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarEnergy.IMAGES_BOTTLES);
                 this.playSound(this.throwingBottleAudio, 1);  
             }
         }
@@ -136,8 +144,8 @@ class World{
             this.throwableObjects.push(bottle);
     }
 
-    updateStatusbar() {
-        this.statusBarBottles.setPercentage(this.bottlesLeft, world.statusBarEnergy.IMAGES_BOTTLES);
+    updateStatusbar(bar, assets, images) {
+        bar.setPercentage(assets, images);
     }
 
     playSound(type, volume) {
