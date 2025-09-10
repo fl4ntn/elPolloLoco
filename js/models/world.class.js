@@ -59,60 +59,74 @@ class World{
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if(this.character.isColliding(enemy) && enemy.isAlive) {
-                if (this.character.isAboveGround()) {
-                    this.killEnemy(enemy); 
-                } else {
-                    this.hurtCharacter(enemy);
-                    this.updateStatusbar(this.statusBarEnergy, this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);
-                    
-                                    
-                        if (this.coinsCollected >= 12.5){
-                            this.coinsCollected += -12.5;
-                            this.statusBarCoins.setPercentage(this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
-                        }
-                } 
-            }
+            this.checkCollisionWithCharacter(enemy);
         });
         this.level.coins.forEach((coin) => {
-            if (this.character.isColliding(coin)) {
-                this.coinsCollected += 12.5;
-                this.statusBarCoins.setPercentage(this.coinsCollected, this.statusBarCoins.IMAGES_COINS); 
-                for (let index = 0; index < this.coins.length; index++) {
-                    if (coin.number == this.coins[index].number) {
-                      this.coins.splice(index, 1);
-                    }
-                }
-
-                this.playSound(this.CoinsEarnedAudio, 0.1);
-            }
+            this.checkCollisionWithCoin(coin);
         });
         
     }
 
-    killEnemy(enemy) {
-         this.character.jump(this.sound);
-                        enemy.isAlive = false;
-                        clearInterval(enemy.walkingAnimation);
-                        setInterval(() => {
-                            enemy.playAnimation(enemy.IMAGES_DEAD);
-                            enemy.speed = 0;
-                            enemy.y = 480 - enemy.height;
-                        }, 10);
-                        this.playSound(this.EndbossDeadAudio, 0.2);
+    checkCollisionWithCharacter(enemy) {
+        if(this.character.isColliding(enemy) && enemy.isAlive) {
+            if (this.character.isAboveGround()) {
+                this.character.jump(this.sound);
+                this.killEnemy(enemy); 
+            } else {
+                this.hurtCharacter(enemy);
+                this.updateStatusbar(this.statusBarEnergy, this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);   
+                this.decreaseCoins();  
+            } 
+        }
+    }
+
+    checkCollisionWithCoin(coin) {
+        if (this.character.isColliding(coin)) {
+            this.coinsCollected += 12.5;
+            this.statusBarCoins.setPercentage(this.coinsCollected, this.statusBarCoins.IMAGES_COINS); 
+            for (let index = 0; index < this.coins.length; index++) {
+                if (coin.number == this.coins[index].number) {
+                    this.coins.splice(index, 1);
+                }
+            }
+            this.playSound(this.CoinsEarnedAudio, 0.1);
+            }
+    }
+
+    killEnemy(enemy, ThrowableObject) {
+        enemy.isAlive = false;
+        clearInterval(enemy.walkingAnimation);
+        setInterval(() => {
+            if (ThrowableObject) {
+                ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
+            }
+            enemy.playAnimation(enemy.IMAGES_DEAD);
+            enemy.speed = 0;
+            enemy.y = 480 - enemy.height;
+        }, 10);
+        this.playSound(this.EndbossDeadAudio, 0.2);
     }
 
     hurtCharacter(enemy) {
-            this.character.playAnimation(this.character.IMAGES_HURT);
-                        let currentTime = new Date().getTime();
-                        this.character.hit();
-                        if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
-                            this.currentEnemey = enemy.number;
-                            if (!this.character.isDead()) {
-                                this.playSound(this.HurtAudio, 1);
-                                // this.hurtAudioPlayed = true; 
-                            } }
+        this.character.playAnimation(this.character.IMAGES_HURT);
+        let currentTime = new Date().getTime();
+        this.character.hit();
+        if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
+            this.currentEnemey = enemy.number;
+        if (!this.character.isDead()) {
+            this.playSound(this.HurtAudio, 1);
+            // this.hurtAudioPlayed = true; 
+        } }
     }
+
+    decreaseCoins() {
+        if (this.coinsCollected >= 12.5){
+            this.coinsCollected += -12.5;
+            this.updateStatusbar(this.statusBarCoins, this.coinsCollected, world.statusBarCoins.IMAGES_COINS);
+        }
+
+    }
+
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
@@ -160,74 +174,66 @@ class World{
     collisionWithBottle() {
         this.throwableObjects.forEach((ThrowableObject) => {
             this.level.enemies.forEach((enemy) => {
-                if (ThrowableObject.isColliding(enemy) && enemy.isAlive) {
-                    if (!enemy.number) {
-                        this.endbossWasHit += 1; 
-                    }
-                    console.log(this.endbossWasHit);
-                    if (enemy.number || this.endbossWasHit > 14 && this.endbossWasHit < 16) {
-                        enemy.isAlive = false;
-                        clearInterval(enemy.walkingAnimation)
-                        setInterval(() => {
-                            ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
-                            enemy.playAnimation(enemy.IMAGES_DEAD);
-                            enemy.speed = 0;
-                            enemy.y = 480 - enemy.height;
-                   
-                        }, 10);
-                        this.playSound(this.EndbossDeadAudio, 0.2);
-                        this.playSound(this.BreakingBottleAudio, 0.1);
-                    }
-                 
-                }
-               
+                this.checkCollisionWithEnemy(enemy, ThrowableObject);
             });
         });
         
     }
 
+    checkCollisionWithEnemy(enemy, ThrowableObject) {
+        if (ThrowableObject.isColliding(enemy) && enemy.isAlive) {
+            this.checkIfEndbossWasHit(enemy);
+                    if (enemy.number || this.endbossWasHit > 14 && this.endbossWasHit < 16) {
+                        this.killEnemy(enemy, ThrowableObject);
+                        this.playSound(this.BreakingBottleAudio, 0.1);
+                    }
+                }
+    }
 
 
-
-
+    checkIfEndbossWasHit(enemy) {
+        if (!enemy.number) {
+            this.endbossWasHit += 1; 
+        }
+    }
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        
+        this.addBasicsToCanvas();
+        this.addStatusbarsToCanvas();
+        this.addMusicOptionsToCanvas();
         this.ctx.translate(this.camera_x, 0);
-
-        this.addObjectsToMap(this.level.backgroundObjects);
-        this.addToMap(this.character);
-        
-        this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.coins); 
-        this.addObjectsToMap(this.level.enemies);
-        
-        this.ctx.translate(-this.camera_x, 0);
-
-
-
-
-        this.addToMap(this.statusBarEnergy);
-        this.addToMap(this.statusBarCoins);
-        this.addToMap(this.statusBarBottles);
-       
-        this.playSound(this.music, 0.1);
-        if (sound.activated) {
-           this.addToMap(this.audioImg);
-        } else {
-            this.addToMap(this.noAudioImg); 
-        }
-        this.ctx.translate(this.camera_x, 0);
-        
         this.addObjectsToMap(this.throwableObjects);
-
         this.ctx.translate(-this.camera_x, 0);
         let self = this;
         requestAnimationFrame(function() {
             self.draw();
         });
-        
+    }
+
+    addBasicsToCanvas()  {
+        this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.coins); 
+        this.addObjectsToMap(this.level.enemies);
+        this.ctx.translate(-this.camera_x, 0);
+    }
+
+    addStatusbarsToCanvas() {
+        this.addToMap(this.statusBarEnergy);
+        this.addToMap(this.statusBarCoins);
+        this.addToMap(this.statusBarBottles);
+    }
+
+    addMusicOptionsToCanvas() {
+        this.playSound(this.music, 0.1);
+            if (sound.activated) {
+           this.addToMap(this.audioImg);
+        } else {
+            this.addToMap(this.noAudioImg); 
+        }
     }
 
     addObjectsToMap(objects) {
