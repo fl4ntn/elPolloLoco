@@ -38,13 +38,6 @@ class MovableObject extends DrawableObject {
         this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom
     }
 
-    // isColliding(mo) {
-    //   return this.x + this.width > mo.x &&
-    //     this.y + this.height > mo.y &&
-    //     this.x < mo.x + mo.width &&
-    //     this.y < mo.y + mo.height
-    // }
-
     hit() {
         this.energy -= 5;
         if (this.energy < 0) {

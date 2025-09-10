@@ -35,11 +35,8 @@ class ThrowableObject extends MovableObject {
         this.otherDirection = direction;
         this.width = 50;
         this.height = 60;
-        
         this.animate(this.IMAGES_ROTATING);
         this.throw();
-        
-
     }
 
     throw() {
