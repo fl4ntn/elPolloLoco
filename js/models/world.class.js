@@ -93,18 +93,39 @@ class World{
             }
     }
 
-    killEnemy(enemy, ThrowableObject) {
+    async killEnemy(enemy, ThrowableObject) {
         enemy.isAlive = false;
         clearInterval(enemy.walkingAnimation);
+        await this.checkIfEndbossWasKilled(enemy);
         setInterval(() => {
             if (ThrowableObject) {
                 ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
             }
-            enemy.playAnimation(enemy.IMAGES_DEAD);
+            enemy.playAnimation(enemy.IMAGES_DEAD); 
+            console.log('nachher');
             enemy.speed = 0;
             enemy.y = 480 - enemy.height;
         }, 10);
         this.playSound(this.EndbossDeadAudio, 0.2);
+    }
+
+    checkIfEndbossWasKilled(enemy) {
+        if (!enemy.number) {
+            clearInterval(enemy.hurtAnimation);
+            return new Promise ((resolve) => {
+            let i = 0;
+            const interval = setInterval(() => {
+                enemy.playAnimation(enemy.IMAGES_DYING);
+                i++;
+                if(i >= enemy.IMAGES_DYING.length) {
+                    clearInterval(interval);
+                    enemy.currentImage = 0;
+                    resolve();
+                }
+            }, 120);
+            });
+        }
+        return Promise.resolve();         
     }
 
     hurtCharacter(enemy) {
@@ -194,6 +215,11 @@ class World{
     checkIfEndbossWasHit(enemy) {
         if (!enemy.number) {
             this.endbossWasHit += 1; 
+            clearInterval(enemy.walkingAnimation);
+             setInterval(() => {
+            enemy.hit();
+        }, 10);
+            
         }
     }
 
