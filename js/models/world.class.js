@@ -52,7 +52,8 @@ class World{
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowableObjects();
-            this.collisionWithBottle()
+            this.collisionWithBottle();
+            this.checkDistanceToEndboss();
             
         }, 200 );
     }
@@ -111,7 +112,6 @@ class World{
 
     checkIfEndbossWasKilled(enemy) {
         if (!enemy.number) {
-            clearInterval(enemy.hurtAnimation);
             return new Promise ((resolve) => {
             let i = 0;
             const interval = setInterval(() => {
@@ -215,11 +215,13 @@ class World{
     checkIfEndbossWasHit(enemy) {
         if (!enemy.number) {
             this.endbossWasHit += 1; 
-            clearInterval(enemy.walkingAnimation);
-             setInterval(() => {
-            enemy.hit();
-        }, 10);
-            
+            enemy.hit();            
+        }
+    }
+
+    checkDistanceToEndboss() {
+        if(this.enemies[3].x - this.character.y <= 560) {
+        this.enemies[3].speed = 0;
         }
     }
 
