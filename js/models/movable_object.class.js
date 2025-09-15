@@ -1,5 +1,5 @@
 class MovableObject extends DrawableObject {
-    speed = 0.15;
+    // speed = 0.15;
     jumpingSound = new Audio('audio/jumping_sound.m4a');
     otherDirection = false;
     speedY = 0;

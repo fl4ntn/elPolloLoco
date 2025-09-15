@@ -97,6 +97,7 @@ class World{
     async killEnemy(enemy, ThrowableObject) {
         enemy.isAlive = false;
         clearInterval(enemy.walkingAnimation);
+        // clearInterval(this.enemies[3].walkingAnimation);
         await this.checkIfEndbossWasKilled(enemy);
         setInterval(() => {
             if (ThrowableObject) {
@@ -220,8 +221,10 @@ class World{
     }
 
     checkDistanceToEndboss() {
-        if(this.enemies[3].x - this.character.y <= 560) {
+        if(this.enemies[3].x - this.character.x <= 400) {
         this.enemies[3].speed = 0;
+        // clearInterval(this.enemies[3].walkingAnimation);
+        this.enemies[3].animate(this.enemies[3].alertAnimation, this.enemies[3].attackingAnimation, this.enemies[3].walkingAnimation);
         }
     }
 
