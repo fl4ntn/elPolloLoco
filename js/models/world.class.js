@@ -221,10 +221,16 @@ class World{
     }
 
     checkDistanceToEndboss() {
-        if(this.enemies[3].x - this.character.x <= 400) {
+        if(this.enemies[3].x - this.character.x <= 480) {
         this.enemies[3].speed = 0;
-        // clearInterval(this.enemies[3].walkingAnimation);
-        this.enemies[3].animate(this.enemies[3].alertAnimation, this.enemies[3].attackingAnimation, this.enemies[3].walkingAnimation);
+        clearInterval(this.enemies[3].animation);
+        this.enemies[3].emotionalStage = 'alert';
+        this.enemies[3].animateEmotionalStage();
+        }
+        if (this.enemies[3].x - this.character.x <= 250) {
+            clearInterval(this.enemies[3].animation);
+            this.enemies[3].emotionalStage = 'attack';
+            this.enemies[3].animateEmotionalStage();
         }
     }
 
