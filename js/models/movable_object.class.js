@@ -16,19 +16,23 @@ class MovableObject extends DrawableObject {
     applyGravity() {
             
         setInterval(() => {
-            if (this.isAboveGround() || this.speedY > 0){
+            if (this.reachedVertexPoint() || this.speedY > 0){
                 this.y -= this.speedY;
                 this.speedY -= this.acceleration;
             }
         }, 1000 / 25);
     }
 
-    isAboveGround() {
-        if (this instanceof ThrowableObject) {
+    reachedVertexPoint() {
+         if (this instanceof ThrowableObject) {
             return true;
         } else {
             return this.y < 200;
         }
+    }
+
+    isAboveGround() {
+            return this.y < 200;
     }
 
     isColliding(mo) {
@@ -74,6 +78,12 @@ class MovableObject extends DrawableObject {
     }
 
     jump(sound) {
+        world.character.isJumping = true;
+        console.log(world.character.isJumping);
+        setTimeout(() => {
+         world.character.isJumping = false;
+         console.log(world.character.isJumping);
+        }, 1000);
         this.speedY = 30;
         if (sound.activated) {
             this.jumpingSound.play(); 

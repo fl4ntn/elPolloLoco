@@ -3,9 +3,10 @@ class Endboss extends MovableObject {
     width = 300;
     y = -20;
     isAlive = true;
-    speed = 0.15;
+    speed = 0;
     emotionalStage = "walking";
     animation;
+    walkingSpeed = 0.15;
 
 
       IMAGES_WALKING = [
@@ -100,12 +101,26 @@ class Endboss extends MovableObject {
     }
 
     hit() {
-        console.log('1');
-        setTimeout(() => {
-            console.log('2');
-        }, 1000);
-        console.log('3');
+ 
+        // clearInterval(this.animation);
         // this.playAnimation(this.IMAGES_HURT);
+ 
+            clearInterval(this.enemies[3].animation);
+            return new Promise ((resolve) => {
+            let i = 0;
+            const interval = setInterval(() => {
+                this.playAnimation(this.IMAGES_HURT);
+                i++;
+                if(i >= this.IMAGES_HURT.length) {
+                    clearInterval(interval);
+                    this.currentImage = 0;
+                    resolve();
+                }
+            }, 120);
+            });
+        
+        // return Promise.resolve();         
+    
     }
 
 

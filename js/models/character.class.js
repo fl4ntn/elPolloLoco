@@ -2,6 +2,7 @@ class Character extends MovableObject {
     x = 90;
     y = 80;
     speed = 5;
+    isJumping;
     
 
      offset = {
@@ -90,6 +91,7 @@ class Character extends MovableObject {
         }
         if (this.world.keyboard.SPACE && !this.isAboveGround() || this.world.keyboard.UP && !this.isAboveGround()) {
             this.jump(this.sound);
+            
         }
    }
 
@@ -100,6 +102,7 @@ class Character extends MovableObject {
             this.playAnimation(this.IMAGES_HURT);
         } else if(this.isAboveGround()) {
             this.playAnimation(this.IMAGES_JUMPING);
+            
         } else {
             if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT) { 
                 this.playAnimation(this.IMAGES_WALKING);

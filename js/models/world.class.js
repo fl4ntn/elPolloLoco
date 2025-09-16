@@ -38,9 +38,21 @@ class World{
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.sound = sound;
+        // this.enemies[2].speed = this.enemies[2].walkingSpeed;
+        this.objectsStartMoving();
         this.draw();
         this.setWorld();
         this.run();
+    }
+
+    objectsStartMoving() {
+        this.enemies.forEach((enemy) => {
+           enemy.speed = enemy.walkingSpeed;
+        });
+        this.clouds.forEach((cloud) => {
+           cloud.speed = 0.02;
+        });
+        
     }
   
     
@@ -70,10 +82,12 @@ class World{
 
     checkCollisionWithCharacter(enemy) {
         if(this.character.isColliding(enemy) && enemy.isAlive) {
-            if (this.character.isAboveGround()) {
+            console.log('collided with', enemy);
+            if (this.character.isJumping) {
                 this.character.jump(this.sound);
                 this.killEnemy(enemy); 
             } else {
+
                 this.hurtCharacter(enemy);
                 this.updateStatusbar(this.statusBarEnergy, this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);   
                 this.decreaseCoins();  
@@ -95,18 +109,18 @@ class World{
     }
 
     async killEnemy(enemy, ThrowableObject) {
-        enemy.isAlive = false;
-        clearInterval(enemy.walkingAnimation);
-        // clearInterval(this.enemies[3].walkingAnimation);
+            console.log('should be dead', enemy);
         await this.checkIfEndbossWasKilled(enemy);
+        // clearInterval(enemy.walkingAnimation);
+        enemy.speed = 0;
+            enemy.y = 480 - enemy.height;
+            enemy.isAlive = false;
         setInterval(() => {
             if (ThrowableObject) {
                 ThrowableObject.playAnimation(ThrowableObject.IMAGES_SPLASHING);
             }
             enemy.playAnimation(enemy.IMAGES_DEAD); 
-            console.log('nachher');
-            enemy.speed = 0;
-            enemy.y = 480 - enemy.height;
+            
         }, 10);
         this.playSound(this.EndbossDeadAudio, 0.2);
     }
@@ -125,6 +139,8 @@ class World{
                 }
             }, 120);
             });
+        } else {
+            clearInterval(enemy.walkingAnimation);
         }
         return Promise.resolve();         
     }
@@ -213,10 +229,10 @@ class World{
     }
 
 
-    checkIfEndbossWasHit(enemy) {
+    async checkIfEndbossWasHit(enemy) {
         if (!enemy.number) {
             this.endbossWasHit += 1; 
-            enemy.hit();            
+            await enemy.hit();            
         }
     }
 
