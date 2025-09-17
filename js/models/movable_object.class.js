@@ -78,12 +78,6 @@ class MovableObject extends DrawableObject {
     }
 
     jump(sound) {
-        world.character.isJumping = true;
-        console.log(world.character.isJumping);
-        setTimeout(() => {
-         world.character.isJumping = false;
-         console.log(world.character.isJumping);
-        }, 1000);
         this.speedY = 30;
         if (sound.activated) {
             this.jumpingSound.play(); 

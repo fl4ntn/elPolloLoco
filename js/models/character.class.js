@@ -2,7 +2,6 @@ class Character extends MovableObject {
     x = 90;
     y = 80;
     speed = 5;
-    isJumping;
     
 
      offset = {

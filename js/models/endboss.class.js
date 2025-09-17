@@ -78,25 +78,30 @@ class Endboss extends MovableObject {
     }
 
     animate() {
-       this.animation = this.animateEmotionalStage();
+
+        this.animateEmotionalStage();
+       this.animation;
         setInterval( () => {
             this.moveLeft();
          }, 1000 / 60);
     }
 
     animateEmotionalStage() {
+        if (this.animation) {
+            clearInterval(this.animation);
+        }
         if(this.emotionalStage == 'walking'){
-            return setInterval(() => {
-                            this.playAnimation(this.IMAGES_WALKING);  
-                        }, 700);
+           this.animation = setInterval(() => {
+                this.playAnimation(this.IMAGES_WALKING);
+            }, 700);
         } else if (this.emotionalStage == 'alert') {
-            return setInterval(() => {
+           this.animation = setInterval(() => {
                             this.playAnimation(this.IMAGES_ALERT);  
-                        }, 1600);
+                        }, 700);
         } else if (this.emotionalStage == 'attack') {
-            return setInterval(() => {
+            this.animation = setInterval(() => {
                             this.playAnimation(this.IMAGES_ATTACKING);  
-                        }, 1600);
+                        }, 700);
         }
     }
 

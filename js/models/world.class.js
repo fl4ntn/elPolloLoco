@@ -27,6 +27,8 @@ class World{
     audioImg = new SoundImage('audio/speaker-31227_1280.png');
     noAudioImg = new SoundImage('audio/mute-1628277_1280.png');
     canvas;
+    closeToEndboss = false;
+    veryCloseToEndboss = false;
     ctx;
     
     keyboard;
@@ -65,9 +67,8 @@ class World{
             this.checkCollisions();
             this.checkThrowableObjects();
             this.collisionWithBottle();
-            this.checkDistanceToEndboss();
-            
-        }, 200 );
+            this.checkDistanceToEndboss()
+        }, 1000/60 );
     }
 
     checkCollisions() {
@@ -82,8 +83,7 @@ class World{
 
     checkCollisionWithCharacter(enemy) {
         if(this.character.isColliding(enemy) && enemy.isAlive) {
-            console.log('collided with', enemy);
-            if (this.character.isJumping) {
+            if (this.character.isAboveGround()) {
                 this.character.jump(this.sound);
                 this.killEnemy(enemy); 
             } else {
@@ -109,10 +109,8 @@ class World{
     }
 
     async killEnemy(enemy, ThrowableObject) {
-            console.log('should be dead', enemy);
         await this.checkIfEndbossWasKilled(enemy);
-        // clearInterval(enemy.walkingAnimation);
-        enemy.speed = 0;
+            enemy.speed = 0;
             enemy.y = 480 - enemy.height;
             enemy.isAlive = false;
         setInterval(() => {
@@ -126,7 +124,7 @@ class World{
     }
 
     checkIfEndbossWasKilled(enemy) {
-        if (!enemy.number) {
+        if (enemy.number < 0) {
             return new Promise ((resolve) => {
             let i = 0;
             const interval = setInterval(() => {
@@ -168,6 +166,7 @@ class World{
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
+            this.keyboard.D = false;
             if (this.enoughBottlesLeft()) {
                 this.decreaseAwailableBottles();
                 this.addBottleToCanvas();
@@ -237,16 +236,18 @@ class World{
     }
 
     checkDistanceToEndboss() {
-        if(this.enemies[3].x - this.character.x <= 480) {
-        this.enemies[3].speed = 0;
-        clearInterval(this.enemies[3].animation);
-        this.enemies[3].emotionalStage = 'alert';
-        this.enemies[3].animateEmotionalStage();
+        if(this.enemies[3].x - this.character.x <= 480 && this.enemies[3].x - this.character.x > 250 && this.closeToEndboss == false) {
+            this.closeToEndboss = true;
+            this.enemies[3].speed = 0;
+            this.enemies[3].emotionalStage = 'alert';
+            this.enemies[3].animateEmotionalStage();
+            this.enemies[3].animation;
         }
-        if (this.enemies[3].x - this.character.x <= 250) {
-            clearInterval(this.enemies[3].animation);
+        if (this.enemies[3].x - this.character.x <= 250 && this.veryCloseToEndboss == false) {
+            this.veryCloseToEndboss = true;
             this.enemies[3].emotionalStage = 'attack';
             this.enemies[3].animateEmotionalStage();
+            this.enemies[3].animation;
         }
     }
 
