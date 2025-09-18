@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('img/5_background/desert.jpg');
+    background-image: url('img/5_background/desert1.png');
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
@@ -22,21 +22,66 @@ h1 {
     font-weight: 100;
     text-shadow: 2px 2px 2px rgba(45, 1, 1, 0.25);
         padding: 6% 0;
-}
-
-.cactus_img {
-    height: 480px;
-    position: absolute;
-    z-index: -1;
-    left: 80px;
-    bottom: 200px;
+        margin: 0;
 }
 
 canvas {
-    box-shadow: 2px 2px 2px rgba(0,0,0,0.5);
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.5);
     border-radius: 2%;
     display: block;
+    background-color: #0000003b;
 }
+
+
+.map{
+    height: 100px;
+}
+
+.explanation_board {
+    display: flex;
+    width: 720px;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 398px;
+}
+
+.explanation_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 0.1rem;
+    font-size: 18px;
+    filter: saturate(0.5);
+}
+
+.explanation_box:hover {
+    cursor: pointer;
+    filter: sepia(1);
+}
+
+.d_none {
+    display: none !important;
+}
+
+.settings_overlay {
+    height: 480px;
+    width: 100px;
+    background-color: antiquewhite;
+    display: flex;
+    width: 720px;
+    position: absolute;
+    top: 236px;
+}
+
+.rotate {
+   transform: rotate(45deg); 
+}
+
+.rotate:hover {
+    filter: invert(1);
+    opacity: 0.7;
+}
+
 
 @media only screen and (max-width: 720px) {
     canvas {

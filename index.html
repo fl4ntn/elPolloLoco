@@ -27,14 +27,34 @@
 </head>
 <body onload="">
 
-        <h1 onclick="init()">El Pollo Loco</h1>
-        <div><img class="cactus_img" src="img/cactus.png" alt="cactus"></div>
-        <div><img class="cactus_img" src="img/cactus2.png" alt="cactus"></div>
-        <div><img class="cactus_img" src="img/map.png" alt="map"></div>
-        <div><img class="cactus_img" src="img/treasure.png" alt="treasure"></div>
-        <div><img class="cactus_img" src="img/camel.png" alt="camel"></div>
-        <canvas id="canvas" width="720" height="480"></canvas>
+        <h1>El Pollo Loco</h1>
+    <div>
+        <canvas id="canvas" width="720" height="480">
+            
+        </canvas>
         
+        <div id="explanation_board" class="explanation_board">
+            <div class="explanation_box">
+                <img class="map" src="img/map.png" alt="map">
+                <p>EXPLANATION</p>
+            </div>
+            
+            <div onclick="openSettings()" class="explanation_box">
+                <img class="map rotate" src="img/settings.png" alt="map">
+                <p>SETTINGS</p>
+            </div>
+            <div onclick="init()" class="explanation_box">
+                <img class="map" src="img/old_door.png" alt="map">
+                <p>START GAME</p>
+            </div>
+        </div>
+
+        <div id="settings_overlay" class="settings_overlay d_none">
+
+                
+
+        </div>
+    </div>        
     
 </body>
 </html>

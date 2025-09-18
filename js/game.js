@@ -8,7 +8,13 @@ let sound = new Sound();
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard, sound);
+    document.getElementById('explanation_board').classList.add('d_none');
     
+}
+
+function openSettings() {
+    document.getElementById('settings_overlay').classList.remove('d_none');
+    // document.getElementById('explanation_board').classList.add('d_none');
 }
 
 window.addEventListener('click', function(event) {
