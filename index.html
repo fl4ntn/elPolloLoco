@@ -23,11 +23,11 @@
     <script src="js/models/throwableObject.class.js"></script>
     <script src="js/models/endboss.class.js"></script>
     <script src="js/levels/level1.js"></script>
-    <script src="js/game.js"></script>
+   
 </head>
 <body onload="">
 
-        <h1>El Pollo Loco</h1>
+        <h1 onclick="gameOver()">El Pollo Loco</h1>
     <div>
         <canvas id="canvas" width="720" height="480">
             
@@ -49,12 +49,25 @@
             </div>
         </div>
 
-        <div id="settings_overlay" class="settings_overlay d_none">
+        <div id="settings_overlay" class="settings_overlay d_none"></div>
+
+            <div id="mobile_buttons" class="mobile_buttons">
+                <div id="walking_btns" class="action_buttons">
+                    <div id="move_left_btn" class="btn"><i class="arrow left"></i></div>
+                    <div id="move_right_btn" class="btn"><i class="arrow right"></i></div>
+                </div>
+                <div id="action_btns" class="action_buttons">
+                    <div id="jump_btn" class="btn"><i class="arrow up"></i></div>
+                    <div id="throw_btn" class="btn">X</div>
+                </div>
+
+            </div>
 
                 
 
-        </div>
+        
     </div>        
     
 </body>
+ <script src="js/game.js"></script>
 </html>
