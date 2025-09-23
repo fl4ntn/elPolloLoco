@@ -118,20 +118,38 @@ document.getElementById('throw_btn').addEventListener('touchend', (e) => {
 });
 
 function gameOver() {
-    
-         for (let i = 1; i < 9999; i++) { window.clearInterval(i);}
-         world = null;
-        //  init();
+     
+   
+//    world = new World(canvas, keyboard, sound);
+//     
         
-        // cancelAnimationFrame(world.animationFrame);
-        // clearInterval(world.gameLoop);
-        // document.getElementById('canvas').innerHTML = "";
-        // world.enemies = [];
-        // world.coins = [];
-        // world.level = level1;
-        // #
-        // init();
-        document.getElementById('explanation_board').classList.remove('d_none');
+        //  world = null;
+        // //  init();
+        
+        // // cancelAnimationFrame(world.animationFrame);
+        // // clearInterval(world.gameLoop);
+        // // document.getElementById('canvas').innerHTML = "";
+        
+        // // world.level = level1;
+        // // #
+        // // init();
+        // document.getElementById('explanation_board').classList.remove('d_none');
+    
+    cancelAnimationFrame(world.animationFrameId)
+    for (let i = 1; i < 9999; i++) { window.clearInterval(i);}
+    world = null;
+    canvas = null;
+    
+    init();
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // resetKeyboard();
+    world.resetWorld();
+    // const level = level1;
+    
+
+
+
     }
 
 

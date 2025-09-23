@@ -322,7 +322,48 @@ class World{
         this.ctx.restore();
     }
 
-  
+    resetWorld() {
+
+    // level = level1;
+    
+        //  for (let i = 1; i < 9999; i++) { window.clearInterval(i);}
+        //  world = null;
+        // //  init();
+        // this.enemies = [];
+        // this.coins = [];
+        // cancelAnimationFrame(this.animationFrame);
+        // this.character = new Character(this.sound);
+        // this.setWorld();
+        // this.camera_x = 0;
+        // this.draw();
+        // this.run();
+        // clearInterval(world.gameLoop);
+        // document.getElementById('canvas').innerHTML = "";
+        // world.enemies = [];
+        // world.coins = [];
+        // world.level = level1;
+        // #
+        // init();
+        // document.getElementById('explanation_board').classList.remove('d_none');
+        this.bottlesLeft = 100;
+        this.coinsCollected = 0;
+        this.bottleNumber = 0;
+        this.statusBarEnergy = new StatusBar("energy", 10);
+        // backgroundObjects = level1.backgroundObjects;
+    // currentEnemey;
+   
+    // enemies = level1.enemies;
+    // clouds = level1.clouds;
+    
+    // coins = level1.coins;
+   
+    // statusBarCoins = new StatusBar("coins", 55);
+    // statusBarBottles = new StatusBar("bottles", 100);
+    // throwableObjects = [];
+    // canvas;
+    // closeToEndboss = false;
+    // veryCloseToEndboss = false;
+    }
 
 
 }
