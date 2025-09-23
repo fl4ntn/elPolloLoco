@@ -6,11 +6,13 @@ let sound = new Sound();
 
 
 function init() {
+    initLevel();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard, sound);
     document.getElementById('explanation_board').classList.add('d_none');
     
 }
+
 
 function openSettings() {
     document.getElementById('settings_overlay').classList.remove('d_none');
@@ -135,16 +137,16 @@ function gameOver() {
         // // init();
         // document.getElementById('explanation_board').classList.remove('d_none');
     
-    cancelAnimationFrame(world.animationFrameId)
-    for (let i = 1; i < 9999; i++) { window.clearInterval(i);}
-    world = null;
-    canvas = null;
+    // cancelAnimationFrame(world.animationFrameId)
+    // for (let i = 1; i < 9999; i++) { window.clearInterval(i);}
+    // world = null;
+    // canvas = null;
     
     init();
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // const ctx = canvas.getContext('2d');
+    // ctx.clearRect(0, 0, canvas.width, canvas.height);
     // resetKeyboard();
-    world.resetWorld();
+    // world.resetWorld();
     // const level = level1;
     
 

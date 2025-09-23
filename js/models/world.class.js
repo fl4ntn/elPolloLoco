@@ -345,10 +345,10 @@ class World{
         // #
         // init();
         // document.getElementById('explanation_board').classList.remove('d_none');
-        this.bottlesLeft = 100;
-        this.coinsCollected = 0;
-        this.bottleNumber = 0;
-        this.statusBarEnergy = new StatusBar("energy", 10);
+        // this.bottlesLeft = 100;
+        // this.coinsCollected = 0;
+        // this.bottleNumber = 0;
+        // this.statusBarEnergy = new StatusBar("energy", 10);
         // backgroundObjects = level1.backgroundObjects;
     // currentEnemey;
    
