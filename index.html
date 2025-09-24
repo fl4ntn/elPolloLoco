@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,31 +25,20 @@
     <script src="js/levels/level1.js"></script>
    
 </head>
-<body onload="">
+<body onload="getExplanationBoard()">
 
-        <h1 onclick="gameOver()">El Pollo Loco</h1>
+    <h1 onclick="gameOver()">El Pollo Loco</h1>
     <div>
-        <canvas id="canvas" width="720" height="480">
-            
-        </canvas>
+      
+            <canvas id="canvas" width="720" height="480"></canvas>
+          
+        
         
         <div id="explanation_board" class="explanation_board">
-            <div class="explanation_box">
-                <img class="map" src="img/map.png" alt="map">
-                <p>EXPLANATION</p>
-            </div>
             
-            <div onclick="openSettings()" class="explanation_box">
-                <img class="map rotate" src="img/settings.png" alt="map">
-                <p>SETTINGS</p>
-            </div>
-            <div onclick="init()" class="explanation_box">
-                <img class="map" src="img/old_door.png" alt="map">
-                <p>START GAME</p>
-            </div>
         </div>
 
-        <div id="settings_overlay" class="settings_overlay d_none"></div>
+        <!-- <div id="settings_overlay" class="settings_overlay d_none"></div> -->
 
             <div id="mobile_buttons" class="mobile_buttons">
                 <div id="walking_btns" class="action_buttons">
@@ -62,11 +51,13 @@
                 </div>
 
             </div>
+            
+        </div>
 
                 
 
         
-    </div>        
+          
     
 </body>
  <script src="js/game.js"></script>

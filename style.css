@@ -132,6 +132,59 @@ canvas {
   -webkit-transform: rotate(-135deg);
 }
 
+.settings {
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.settings_option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    width: 200px;
+}
+
+.ticked_box {
+    display: flex;
+}
+
+
+.box {
+    border: 3px solid black;
+    height: 36px;
+    width: 24px;
+    border-radius: 7px;
+    margin: 4px;
+}
+
+.ticked_box:hover {
+    cursor: pointer;
+}
+
+.cross {
+    position: absolute;
+    font-size: 60px;
+    margin-left: 5px;
+}
+
+.font60 {
+    font-size: 60px;
+    margin: 0;
+}
+
+.font60:hover {
+    cursor: pointer;
+}
+
+.leave_settings {
+    display: flex;
+    gap: 200px;
+    margin-top: 40px;
+}
+
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
