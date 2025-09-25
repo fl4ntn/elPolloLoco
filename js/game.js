@@ -2,24 +2,35 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let sound = new Sound();
+let currentLevel = 1;
 
 
 
 function init() {
-    initLevel();
+    if (currentLevel == 1) {
+        initLevel();
+    } else {
+        initLevel2();
+    }
+    
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard, sound);
     document.getElementById('explanation_board').classList.add('d_none');
-    
+    document.getElementById('restart_game').classList.remove('d_none');
+    document.getElementById('exit_game').classList.remove('d_none');
 }
 
 
 function openSettings() {
     // document.getElementById('settings_overlay').classList.remove('d_none');
     document.getElementById('explanation_board').innerHTML = getSettingsOverlay();
+    showSoundStatus();
+    showLevelStatus();
 }
 
 function getExplanationBoard() {
+    // document.getElementById('canvas').innerHTML = "";
+    // document.getElementById('explanation_board').classList.remove('d_none');
     document.getElementById('explanation_board').innerHTML = getExplanationBoardTemplate();
 }
 
@@ -123,39 +134,18 @@ document.getElementById('throw_btn').addEventListener('touchend', (e) => {
     keyboard.D = false;
 });
 
-function gameOver() {
-     
-   
-//    world = new World(canvas, keyboard, sound);
-//     
-        
-        //  world = null;
-        // //  init();
-        
-        // // cancelAnimationFrame(world.animationFrame);
-        // // clearInterval(world.gameLoop);
-        // // document.getElementById('canvas').innerHTML = "";
-        
-        // // world.level = level1;
-        // // #
-        // // init();
-        // document.getElementById('explanation_board').classList.remove('d_none');
-    
-    // cancelAnimationFrame(world.animationFrameId)
-    // for (let i = 1; i < 9999; i++) { window.clearInterval(i);}
-    // world = null;
-    // canvas = null;
-    
+function restartGame() {
+    exitGame();
     init();
-    // const ctx = canvas.getContext('2d');
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-    // resetKeyboard();
-    // world.resetWorld();
-    // const level = level1;
-    
+    }
 
-
-
+    function exitGame() {
+        document.getElementById('explanation_board').classList.remove('d_none');
+        getExplanationBoard();
+        cancelAnimationFrame(world.gameLoopId);
+        world.ctx.clearRect(0, 0, canvas.width, canvas.height);
+        document.getElementById('restart_game').classList.add('d_none');
+        document.getElementById('exit_game').classList.add('d_none');
     }
 
     function getExplanationBoardTemplate() {
@@ -176,32 +166,69 @@ function gameOver() {
         
         `
     }
+
+    function showSoundStatus(){
+        if (sound.activated) {
+            document.getElementById('soundsettings').innerHTML = "X";
+        } else {
+            document.getElementById('soundsettings').innerHTML = "";
+        }
+    }
+
+    function switchSoundSettings() {
+        if (sound.activated) {
+            sound.activated = false;
+        } else {
+            sound.activated = true;
+        }
+        showSoundStatus();
+    }
+
+    function showLevelStatus() {
+        if (currentLevel == 1) {
+            document.getElementById('level1settings').innerHTML = "X";
+            document.getElementById('level2settings').innerHTML = "";
+        } else {
+            document.getElementById('level1settings').innerHTML = "";
+            document.getElementById('level2settings').innerHTML = "X";
+        }
+    }
+
+    function switchLevelSettings() {
+        if (currentLevel == 1) {
+            currentLevel = 2;
+        } else {
+            currentLevel = 1;
+        }
+        showLevelStatus();
+
+    }
     
     function getSettingsOverlay() {
         return `
         <div>
         <div class="settings">
-            <div class="settings_option">
+            <div onclick="switchSoundSettings()" class="settings_option">
                
                 <div class="ticked_box">
                     <div class="box"></div>
-                    <div class="cross">X</div>
+                    <div id="soundsettings" class="cross"></div>
                 </div>
                 <p class="font60">Sound</p>
             </div>
-            <div class="settings_option">
+            <div onclick="switchLevelSettings()" class="settings_option">
                 
                 <div class="ticked_box">
                     <div class="box"></div>
-                    <div class="cross">X</div>
+                    <div id="level1settings" class="cross"></div>
                 </div>
                 <p class="font60">Level 1</p>
             </div>
-            <div class="settings_option">
+            <div onclick="switchLevelSettings()" class="settings_option">
                 
                 <div class="ticked_box">
                     <div class="box"></div>
-                    <div class="cross">X</div>
+                    <div id="level2settings" class="cross"></div>
                 </div>
                 <p class="font60">Level 2</p>
             </div>

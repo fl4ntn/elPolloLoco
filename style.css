@@ -32,6 +32,24 @@ canvas {
     background-color: #0000003b;
 }
 
+.game_screen {
+    display: flex;
+    justify-content: end;
+}
+
+.pos_ab {
+    position: absolute;
+}
+
+.restart_game {
+    margin: 8px;
+    font-size: 24px;
+}
+
+.restart_game:hover {
+    cursor: pointer;
+}
+
 
 .map{
     height: 100px;

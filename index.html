@@ -16,27 +16,34 @@
     <script src="js/models/coins.class.js"></script>
     <script src="js/models/cloud.class.js"></script>
     <script src="js/models/statusbar.class.js"></script>
-    <script src="js/models/sound_image.class.js"></script>
     <script src="js/models/world.class.js"></script>
     <script src="js/models/background_object.class.js"></script>
     <script src="js/models/level.class.js"></script>
     <script src="js/models/throwableObject.class.js"></script>
     <script src="js/models/endboss.class.js"></script>
     <script src="js/levels/level1.js"></script>
+    <script src="js/levels/level2.js"></script>
    
 </head>
 <body onload="getExplanationBoard()">
 
-    <h1 onclick="gameOver()">El Pollo Loco</h1>
+    <h1>El Pollo Loco</h1>
     <div>
       
+        <div class="game_screen">
             <canvas id="canvas" width="720" height="480"></canvas>
-          
-        
+            <div class="pos_ab">
+                <div id="restart_game" onclick="restartGame()" class="restart_game d_none">restart game</div>
+                <div id="exit_game" onclick="exitGame()" class="restart_game d_none">exit game</div>
+
+            </div>
+            
+        </div>
         
         <div id="explanation_board" class="explanation_board">
             
         </div>
+       
 
         <!-- <div id="settings_overlay" class="settings_overlay d_none"></div> -->
 

@@ -1,6 +1,7 @@
 class World{
   
 
+    gameLoopId;
     music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
     HurtAudio = new Audio('audio/Ouch.m4a');
@@ -14,18 +15,21 @@ class World{
     coinsCollected = 0;
     currentEnemey;
     // hurtAudioPlayed = false;
-    level = level1;
+    // level = level1;
     bottleNumber = 0;
-    enemies = level1.enemies;
-    clouds = level1.clouds;
-    backgroundObjects = level1.backgroundObjects;
-    coins = level1.coins;
+    // enemies = level1.enemies;
+    // clouds = level1.clouds;
+    // backgroundObjects = level1.backgroundObjects;
+    // coins = level1.coins;
+    level;
+    enemies;
+    clouds;
+    backgroundObjects;
+    coins;
     statusBarEnergy = new StatusBar("energy", 10);
     statusBarCoins = new StatusBar("coins", 55);
     statusBarBottles = new StatusBar("bottles", 100);
     throwableObjects = [];
-    audioImg = new SoundImage('audio/speaker-31227_1280.png');
-    noAudioImg = new SoundImage('audio/mute-1628277_1280.png');
     canvas;
     closeToEndboss = false;
     veryCloseToEndboss = false;
@@ -40,11 +44,29 @@ class World{
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.sound = sound;
+        this.checkLevel();
         // this.enemies[2].speed = this.enemies[2].walkingSpeed;
         this.objectsStartMoving();
         this.draw();
         this.setWorld();
         this.run();
+
+    }
+
+    checkLevel() {
+        if (currentLevel == 1) {
+            this.level = level1;
+            this.enemies = level1.enemies;
+            this.clouds = level1.clouds;
+            this.backgroundObjects = level1.backgroundObjects;
+            this.coins = level1.coins;
+        } else {
+            this.level = level2;
+            this.enemies = level2.enemies;
+            this.clouds = level2.clouds;
+            this.backgroundObjects = level2.backgroundObjects;
+            this.coins = level2.coins; 
+        }
     }
 
     objectsStartMoving() {
@@ -255,12 +277,11 @@ class World{
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.addBasicsToCanvas();
         this.addStatusbarsToCanvas();
-        this.addMusicOptionsToCanvas();
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.throwableObjects);
         this.ctx.translate(-this.camera_x, 0);
         let self = this;
-        requestAnimationFrame(function() {
+        this.gameLoopId = requestAnimationFrame(function() {
             self.draw();
         });
     }
@@ -281,14 +302,6 @@ class World{
         this.addToMap(this.statusBarBottles);
     }
 
-    addMusicOptionsToCanvas() {
-        this.playSound(this.music, 0.1);
-            if (sound.activated) {
-           this.addToMap(this.audioImg);
-        } else {
-            this.addToMap(this.noAudioImg); 
-        }
-    }
 
     addObjectsToMap(objects) {
         objects.forEach((object) => {
