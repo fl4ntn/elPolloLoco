@@ -43,9 +43,7 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/4_hurt/G21.png',
         'img/4_enemie_boss_chicken/4_hurt/G22.png',
         'img/4_enemie_boss_chicken/4_hurt/G23.png',
-        'img/4_enemie_boss_chicken/4_hurt/G21.png',
-        'img/4_enemie_boss_chicken/4_hurt/G22.png',
-        'img/4_enemie_boss_chicken/4_hurt/G23.png'
+     
     ]
 
     IMAGES_DYING = [
@@ -109,8 +107,9 @@ class Endboss extends MovableObject {
  
         // clearInterval(this.animation);
         // this.playAnimation(this.IMAGES_HURT);
+        clearInterval(this.animation);
  
-            clearInterval(this.enemies[3].animation);
+            // clearInterval(this.enemies[3].animation);
             return new Promise ((resolve) => {
             let i = 0;
             const interval = setInterval(() => {
@@ -120,9 +119,12 @@ class Endboss extends MovableObject {
                     clearInterval(interval);
                     this.currentImage = 0;
                     resolve();
+                    this.animateEmotionalStage();
                 }
             }, 120);
             });
+
+            
         
         // return Promise.resolve();         
     

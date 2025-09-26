@@ -1,6 +1,4 @@
 class World{
-  
-
     gameLoopId;
     music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
@@ -14,13 +12,7 @@ class World{
     bottlesLeft = 100;
     coinsCollected = 0;
     currentEnemey;
-    // hurtAudioPlayed = false;
-    // level = level1;
     bottleNumber = 0;
-    // enemies = level1.enemies;
-    // clouds = level1.clouds;
-    // backgroundObjects = level1.backgroundObjects;
-    // coins = level1.coins;
     level;
     enemies;
     clouds;
@@ -34,7 +26,6 @@ class World{
     closeToEndboss = false;
     veryCloseToEndboss = false;
     ctx;
-    
     keyboard;
     camera_x = 0;
     
@@ -45,7 +36,6 @@ class World{
         this.keyboard = keyboard;
         this.sound = sound;
         this.checkLevel();
-        // this.enemies[2].speed = this.enemies[2].walkingSpeed;
         this.objectsStartMoving();
         this.draw();
         this.setWorld();
@@ -76,7 +66,6 @@ class World{
         this.clouds.forEach((cloud) => {
            cloud.speed = 0.02;
         });
-        
     }
   
     
@@ -109,7 +98,6 @@ class World{
                 this.character.jump(this.sound);
                 this.killEnemy(enemy); 
             } else {
-
                 this.hurtCharacter(enemy);
                 this.updateStatusbar(this.statusBarEnergy, this.character.energy, world.statusBarEnergy.IMAGES_ENERGY);   
                 this.decreaseCoins();  
@@ -173,7 +161,6 @@ class World{
             this.currentEnemey = enemy.number;
         if (!this.character.isDead()) {
             this.playSound(this.HurtAudio, 1);
-            // this.hurtAudioPlayed = true; 
         } }
     }
 
@@ -242,7 +229,8 @@ class World{
     checkCollisionWithEnemy(enemy, ThrowableObject) {
         if (ThrowableObject.isColliding(enemy) && enemy.isAlive) {
             this.checkIfEndbossWasHit(enemy);
-                    if (enemy.number || this.endbossWasHit > 14 && this.endbossWasHit < 16) {
+                    if (enemy.number < 0 || this.endbossWasHit > 33 && this.endbossWasHit < 50) {
+                        this.endbossWasHit = 55;
                         this.killEnemy(enemy, ThrowableObject);
                         this.playSound(this.BreakingBottleAudio, 0.1);
                     }
@@ -252,7 +240,7 @@ class World{
 
     async checkIfEndbossWasHit(enemy) {
         if (!enemy.number) {
-            this.endbossWasHit += 1; 
+            this.endbossWasHit += 0.2; 
             await enemy.hit();            
         }
     }
