@@ -22,16 +22,19 @@ function init() {
 
 
 function openSettings() {
-    // document.getElementById('settings_overlay').classList.remove('d_none');
     document.getElementById('explanation_board').innerHTML = getSettingsOverlay();
     showSoundStatus();
     showLevelStatus();
 }
 
 function getExplanationBoard() {
-    // document.getElementById('canvas').innerHTML = "";
-    // document.getElementById('explanation_board').classList.remove('d_none');
     document.getElementById('explanation_board').innerHTML = getExplanationBoardTemplate();
+    document.getElementById('explanation_board').classList.remove('top_290');
+}
+
+function openExplanation() {
+    document.getElementById('explanation_board').innerHTML = getExplanaionOverlay();
+    document.getElementById('explanation_board').classList.add('top_290');
 }
 
 window.addEventListener('click', function(event) {
@@ -142,6 +145,7 @@ function restartGame() {
     function exitGame() {
         document.getElementById('explanation_board').classList.remove('d_none');
         getExplanationBoard();
+        
         cancelAnimationFrame(world.gameLoopId);
         world.ctx.clearRect(0, 0, canvas.width, canvas.height);
         document.getElementById('restart_game').classList.add('d_none');
@@ -150,7 +154,7 @@ function restartGame() {
 
     function getExplanationBoardTemplate() {
         return `
-            <div class="explanation_box">
+            <div onclick="openExplanation()" class="explanation_box">
                 <img class="map" src="img/map.png" alt="map">
                 <p>EXPLANATION</p>
             </div>
@@ -233,33 +237,44 @@ function restartGame() {
                 <p class="font60">Level 2</p>
             </div>
         </div>
-
         <div class="leave_settings">
-          
-                <p onclick="init()" class="font60">Start Game</p>
-            
-           
-                <p onclick="getExplanationBoard()" class="font60">Go Back</p>
-            
-        
-        
-        
-        
+            <p onclick="init()" class="font60">Start Game</p>
+            <p onclick="getExplanationBoard()" class="font60">Go Back</p>
         </div>
         </div>
+        `
+    }
 
+    function openImprint() {
+        window.open(href="imprint.html");
+    }
 
+        function getExplanaionOverlay() {
+        return `
+        <div class="settings">
+            <div class="explanation_text">
+                You are about to guide the tireless Pepe across the scorching desert. Along the way, enemies will block his path. Defeat them by jumping on their heads or by throwing one of your precious salsa bottles. <br>But be careful—at the end of the journey awaits a mighty final boss, so make sure to save a few bottles for the showdown.<br><br>
 
-
-
-        
-            
-           
-        
-        
-        
-        
-        
+                On your adventure, you can also collect coins and salsa bottles simply by running into them. Every step brings Pepe closer to victory—will you lead him through the desert?
+            </div>
+            <div class="keyboard_explanation">
+                <div>
+                    <p class="font40">Walk:</p>
+                    <p class="font40">Jump:</p>
+                    <p class="font40">Throw:</p>
+                </div>
+                <div>
+                    <p class="font40">Arrow left/right</p> 
+                    <p class="font40">Arrow up/Space</p>   
+                    <p class="font40">D</p>
+                </div>  
+            </div> 
+            <div class="leave_explanation">
+                <p onclick="init()" class="font40 hover">Start Game</p>
+                <p onclick="getExplanationBoard()" class="font40 hover">Go Back</p>
+            </div>
+        </div>
+       
         `
     }
 

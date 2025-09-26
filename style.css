@@ -192,6 +192,11 @@ canvas {
     margin: 0;
 }
 
+.font40 {
+    font-size: 40px;
+    margin: 0;
+}
+
 .font60:hover {
     cursor: pointer;
 }
@@ -202,6 +207,42 @@ canvas {
     margin-top: 40px;
 }
 
+.explanation_text {
+    padding: 12px 24px;
+    font-size: 32px;
+}
+
+.keyboard_explanation {
+    display: flex;
+    gap: 12px;
+}
+
+
+.leave_explanation {
+    display: flex;
+    gap: 380px;
+}
+
+.hover:hover {
+    cursor: pointer;
+}
+
+.top_290 {
+   top: 290px !important; 
+} 
+
+.imprint{
+    font-size: 20px;
+    position: absolute;
+    bottom: 20px;
+    color: #FCDBBD;
+    font-family: 'Helvetica' !important;
+}
+
+.imprint:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 @media only screen and (max-width: 720px) {
     canvas {
