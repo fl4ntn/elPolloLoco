@@ -4,6 +4,7 @@ let keyboard = new Keyboard();
 let sound = new Sound();
 let currentLevel = 1;
 let youWon = false;
+let reasonsToLooose = ['You ran out of energy...', 'No bottles left to kill the Endboss']
 
 
 
@@ -154,19 +155,19 @@ function restartGame() {
         document.getElementById('exit_game').classList.add('d_none');
     }
 
-    function gameOver(){
+    function gameOver(i){
         exitGame();
         if (youWon) {
-            document.getElementById('explanation_board').innerHTML = getYouWonScreen();
+            document.getElementById('explanation_board').innerHTML = getYouWonScreen(i);
             document.getElementById('explanation_board').classList.add('top_290');
         } else {
-            document.getElementById('explanation_board').innerHTML = getYouLostScreen();
+            document.getElementById('explanation_board').innerHTML = getYouLostScreen(i);
             document.getElementById('explanation_board').classList.add('top_290');
         }
         
     }
 
-    function getYouWonScreen(){
+    function getYouWonScreen(i){
         return `
         <div class="settings">
             <img class="map" src="img/You won, you lost/Game Over.png" alt="You Won">
@@ -176,7 +177,7 @@ function restartGame() {
             <div class="keyboard_explanation">
                 <div>
                     <p class="font40">Coins earned:</p>
-                    <p class="font40">20</p>
+                    <p class="font40">${i} / 100</p>
                 </div>
                 <div>
                     <p class="font40">Enemies killed:</p>
@@ -193,13 +194,13 @@ function restartGame() {
         `
     }
 
-     function getYouLostScreen(){
+     function getYouLostScreen(i){
         return `
         <div class="settings">
             <img class="you_lost_img" src="img/You won, you lost/You lost.png" alt="You Lost">
     
             <div class="reason_for_loss">
-                <p class="font40">You ran out of energy...</p>
+                <p class="font40">${reasonsToLooose[i]}</p>
             </div>
                     
                 

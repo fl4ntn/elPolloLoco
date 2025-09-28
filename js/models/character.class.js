@@ -98,16 +98,12 @@ class Character extends MovableObject {
         if (this.isDead()) {
             this.world.clearAllIntervals();
             this.playAnimation(this.IMAGES_DEAD);
-            document.getElementById('explanation_board').classList.remove('d_none'); 
-            document.getElementById('explanation_board').innerHTML = `<img class="game_over_img" src="img/You won, you lost/Game over A.png" alt="You Won">`;
+            this.world.showGameOverImage();
             setInterval(() => {
             this.y += 10;
         }, 50);
         
-           setTimeout(() => {
-            this.world.clearAllIntervals();
-                this.world.showGameOverScreen();
-            }, "2000");
+        this.world.leaveGame('lost', 0);
         } else if(this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
         } else if(this.isAboveGround()) {

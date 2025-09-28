@@ -148,7 +148,9 @@ class World{
                     resolve();
                 }
             }, 1000 / 60);
-            this.showGameOverScreen();
+            this.showGameOverImage();
+            this.leaveGame('won', this.coinsCollected)
+            // this.showGameOverScreen('won', this.coinsCollected);
             });
         } else {
             clearInterval(enemy.walkingAnimation);
@@ -184,8 +186,25 @@ class World{
                 this.addBottleToCanvas();
                 this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarEnergy.IMAGES_BOTTLES);
                 this.playSound(this.throwingBottleAudio, 1);  
+            } else {
+                this.clearAllIntervals();
+                this.showGameOverImage();
+                this.leaveGame('lost', 1);
             }
         }
+    }
+
+    showGameOverImage() {
+        document.getElementById('explanation_board').classList.remove('d_none'); 
+        document.getElementById('explanation_board').innerHTML = `<img class="game_over_img" src="img/You won, you lost/Game over A.png" alt="You Won">`;
+    }
+
+    leaveGame(result, i) {
+        setTimeout(() => {
+            this.clearAllIntervals();
+            this.showGameOverScreen(result, i);
+            }, "2000");
+    
     }
 
     enoughBottlesLeft(){
@@ -326,8 +345,11 @@ class World{
         this.ctx.restore();
     }
 
-    showGameOverScreen() {
-        gameOver();
+    showGameOverScreen(result, index) {
+        if (result == "won") {
+            youWon = true;
+        }
+        gameOver(index);
         
     }
 
