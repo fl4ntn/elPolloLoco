@@ -244,6 +244,19 @@ canvas {
     text-decoration: underline;
 }
 
+.game_over_img {
+    height: 200px;
+}
+
+.you_lost_img {
+    height: 260px;
+}
+
+.reason_for_loss {
+    padding: 40px;
+    padding-bottom: 80px;
+}
+
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;

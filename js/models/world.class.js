@@ -135,9 +135,11 @@ class World{
 
     checkIfEndbossWasKilled(enemy) {
         if (enemy.number < 0) {
+            clearInterval(enemy.animation);
             return new Promise ((resolve) => {
             let i = 0;
             const interval = setInterval(() => {
+                this.currentImage = 0;
                 enemy.playAnimation(enemy.IMAGES_DYING);
                 i++;
                 if(i >= enemy.IMAGES_DYING.length) {
@@ -145,7 +147,8 @@ class World{
                     enemy.currentImage = 0;
                     resolve();
                 }
-            }, 120);
+            }, 1000 / 60);
+            this.showGameOverScreen();
             });
         } else {
             clearInterval(enemy.walkingAnimation);
@@ -229,8 +232,8 @@ class World{
     checkCollisionWithEnemy(enemy, ThrowableObject) {
         if (ThrowableObject.isColliding(enemy) && enemy.isAlive) {
             this.checkIfEndbossWasHit(enemy);
-                    if (enemy.number < 0 || this.endbossWasHit > 33 && this.endbossWasHit < 50) {
-                        this.endbossWasHit = 55;
+                    if (enemy.number >= 0 || this.endbossWasHit > 33 && this.endbossWasHit < 50) {
+                        // this.endbossWasHit = 55;
                         this.killEnemy(enemy, ThrowableObject);
                         this.playSound(this.BreakingBottleAudio, 0.1);
                     }
@@ -239,7 +242,7 @@ class World{
 
 
     async checkIfEndbossWasHit(enemy) {
-        if (!enemy.number) {
+        if (enemy.number < 0 && this.endbossWasHit < 33) {
             this.endbossWasHit += 0.2; 
             await enemy.hit();            
         }
@@ -323,48 +326,13 @@ class World{
         this.ctx.restore();
     }
 
-    resetWorld() {
-
-    // level = level1;
-    
-        //  for (let i = 1; i < 9999; i++) { window.clearInterval(i);}
-        //  world = null;
-        // //  init();
-        // this.enemies = [];
-        // this.coins = [];
-        // cancelAnimationFrame(this.animationFrame);
-        // this.character = new Character(this.sound);
-        // this.setWorld();
-        // this.camera_x = 0;
-        // this.draw();
-        // this.run();
-        // clearInterval(world.gameLoop);
-        // document.getElementById('canvas').innerHTML = "";
-        // world.enemies = [];
-        // world.coins = [];
-        // world.level = level1;
-        // #
-        // init();
-        // document.getElementById('explanation_board').classList.remove('d_none');
-        // this.bottlesLeft = 100;
-        // this.coinsCollected = 0;
-        // this.bottleNumber = 0;
-        // this.statusBarEnergy = new StatusBar("energy", 10);
-        // backgroundObjects = level1.backgroundObjects;
-    // currentEnemey;
-   
-    // enemies = level1.enemies;
-    // clouds = level1.clouds;
-    
-    // coins = level1.coins;
-   
-    // statusBarCoins = new StatusBar("coins", 55);
-    // statusBarBottles = new StatusBar("bottles", 100);
-    // throwableObjects = [];
-    // canvas;
-    // closeToEndboss = false;
-    // veryCloseToEndboss = false;
+    showGameOverScreen() {
+        gameOver();
+        
     }
 
+    clearAllIntervals() {
+        for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    }
 
 }

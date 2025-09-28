@@ -3,6 +3,7 @@ let world;
 let keyboard = new Keyboard();
 let sound = new Sound();
 let currentLevel = 1;
+let youWon = false;
 
 
 
@@ -15,6 +16,7 @@ function init() {
     
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard, sound);
+    document.getElementById('explanation_board').classList.remove('top_290');
     document.getElementById('explanation_board').classList.add('d_none');
     document.getElementById('restart_game').classList.remove('d_none');
     document.getElementById('exit_game').classList.remove('d_none');
@@ -150,6 +152,66 @@ function restartGame() {
         world.ctx.clearRect(0, 0, canvas.width, canvas.height);
         document.getElementById('restart_game').classList.add('d_none');
         document.getElementById('exit_game').classList.add('d_none');
+    }
+
+    function gameOver(){
+        exitGame();
+        if (youWon) {
+            document.getElementById('explanation_board').innerHTML = getYouWonScreen();
+            document.getElementById('explanation_board').classList.add('top_290');
+        } else {
+            document.getElementById('explanation_board').innerHTML = getYouLostScreen();
+            document.getElementById('explanation_board').classList.add('top_290');
+        }
+        
+    }
+
+    function getYouWonScreen(){
+        return `
+        <div class="settings">
+            <img class="map" src="img/You won, you lost/Game Over.png" alt="You Won">
+            <img class="map" src="img/You won, you lost/You won A.png" alt="You Won">
+
+            
+            <div class="keyboard_explanation">
+                <div>
+                    <p class="font40">Coins earned:</p>
+                    <p class="font40">20</p>
+                </div>
+                <div>
+                    <p class="font40">Enemies killed:</p>
+                    <p class="font40">3</p>
+                </div>
+                
+            </div> 
+            <div class="leave_explanation">
+                <p onclick="init()" class="font40 hover">Play Again</p>
+                <p onclick="getExplanationBoard()" class="font40 hover">Leave Game</p>
+            </div>
+        </div>
+        
+        `
+    }
+
+     function getYouLostScreen(){
+        return `
+        <div class="settings">
+            <img class="you_lost_img" src="img/You won, you lost/You lost.png" alt="You Lost">
+    
+            <div class="reason_for_loss">
+                <p class="font40">You ran out of energy...</p>
+            </div>
+                    
+                
+                
+            
+            <div class="leave_explanation">
+                <p onclick="init()" class="font40 hover">Try Again</p>
+                <p onclick="getExplanationBoard()" class="font40 hover">Leave Game</p>
+            </div>
+        </div>
+        
+        `
     }
 
     function getExplanationBoardTemplate() {

@@ -7,7 +7,7 @@ class Endboss extends MovableObject {
     emotionalStage = "walking";
     animation;
     walkingSpeed = 0.15;
-
+    number = -1;
 
       IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
@@ -43,10 +43,12 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/4_hurt/G21.png',
         'img/4_enemie_boss_chicken/4_hurt/G22.png',
         'img/4_enemie_boss_chicken/4_hurt/G23.png',
-     
     ]
 
     IMAGES_DYING = [
+        'img/4_enemie_boss_chicken/4_hurt/G21.png',
+        'img/4_enemie_boss_chicken/4_hurt/G22.png',
+        'img/4_enemie_boss_chicken/4_hurt/G23.png',
         'img/4_enemie_boss_chicken/5_dead/G24.png',
         'img/4_enemie_boss_chicken/5_dead/G25.png',
         'img/4_enemie_boss_chicken/5_dead/G26.png'
@@ -107,21 +109,23 @@ class Endboss extends MovableObject {
  
         // clearInterval(this.animation);
         // this.playAnimation(this.IMAGES_HURT);
-        clearInterval(this.animation);
+        // clearInterval(this.animation);
  
             // clearInterval(this.enemies[3].animation);
             return new Promise ((resolve) => {
             let i = 0;
             const interval = setInterval(() => {
+                this.currentImage = 0;
                 this.playAnimation(this.IMAGES_HURT);
                 i++;
                 if(i >= this.IMAGES_HURT.length) {
                     clearInterval(interval);
                     this.currentImage = 0;
                     resolve();
-                    this.animateEmotionalStage();
+                    // this.animateEmotionalStage();
+                    // console.log(this.animateEmotionalStage());
                 }
-            }, 120);
+            }, 1000 / 60);
             });
 
             
