@@ -28,6 +28,7 @@ class World{
     ctx;
     keyboard;
     camera_x = 0;
+    lastAction = new Date().getTime();
     
 
     constructor(canvas, keyboard, sound){
@@ -78,7 +79,8 @@ class World{
             this.checkCollisions();
             this.checkThrowableObjects();
             this.collisionWithBottle();
-            this.checkDistanceToEndboss()
+            this.checkDistanceToEndboss();
+            this.isPepeSleeping();
         }, 1000/60 );
     }
 
@@ -94,6 +96,7 @@ class World{
 
     checkCollisionWithCharacter(enemy) {
         if(this.character.isColliding(enemy) && enemy.isAlive) {
+            this.registerTime();
             if (this.character.isAboveGround()) {
                 this.character.jump(this.sound);
                 this.killEnemy(enemy); 
@@ -180,6 +183,7 @@ class World{
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
+            this.registerTime();
             this.keyboard.D = false;
             if (this.enoughBottlesLeft()) {
                 this.decreaseAwailableBottles();
@@ -366,6 +370,22 @@ class World{
             } 
         }
         return counter;
+    }
+
+    registerTime() {
+        this.lastAction = new Date().getTime();
+    }
+
+    isPepeSleeping() {
+        if ((new Date().getTime() - this.lastAction) > 20000) {
+            this.character.isSnoozing = false;
+            this.character.isSleeping = true;
+        } else if ((new Date().getTime() - this.lastAction) > 10000) {
+            this.character.isSnoozing = true;
+        } else {
+            this.character.isSnoozing = false;
+            this.character.isSleeping = false;
+        }
     }
 
 }

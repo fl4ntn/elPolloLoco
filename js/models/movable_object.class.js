@@ -74,7 +74,6 @@ class MovableObject extends DrawableObject {
 
     moveLeft() {
         this.x -= this.speed;
-        
     }
 
     jump(sound) {
@@ -82,8 +81,6 @@ class MovableObject extends DrawableObject {
         if (sound.activated) {
             this.jumpingSound.play(); 
         }
-        
-   
     }
 
    
