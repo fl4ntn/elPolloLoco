@@ -346,15 +346,26 @@ class World{
     }
 
     showGameOverScreen(result, index) {
+        let EnemiesKilled = this.countEnemiesKilled();
         if (result == "won") {
             youWon = true;
         }
-        gameOver(index);
+        gameOver(index, EnemiesKilled);
         
     }
 
     clearAllIntervals() {
         for (let i = 1; i < 9999; i++) window.clearInterval(i);
+    }
+
+    countEnemiesKilled() {
+        let counter = 0;
+        for (let index = 0; index < this.enemies.length; index++) {
+            if (!this.enemies[index].isAlive) {
+                counter++;
+            } 
+        }
+        return counter;
     }
 
 }

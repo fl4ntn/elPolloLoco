@@ -155,10 +155,10 @@ function restartGame() {
         document.getElementById('exit_game').classList.add('d_none');
     }
 
-    function gameOver(i){
+    function gameOver(i, enemiesKilled){
         exitGame();
         if (youWon) {
-            document.getElementById('explanation_board').innerHTML = getYouWonScreen(i);
+            document.getElementById('explanation_board').innerHTML = getYouWonScreen(i, enemiesKilled);
             document.getElementById('explanation_board').classList.add('top_290');
         } else {
             document.getElementById('explanation_board').innerHTML = getYouLostScreen(i);
@@ -167,21 +167,20 @@ function restartGame() {
         
     }
 
-    function getYouWonScreen(i){
+    function getYouWonScreen(i,enemiesKilled){
         return `
-        <div class="settings">
-            <img class="map" src="img/You won, you lost/Game Over.png" alt="You Won">
-            <img class="map" src="img/You won, you lost/You won A.png" alt="You Won">
+       <div class="settings">
+            <img class="you_won_img" src="img/You won, you lost/You won A.png" alt="You Won">
 
             
-            <div class="keyboard_explanation">
-                <div>
+            <div class="results">
+                <div class="result_div">
                     <p class="font40">Coins earned:</p>
-                    <p class="font40">${i} / 100</p>
+                    <p class="font40">${Math.round(i)} / 100</p>
                 </div>
-                <div>
+                <div class="result_div">
                     <p class="font40">Enemies killed:</p>
-                    <p class="font40">3</p>
+                    <p class="font40">${enemiesKilled}</p>
                 </div>
                 
             </div> 
@@ -189,8 +188,8 @@ function restartGame() {
                 <p onclick="init()" class="font40 hover">Play Again</p>
                 <p onclick="getExplanationBoard()" class="font40 hover">Leave Game</p>
             </div>
-        </div>
         
+        </div>
         `
     }
 

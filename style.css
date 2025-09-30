@@ -252,9 +252,26 @@ canvas {
     height: 260px;
 }
 
+.you_won_img {
+    height: 360px;
+}
+
 .reason_for_loss {
     padding: 40px;
     padding-bottom: 80px;
+}
+
+.result_div {
+    display: flex;
+    gap: 12px;
+}
+
+.results {
+    display: flex;
+    gap: 40px;
+    padding-bottom: 18px;
+    width: 600px;
+    justify-content: center;
 }
 
 @media only screen and (max-width: 720px) {
