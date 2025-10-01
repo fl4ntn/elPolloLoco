@@ -18,6 +18,7 @@ class World{
     clouds;
     backgroundObjects;
     coins;
+    bottles;
     statusBarEnergy = new StatusBar("energy", 10);
     statusBarCoins = new StatusBar("coins", 55);
     statusBarBottles = new StatusBar("bottles", 100);
@@ -51,12 +52,14 @@ class World{
             this.clouds = level1.clouds;
             this.backgroundObjects = level1.backgroundObjects;
             this.coins = level1.coins;
+            this.bottles = level1.bottles;
         } else {
             this.level = level2;
             this.enemies = level2.enemies;
             this.clouds = level2.clouds;
             this.backgroundObjects = level2.backgroundObjects;
             this.coins = level2.coins; 
+            this.bottles = level2.bottles;
         }
     }
 
@@ -152,8 +155,7 @@ class World{
                 }
             }, 1000 / 60);
             this.showGameOverImage();
-            this.leaveGame('won', this.coinsCollected)
-            // this.showGameOverScreen('won', this.coinsCollected);
+            this.leaveGame('won', this.coinsCollected);
             });
         } else {
             clearInterval(enemy.walkingAnimation);
@@ -272,18 +274,18 @@ class World{
     }
 
     checkDistanceToEndboss() {
-        if(this.enemies[3].x - this.character.x <= 480 && this.enemies[3].x - this.character.x > 250 && this.closeToEndboss == false) {
+        if(this.enemies[this.enemies.length - 1].x - this.character.x <= 480 && this.enemies[this.enemies.length - 1].x - this.character.x > 250 && this.closeToEndboss == false) {
             this.closeToEndboss = true;
-            this.enemies[3].speed = 0;
-            this.enemies[3].emotionalStage = 'alert';
-            this.enemies[3].animateEmotionalStage();
-            this.enemies[3].animation;
+            this.enemies[this.enemies.length - 1].speed = 0;
+            this.enemies[this.enemies.length - 1].emotionalStage = 'alert';
+            this.enemies[this.enemies.length - 1].animateEmotionalStage();
+            this.enemies[this.enemies.length - 1].animation;
         }
-        if (this.enemies[3].x - this.character.x <= 250 && this.veryCloseToEndboss == false) {
+        if (this.enemies[this.enemies.length - 1].x - this.character.x <= 250 && this.veryCloseToEndboss == false) {
             this.veryCloseToEndboss = true;
-            this.enemies[3].emotionalStage = 'attack';
-            this.enemies[3].animateEmotionalStage();
-            this.enemies[3].animation;
+            this.enemies[this.enemies.length - 1].emotionalStage = 'attack';
+            this.enemies[this.enemies.length - 1].animateEmotionalStage();
+            this.enemies[this.enemies.length - 1].animation;
         }
     }
 
@@ -306,6 +308,7 @@ class World{
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.coins); 
+        this.addObjectsToMap(this.level.bottles); 
         this.addObjectsToMap(this.level.enemies);
         this.ctx.translate(-this.camera_x, 0);
     }

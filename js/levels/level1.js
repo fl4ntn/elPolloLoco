@@ -52,5 +52,11 @@ function initLevel(){
         new Coin(6),
         new Coin(7)
     ],
+      [
+        new Bottle(0, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new Bottle(1, 'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+        new Bottle(6, 'img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
+        new Bottle(7, 'img/6_salsa_bottle/2_salsa_bottle_on_ground.png')
+    ],
 );
 }

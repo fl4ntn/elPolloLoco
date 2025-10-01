@@ -14,9 +14,10 @@ function init() {
     } else {
         initLevel2();
     }
-    
+    youWon = false;
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard, sound);
+    
     document.getElementById('explanation_board').classList.remove('top_290');
     document.getElementById('explanation_board').classList.add('d_none');
     document.getElementById('restart_game').classList.remove('d_none');
