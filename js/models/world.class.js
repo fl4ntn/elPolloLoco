@@ -94,6 +94,9 @@ class World{
         this.level.coins.forEach((coin) => {
             this.checkCollisionWithCoin(coin);
         });
+        this.level.bottles.forEach((bottle) => {
+            this.checkCollisionWithBottle(bottle);
+        });
         
     }
 
@@ -123,6 +126,18 @@ class World{
             this.playSound(this.CoinsEarnedAudio, 0.1);
             }
     }
+
+    checkCollisionWithBottle(bottle) {
+        if (this.character.isColliding(bottle)) {
+            for (let index = 0; index < this.bottles.length; index++) {
+                if (bottle.number == this.bottles[index].number) {
+                    this.bottles.splice(index, 1);
+            }
+            this.increaseAwailableBottles();
+            this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarBottles.IMAGES_BOTTLES);
+            };
+            }
+        }
 
     async killEnemy(enemy, ThrowableObject) {
         await this.checkIfEndbossWasKilled(enemy);
@@ -185,14 +200,19 @@ class World{
 
     checkThrowableObjects() {
         if (this.keyboard.D) {
+            
+            if (this.pepeisSleeping()) {
+                this.character.playAnimation(this.character.IMAGES_FRITHENED);
+            }
             this.registerTime();
+            // this.character.jump(this.sound);
             this.keyboard.D = false;
             if (this.enoughBottlesLeft()) {
                 this.decreaseAwailableBottles();
                 this.addBottleToCanvas();
-                this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarEnergy.IMAGES_BOTTLES);
+                this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarBottles.IMAGES_BOTTLES);
                 this.playSound(this.throwingBottleAudio, 1);  
-            } else {
+            } else if (this.level.bottles.length < 3) {
                 this.clearAllIntervals();
                 this.showGameOverImage();
                 this.leaveGame('lost', 1);
@@ -220,6 +240,10 @@ class World{
     decreaseAwailableBottles() {
         this.bottlesLeft += -3;
         this.bottleNumber += 1;
+    }
+
+    increaseAwailableBottles() {
+        this.bottlesLeft += 3;
     }
 
     addBottleToCanvas() {
@@ -377,6 +401,7 @@ class World{
 
     registerTime() {
         this.lastAction = new Date().getTime();
+        this.isPepeSleeping();
     }
 
     isPepeSleeping() {
@@ -388,6 +413,14 @@ class World{
         } else {
             this.character.isSnoozing = false;
             this.character.isSleeping = false;
+        }
+    }
+
+    pepeisSleeping() {
+        if ((new Date().getTime() - this.lastAction) > 20000) {
+            return true;
+        } else {
+            return false;
         }
     }
 

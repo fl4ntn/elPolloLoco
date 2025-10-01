@@ -82,7 +82,6 @@ class MovableObject extends DrawableObject {
             this.jumpingSound.play(); 
         }
     }
-
    
 
 }

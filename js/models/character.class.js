@@ -35,6 +35,13 @@ class Character extends MovableObject {
         'img/2_character_pepe/3_jump/J-39.png'
     ];
 
+     IMAGES_FRITHENED = [
+        'img/2_character_pepe/3_jump/J-31.png',
+        'img/2_character_pepe/3_jump/J-32.png',
+        'img/2_character_pepe/3_jump/J-38.png',
+        'img/2_character_pepe/3_jump/J-39.png'
+    ];
+
     IMAGES_HURT = [
         'img/2_character_pepe/4_hurt/H-41.png',
         'img/2_character_pepe/4_hurt/H-42.png',
@@ -85,6 +92,7 @@ class Character extends MovableObject {
     super().loadImg('img/2_character_pepe/2_walk/W-21.png');
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
+    this.loadImages(this.IMAGES_FRITHENED);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_IDLE);
@@ -139,6 +147,10 @@ class Character extends MovableObject {
             this.playAnimation(this.IMAGES_IDLE);
         } else if(this.isSleeping) {
             this.playAnimation(this.IMAGES_LONG_IDLE);
+            if (this.world.keyboard.D) {
+                this.playAnimation(this.IMAGES_FRITHENED);
+
+            }
         } else if(this.isHurt()) {
             this.playAnimation(this.IMAGES_HURT);
         } else if(this.isAboveGround()) {

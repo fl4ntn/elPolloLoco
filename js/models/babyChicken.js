@@ -1,9 +1,9 @@
 class BabyChicken extends MovableObject {
  offset = {
-        top: -10,
-        left: -10,
-        right: -10,
-        bottom: -10
+        top: -20,
+        left: -20,
+        right: -20,
+        bottom: -20
     };
     walkingSpeed;
     speed = 0;
@@ -28,10 +28,10 @@ class BabyChicken extends MovableObject {
     constructor(number){
         super().loadImg('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
 
-        this.x = 1000 + Math.random() * 500;
-        this.width = (Math.random() * 40) + 20;
+        this.x = 500 + Math.random() * 1000;
+        this.width = (Math.random() * 20) + 20;
         this.height = this.width * 1.2;
-        this.y = 440 - this.height;
+        this.y = 430 - this.height;
         this.walkingSpeed = 0.15 + Math.random() * 0.5;
         this.number = number;
         this.loadImages(this.IMAGES_WALKING);
