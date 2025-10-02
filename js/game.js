@@ -4,8 +4,10 @@ let keyboard = new Keyboard();
 let sound = new Sound();
 let currentLevel = 1;
 let youWon = false;
-let reasonsToLooose = ['You ran out of energy...', 'No bottles left to kill the Endboss']
-
+let reasonsToLooose = ['You ran out of energy...', 'No bottles left to kill the Endboss'];
+let winnerAudio = new Audio('https://cdn.freesound.org/previews/769/769801_13237592-lq.mp3');
+let backgroundMusic = new Audio('audio/flamenco-loop-1-382455.mp3');
+let bgMusicInterval;
 
 
 function init() {
@@ -24,6 +26,17 @@ function init() {
     document.getElementById('exit_game').classList.remove('d_none');
     document.getElementById('sound_btn').classList.remove('d_none');
     ShowUnMuteTextBtn();
+    playBgMusic();
+    // backgroundMusic.play();
+    // backgroundMusic.loop = true;
+    // playSound(backgroundMusic, 0.2)
+    stopSound(winnerAudio);
+}
+
+function playBgMusic() {
+    bgMusicInterval = setInterval(() => {
+        playSound(backgroundMusic, 0.1)
+        }, 1000/60 );
 }
 
 
@@ -157,6 +170,10 @@ function restartGame() {
         document.getElementById('restart_game').classList.add('d_none');
         document.getElementById('exit_game').classList.add('d_none');
         document.getElementById('sound_btn').classList.add('d_none');
+        // stopSound(backgroundMusic);
+        backgroundMusic.pause();
+        backgroundMusic.currentTime = 0;
+        clearInterval(bgMusicInterval);
     }
 
     function gameOver(i, enemiesKilled){
@@ -171,7 +188,24 @@ function restartGame() {
         
     }
 
+    function playSound(type, volume) {
+        if (sound.activated) {
+            type.play();  
+            type.volume = volume;
+        } else {
+            type.pause();  
+        }
+    }
+
+     function stopSound(type) {
+            type.pause();  
+        }
+
+    
+
     function getYouWonScreen(i,enemiesKilled){
+        playSound(winnerAudio, 0.2);
+        
         return `
        <div class="settings">
             <img class="you_won_img" src="img/You won, you lost/You won A.png" alt="You Won">

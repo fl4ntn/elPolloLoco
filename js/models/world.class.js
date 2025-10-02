@@ -1,11 +1,14 @@
 class World{
     gameLoopId;
-    music = new Audio('audio/flamenco-loop-1-382455.mp3');
+    // music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
     HurtAudio = new Audio('audio/Ouch.m4a');
     throwingBottleAudio = new Audio('audio/throwingBottle.m4a');
     EndbossDeadAudio = new Audio('audio/endboss_dead – Mit Clipchamp erstellt_1755934161346.m4a');
+    BabyChickenDeadAudio = new Audio('audio/small_chicken_sound.mp3');
     BreakingBottleAudio = new Audio('audio/GlassIsBreaking.m4a');
+    takeBottleAudio = new Audio('audio/plug_in.m4a');
+    snoringSound = new Audio('audio/snoring.mp3');
     sound;
     endbossWasHit = 0;
     character = new Character(sound);
@@ -127,7 +130,7 @@ class World{
                     this.coins.splice(index, 1);
                 }
             }
-            this.playSound(this.CoinsEarnedAudio, 0.1);
+            playSound(this.CoinsEarnedAudio, 0.1);
             }
     }
 
@@ -137,6 +140,7 @@ class World{
                 if (bottle.number == this.bottles[index].number) {
                     this.bottles.splice(index, 1);
             }
+            playSound(this.takeBottleAudio, 0.4);
             this.increaseAwailableBottles();
             this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarBottles.IMAGES_BOTTLES);
             };
@@ -155,7 +159,12 @@ class World{
             enemy.playAnimation(enemy.IMAGES_DEAD); 
             
         }, 10);
-        this.playSound(this.EndbossDeadAudio, 0.2);
+        if (enemy.number > 7 && enemy.number < 15) {
+            playSound(this.BabyChickenDeadAudio, 0.05);
+        } else {
+            playSound(this.EndbossDeadAudio, 0.2);
+        }
+        
     }
 
     checkIfEndbossWasKilled(enemy) {
@@ -189,7 +198,7 @@ class World{
         if (this.currentEnemey != enemy.number || (currentTime - this.character.lastHit) > 2000) {
             this.currentEnemey = enemy.number;
         if (!this.character.isDead()) {
-            this.playSound(this.HurtAudio, 1);
+            playSound(this.HurtAudio, 1);
         } }
     }
 
@@ -209,13 +218,12 @@ class World{
                 this.character.playAnimation(this.character.IMAGES_FRITHENED);
             }
             this.registerTime();
-            // this.character.jump(this.sound);
             this.keyboard.D = false;
             if (this.enoughBottlesLeft()) {
                 this.decreaseAwailableBottles();
                 this.addBottleToCanvas();
                 this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarBottles.IMAGES_BOTTLES);
-                this.playSound(this.throwingBottleAudio, 1);  
+                playSound(this.throwingBottleAudio, 1);  
             } else if (this.level.bottles.length < 3) {
                 this.clearAllIntervals();
                 this.showGameOverImage();
@@ -264,14 +272,14 @@ class World{
         bar.setPercentage(assets, images);
     }
 
-    playSound(type, volume) {
-        if (sound.activated) {
-            type.play();  
-            type.volume = volume;
-        } else {
-            type.pause();  
-        }
-    }
+    // playSound(type, volume) {
+    //     if (sound.activated) {
+    //         type.play();  
+    //         type.volume = volume;
+    //     } else {
+    //         type.pause();  
+    //     }
+    // }
 
     collisionWithBottle() {
         this.throwableObjects.forEach((ThrowableObject) => {
@@ -288,7 +296,7 @@ class World{
                     if (enemy.number >= 0 || this.endbossWasHit > 33 && this.endbossWasHit < 50) {
                         // this.endbossWasHit = 55;
                         this.killEnemy(enemy, ThrowableObject);
-                        this.playSound(this.BreakingBottleAudio, 0.1);
+                        playSound(this.BreakingBottleAudio, 0.1);
                     }
                 }
     }
@@ -412,16 +420,19 @@ class World{
         if ((new Date().getTime() - this.lastAction) > 15000) {
             this.character.isSnoozing = false;
             this.character.isSleeping = true;
+        playSound(this.snoringSound, 0.2);
         } else if ((new Date().getTime() - this.lastAction) > 1000) {
             this.character.isSnoozing = true;
+            stopSound(this.snoringSound);
         } else {
             this.character.isSnoozing = false;
             this.character.isSleeping = false;
+            stopSound(this.snoringSound);
         }
     }
 
     pepeisSleeping() {
-        if ((new Date().getTime() - this.lastAction) > 20000) {
+        if ((new Date().getTime() - this.lastAction) > 15000) {
             return true;
         } else {
             return false;
