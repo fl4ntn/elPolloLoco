@@ -29,7 +29,7 @@ class BabyChicken extends MovableObject {
         super().loadImg('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
 
         this.x = 500 + Math.random() * 1500;
-        this.width = (Math.random() * 20) + 20;
+        this.width = (Math.random() * 30) + 20;
         this.height = this.width * 1.2;
         this.y = 430 - this.height;
         this.walkingSpeed = 0.15 + Math.random() * 0.5;
@@ -39,7 +39,6 @@ class BabyChicken extends MovableObject {
         if (this.isAlive) {
             this.animate();
         }
-    
     }
 
     animate() {

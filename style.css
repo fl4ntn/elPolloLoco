@@ -101,15 +101,15 @@ canvas {
 }
 
 .mobile_buttons {
-    display: flex;
+    display: none;
     margin: 12px;
     justify-content: space-between;
 }
 
-.action_buttons {
+/* .action_buttons {
     display: flex;
     gap: 6px;
-}
+} */
 
 .btn {
     height: 52px;
@@ -285,3 +285,58 @@ canvas {
         height: 100vh;
     }
 }
+
+@media(max-width: 700px) {
+    .mobile_buttons{
+        display: flex;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .mobile_buttons{
+        display: flex;
+    }
+    h1 {
+        display: none;
+    }
+    .btn {
+        margin: 12px;
+    }
+    .mobile_buttons {
+        left: 0;
+        top: 0;
+        display: flex;
+        position: absolute;
+        width: 100vw;
+        margin: 0;
+    }
+    .action_buttons {
+        margin-left: 7vw;
+        margin-right: 7vw;
+    }
+    .top_290 {
+        top: 0 !important;
+    }
+    .explanation_board {
+        width: 621px;
+        height: 100%;
+    }
+    .reason_for_loss {
+        padding: 10px;
+    }
+    .leave_explanation {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0;
+    }
+    .imprint {
+        display: none;
+    }
+    .settings {
+        justify-content: space-around;
+    }
+    .pos_ab {
+        z-index: 99;
+    }
+  }
