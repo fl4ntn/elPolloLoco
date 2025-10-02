@@ -164,16 +164,14 @@ function restartGame() {
     function exitGame() {
         document.getElementById('explanation_board').classList.remove('d_none');
         getExplanationBoard();
-        
+        world.clearAllIntervals();
         cancelAnimationFrame(world.gameLoopId);
         world.ctx.clearRect(0, 0, canvas.width, canvas.height);
         document.getElementById('restart_game').classList.add('d_none');
         document.getElementById('exit_game').classList.add('d_none');
         document.getElementById('sound_btn').classList.add('d_none');
-        // stopSound(backgroundMusic);
         backgroundMusic.pause();
         backgroundMusic.currentTime = 0;
-        clearInterval(bgMusicInterval);
     }
 
     function gameOver(i, enemiesKilled){
