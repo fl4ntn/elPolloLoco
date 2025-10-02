@@ -103,7 +103,7 @@ class World{
     checkCollisionWithCharacter(enemy) {
         if(this.character.isColliding(enemy) && enemy.isAlive) {
             this.registerTime();
-            if (this.character.isFalling && this.character.isAboveGround()) {              
+            if (this.character.isFalling && this.character.isAboveGround() && this.enemyisNormalChicken(enemy)) {              
                 this.character.jump(this.sound);
                 this.killEnemy(enemy); 
             } else {
@@ -112,6 +112,10 @@ class World{
                 this.decreaseCoins();  
             } 
         }
+    }
+
+    enemyisNormalChicken(enemy) {
+        return enemy.number >= 0;
     }
 
     checkCollisionWithCoin(coin) {
