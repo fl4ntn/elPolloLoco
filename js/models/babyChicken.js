@@ -28,7 +28,7 @@ class BabyChicken extends MovableObject {
     constructor(number){
         super().loadImg('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
 
-        this.x = 500 + Math.random() * 1000;
+        this.x = 500 + Math.random() * 1500;
         this.width = (Math.random() * 20) + 20;
         this.height = this.width * 1.2;
         this.y = 430 - this.height;

@@ -4,6 +4,7 @@ class Character extends MovableObject {
     speed = 5;
     isSleeping = false;
     isSnoozing = false;
+    isFalling = false;
     
 
      offset = {

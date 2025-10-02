@@ -22,6 +22,8 @@ function init() {
     document.getElementById('explanation_board').classList.add('d_none');
     document.getElementById('restart_game').classList.remove('d_none');
     document.getElementById('exit_game').classList.remove('d_none');
+    document.getElementById('sound_btn').classList.remove('d_none');
+    ShowUnMuteTextBtn();
 }
 
 
@@ -154,6 +156,7 @@ function restartGame() {
         world.ctx.clearRect(0, 0, canvas.width, canvas.height);
         document.getElementById('restart_game').classList.add('d_none');
         document.getElementById('exit_game').classList.add('d_none');
+        document.getElementById('sound_btn').classList.add('d_none');
     }
 
     function gameOver(i, enemiesKilled){
@@ -242,13 +245,30 @@ function restartGame() {
         }
     }
 
+    function updateSoundSettings() {
+        switchSoundSettings();
+        showSoundStatus();
+    }
+
+    function updateSoundButton() {
+        switchSoundSettings();
+        ShowUnMuteTextBtn();  
+    }
+
+    function ShowUnMuteTextBtn() {
+        if (sound.activated) {
+            document.getElementById('sound_btn').innerHTML = 'mute sound';
+        } else {
+            document.getElementById('sound_btn').innerHTML = 'play sound';
+        }
+    }
+
     function switchSoundSettings() {
         if (sound.activated) {
             sound.activated = false;
         } else {
             sound.activated = true;
         }
-        showSoundStatus();
     }
 
     function showLevelStatus() {
@@ -275,7 +295,7 @@ function restartGame() {
         return `
         <div>
         <div class="settings">
-            <div onclick="switchSoundSettings()" class="settings_option">
+            <div onclick="updateSoundSettings()" class="settings_option">
                
                 <div class="ticked_box">
                     <div class="box"></div>

@@ -103,7 +103,7 @@ class World{
     checkCollisionWithCharacter(enemy) {
         if(this.character.isColliding(enemy) && enemy.isAlive) {
             this.registerTime();
-            if (this.character.isAboveGround()) {
+            if (this.character.isFalling && this.character.isAboveGround()) {              
                 this.character.jump(this.sound);
                 this.killEnemy(enemy); 
             } else {
@@ -405,10 +405,10 @@ class World{
     }
 
     isPepeSleeping() {
-        if ((new Date().getTime() - this.lastAction) > 20000) {
+        if ((new Date().getTime() - this.lastAction) > 15000) {
             this.character.isSnoozing = false;
             this.character.isSleeping = true;
-        } else if ((new Date().getTime() - this.lastAction) > 10000) {
+        } else if ((new Date().getTime() - this.lastAction) > 1000) {
             this.character.isSnoozing = true;
         } else {
             this.character.isSnoozing = false;

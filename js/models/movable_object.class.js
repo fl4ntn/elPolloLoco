@@ -18,7 +18,16 @@ class MovableObject extends DrawableObject {
         setInterval(() => {
             if (this.reachedVertexPoint() || this.speedY > 0){
                 this.y -= this.speedY;
+                // let oldSpeedY = this.speedY
                 this.speedY -= this.acceleration;
+                // console.log(this.speedY);
+                if(this.speedY < 0) {
+                  this.isFalling = true;  
+                } else {
+                    this.isFalling = false;
+                }
+                
+                // console.log(this.isFalling);
             }
         }, 1000 / 25);
     }
