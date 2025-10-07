@@ -25,6 +25,7 @@ function init() {
     document.getElementById('restart_game').classList.remove('d_none');
     document.getElementById('exit_game').classList.remove('d_none');
     document.getElementById('sound_btn').classList.remove('d_none');
+    document.getElementById('mobile_buttons').classList.remove('d_none');
     ShowUnMuteTextBtn();
     playBgMusic();
     // backgroundMusic.play();
@@ -170,6 +171,7 @@ function restartGame() {
         document.getElementById('restart_game').classList.add('d_none');
         document.getElementById('exit_game').classList.add('d_none');
         document.getElementById('sound_btn').classList.add('d_none');
+        document.getElementById('mobile_buttons').classList.add('d_none');
         backgroundMusic.pause();
         backgroundMusic.currentTime = 0;
     }
