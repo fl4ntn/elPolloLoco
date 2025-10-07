@@ -106,8 +106,12 @@ canvas {
 
 .mobile_buttons {
     display: none;
-    margin: 12px;
     justify-content: space-between;
+    left: 7vw;
+    top: 0;
+    position: fixed;
+    width: 773px;
+    margin: 0;
 }
 
 /* .action_buttons {
@@ -310,18 +314,13 @@ canvas {
     .btn {
         margin: 12px;
     }
-    .mobile_buttons {
-        left: 0;
-        top: 0;
+    /* .mobile_buttons {
         display: flex;
-        position: absolute;
-        width: 100vw;
-        margin: 0;
-    }
-    .action_buttons {
+    } */
+    /* .action_buttons {
         margin-left: 7vw;
         margin-right: 7vw;
-    }
+    } */
     .top_290 {
         top: 0 !important;
     }

@@ -6,7 +6,7 @@ class World{
     throwingBottleAudio = new Audio('audio/throwingBottle.m4a');
     EndbossDeadAudio = new Audio('audio/endboss_dead – Mit Clipchamp erstellt_1755934161346.m4a');
     BabyChickenDeadAudio = new Audio('audio/small_chicken_sound.mp3');
-    BreakingBottleAudio = new Audio('audio/GlassIsBreaking.m4a');
+    BreakingBottleAudio = new Audio('audio/glassIsBreaking.m4a');
     takeBottleAudio = new Audio('audio/plug_in.m4a');
     snoringSound = new Audio('audio/snoring.mp3');
     sound;

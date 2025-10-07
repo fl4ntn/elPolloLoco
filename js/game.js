@@ -115,47 +115,53 @@ window.addEventListener('keyup', (event) => {
 
 
 document.getElementById('move_left_btn').addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.LEFT = true;
 });
 
 document.getElementById('move_left_btn').addEventListener('touchend', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.LEFT = false;
 });
 
 
 document.getElementById('move_right_btn').addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.RIGHT = true;
 });
 
 document.getElementById('move_right_btn').addEventListener('touchend', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.RIGHT = false;
 });
 
 document.getElementById('jump_btn').addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.UP = true;
 });
 
 document.getElementById('jump_btn').addEventListener('touchend', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.UP = false;
 });
 
 
 
 document.getElementById('throw_btn').addEventListener('touchstart', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.D = true;
 });
 
 document.getElementById('throw_btn').addEventListener('touchend', (e) => {
-    e.preventDefault();
+    preventDefault(e);
     keyboard.D = false;
 });
+
+function preventDefault(e) {
+     if (e.cancelable) {
+    e.preventDefault();
+  }
+}
 
 function restartGame() {
     exitGame();
