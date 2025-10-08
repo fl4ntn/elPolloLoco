@@ -7,6 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     background-image: url('img/5_background/desert1.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,6 +16,21 @@ body {
     width: 100vw;
     background-position: center;
     font-family: 'zabars', Arial, Helvetica, sans-serif;
+}
+
+.full_screen {
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000f0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
 
 h1 {
@@ -60,7 +76,8 @@ canvas {
     justify-content: space-evenly;
     align-items: flex-start;
     position: absolute;
-    top: 26vh;
+    top: 38vh;
+    left: 35vw;
     padding: 20px;
     padding-bottom: 12px;
     width: 581px;
@@ -298,9 +315,90 @@ canvas {
     }
 }
 
+@media(max-width: 2000px) {
+    .explanation_board {
+        left: 33vw;
+    }
+}
+
+@media(max-width: 1800px) {
+    .explanation_board {
+        top: 32vh;
+    }
+}
+
+@media(max-width: 1730px) {
+    .explanation_board {
+        left: 32vw;
+    }
+}
+
+@media(max-width: 1655px) {
+    .explanation_board {
+        left: 30vw;
+    }
+}
+
+
+@media(max-width: 1515px) {
+    .explanation_board {
+        left: 28vw;
+    }
+}
+
+@media(max-width: 1370px) {
+    .explanation_board {
+        left: 26vw;
+    }
+}
+
+@media(max-width: 1210px) {
+    .explanation_board {
+        left: 24vw;
+    }
+}
+
+
+@media(max-width: 1100px) {
+    .explanation_board {
+        top: 26vh;
+        left: 20vw;
+    }
+}
+
+@media(max-width: 1000px) {
+    .explanation_board {
+        left: 16vw;
+    }
+}
+
+@media(max-width: 870px) {
+    .explanation_board {
+        left: 10vw;
+    }
+}
+
+@media(max-width: 767px) {
+    .explanation_board {
+        left: 6vw;
+    }
+}
+
 @media(max-width: 700px) {
     .mobile_buttons{
         display: flex;
+    }
+}
+
+@media(max-height: 600px) {
+    h1{
+        display: none;
+    }
+}
+
+@media(max-height: 860px) {
+     .imprint {
+        display: none;
     }
 }
 
@@ -308,9 +406,9 @@ canvas {
     .mobile_buttons{
         display: flex;
     }
-    h1 {
+    /* h1 {
         display: none;
-    }
+    } */
     .btn {
         margin: 12px;
     }
@@ -324,10 +422,10 @@ canvas {
     .top_290 {
         top: 0 !important;
     }
-    .explanation_board {
+    /* .explanation_board {
         width: 581px;
         height: 374px;
-    }
+    } */
     .reason_for_loss {
         padding: 10px;
     }
@@ -338,9 +436,7 @@ canvas {
         gap: 0;
         text-shadow: -3px 0px 6px #FCDBBD;
     }
-    .imprint {
-        display: none;
-    }
+   
     .settings {
         justify-content: space-around;
     }

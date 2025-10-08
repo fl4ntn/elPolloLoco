@@ -157,6 +157,19 @@ document.getElementById('throw_btn').addEventListener('touchend', (e) => {
     keyboard.D = false;
 });
 
+function mobileScreen() {
+    if (!screen.orientation.type.startsWith('landscape') && window.innerWidth < 980) {
+        console.log(`Please turn device`);
+        document.getElementById('full_screen').classList.remove('d_none');
+    }
+}
+
+
+screen.orientation.addEventListener("change", () => {
+  console.log(`The orientation of the screen is: ${screen.orientation}`);
+  screen.orientation.lock();
+});
+
 function preventDefault(e) {
      if (e.cancelable) {
     e.preventDefault();
@@ -193,6 +206,8 @@ function restartGame() {
         }
         
     }
+
+
 
     function playSound(type, volume) {
         if (sound.activated) {
