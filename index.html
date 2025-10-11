@@ -32,9 +32,9 @@
     <h1>El Pollo Loco</h1>
     <div>
       
-        <div class="game_screen">
+        <div id="fullscreen" class="game_screen">
             <canvas id="canvas" width="720" height="480"></canvas>
-            <div class="pos_ab">
+            <div class="pos_ab z_99">
                 <div id="restart_game" onclick="restartGame()" class="restart_game d_none">restart game</div>
                 <div id="exit_game" onclick="exitGame()" class="restart_game d_none">exit game</div>
                 <div id="sound_btn" onclick="updateSoundButton()" class="restart_game d_none"></div>
@@ -43,11 +43,12 @@
         <div id="explanation_board" class="explanation_board"> 
         </div>
             <div id="mobile_buttons" class="mobile_buttons d_none">
-                <div id="walking_btns" class="action_buttons">
+                <div id="walking_btns" class="action_buttons flex_end">
                     <div id="move_left_btn" class="btn"><i class="arrow left"></i></div>
                     <div id="move_right_btn" class="btn"><i class="arrow right"></i></div>
                 </div>
-                <div id="action_btns" class="action_buttons">
+                <div class="spaceholder"></div>
+                <div id="action_btns" class="action_buttons flex_estart">
                     <div id="jump_btn" class="btn"><i class="arrow up"></i></div>
                     <div id="throw_btn" class="btn">X</div>
                 </div>

@@ -8,6 +8,12 @@ let reasonsToLooose = ['You ran out of energy...', 'No bottles left to kill the 
 let winnerAudio = new Audio('https://cdn.freesound.org/previews/769/769801_13237592-lq.mp3');
 let backgroundMusic = new Audio('audio/flamenco-loop-1-382455.mp3');
 let bgMusicInterval;
+let touchDevice = window.matchMedia("(pointer: coarse)").matches;
+// let fullScreenMode;
+
+// window.addEventListener("touchstart", onfirstTouch => { touchDevice = true});
+
+
 
 
 function init() {
@@ -25,7 +31,10 @@ function init() {
     document.getElementById('restart_game').classList.remove('d_none');
     document.getElementById('exit_game').classList.remove('d_none');
     document.getElementById('sound_btn').classList.remove('d_none');
-    document.getElementById('mobile_buttons').classList.remove('d_none');
+    if (touchDevice) {
+        document.getElementById('mobile_buttons').classList.remove('d_none'); 
+    }
+    
     ShowUnMuteTextBtn();
     playBgMusic();
     // backgroundMusic.play();
@@ -159,16 +168,57 @@ document.getElementById('throw_btn').addEventListener('touchend', (e) => {
 
 function mobileScreen() {
     if (!screen.orientation.type.startsWith('landscape') && window.innerWidth < 980) {
-        console.log(`Please turn device`);
         document.getElementById('full_screen').classList.remove('d_none');
+        console.log(`Please turn device`);
+        
+    } else {
+        document.getElementById('full_screen').classList.add('d_none');
+        document.getElementById('explanation_board').classList.add('width_581');
     }
 }
 
 
 screen.orientation.addEventListener("change", () => {
-  console.log(`The orientation of the screen is: ${screen.orientation}`);
-  screen.orientation.lock();
+    mobileScreen();
+    console.log(`The orientation of the screen is: ${screen.orientation}`);
+    // if (screen.orientation.type.startsWith('landscape')) {
+    //    let fullscreen = document.getElementById('fullscreen');
+    //     // enterFullscreen(fullscreen); 
+
+    // }
+    // } else {
+    //     if(fullScreenMode) {
+    //        exitFullscreen(); 
+    //     }
+        
+        
+    // }
+    
+    
+    //   screen.orientation.lock();
 });
+
+// function enterFullscreen(element) {
+//     if (element.requestFullscreen) {
+//     element.requestFullscreen();
+//   } else if (element.webkitRequestFullscreen) { /* Safari */
+//     element.webkitRequestFullscreen();
+//   } else if (element.msRequestFullscreen) { /* IE11 */
+//     element.msRequestFullscreen();
+//   }
+//   fullScreenMode = true;
+// }
+
+// function exitFullscreen() {
+//     if (document.exitFullscreen) {
+//     document.exitFullscreen();
+//   } else if (document.webkitExitFullscreen) { /* Safari */
+//     document.webkitExitFullscreen();
+//   } else if (document.msExitFullscreen) { /* IE11 */
+//     document.msExitFullscreen();
+//   }
+//   fullScreenMode = false;
+// }
 
 function preventDefault(e) {
      if (e.cancelable) {
@@ -348,7 +398,7 @@ function restartGame() {
     
     function getSettingsOverlay() {
         return `
-        <div>
+        <div style="padding-top:64px;">
         <div class="settings">
             <div onclick="updateSoundSettings()" class="settings_option">
                
