@@ -169,7 +169,6 @@ document.getElementById('throw_btn').addEventListener('touchend', (e) => {
 function mobileScreen() {
     if (!screen.orientation.type.startsWith('landscape') && window.innerWidth < 980) {
         document.getElementById('full_screen').classList.remove('d_none');
-        console.log(`Please turn device`);
         
     } else {
         document.getElementById('full_screen').classList.add('d_none');
@@ -180,7 +179,6 @@ function mobileScreen() {
 
 screen.orientation.addEventListener("change", () => {
     mobileScreen();
-    console.log(`The orientation of the screen is: ${screen.orientation}`);
     // if (screen.orientation.type.startsWith('landscape')) {
     //    let fullscreen = document.getElementById('fullscreen');
     //     // enterFullscreen(fullscreen); 

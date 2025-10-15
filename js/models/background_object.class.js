@@ -5,12 +5,5 @@ class BackgroundObject extends MovableObject {
         super().loadImg(imagePath);
         this.x = x;
         this.y = y;
-
-
     }
-
-  
-
-
-
 }

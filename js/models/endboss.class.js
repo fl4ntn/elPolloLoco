@@ -58,8 +58,8 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/5_dead/G26.png'
     ];    
    
-   
     currentImage = 0;
+
     constructor() {
         super().loadImg(this.IMAGES_WALKING[0]);
         this.x = 2450;
@@ -72,15 +72,11 @@ class Endboss extends MovableObject {
         if (this.isAlive) {
             this.animate();
         }
-
-        
-
     }
 
     animate() {
-
         this.animateEmotionalStage();
-       this.animation;
+        this.animation;
         setInterval( () => {
             this.moveLeft();
          }, 1000 / 60);
@@ -91,27 +87,33 @@ class Endboss extends MovableObject {
             clearInterval(this.animation);
         }
         if(this.emotionalStage == 'walking'){
-           this.animation = setInterval(() => {
-                this.playAnimation(this.IMAGES_WALKING);
-            }, 700);
+           this.letEndbossWalk;
         } else if (this.emotionalStage == 'alert') {
-           this.animation = setInterval(() => {
-                            this.playAnimation(this.IMAGES_ALERT);  
-                        }, 700);
+            this.endbossIsAlert();
         } else if (this.emotionalStage == 'attack') {
-            this.animation = setInterval(() => {
-                            this.playAnimation(this.IMAGES_ATTACKING);  
-                        }, 700);
+            this.endbossAttacks();
         }
     }
 
+    letEndbossWalk() {
+        this.animation = setInterval(() => {
+                this.playAnimation(this.IMAGES_WALKING);
+            }, 700);
+    }
+
+    endbossIsAlert() {
+        this.animation = setInterval(() => {
+                this.playAnimation(this.IMAGES_ALERT);  
+            }, 700);
+    }
+
+    endbossAttacks() {
+        this.animation = setInterval(() => {
+                this.playAnimation(this.IMAGES_ATTACKING);  
+        }, 700);
+    }
+
     hit() {
- 
-        // clearInterval(this.animation);
-        // this.playAnimation(this.IMAGES_HURT);
-        // clearInterval(this.animation);
- 
-            // clearInterval(this.enemies[3].animation);
             return new Promise ((resolve) => {
             let i = 0;
             const interval = setInterval(() => {
@@ -122,16 +124,9 @@ class Endboss extends MovableObject {
                     clearInterval(interval);
                     this.currentImage = 0;
                     resolve();
-                    // this.animateEmotionalStage();
-                    // console.log(this.animateEmotionalStage());
                 }
             }, 1000 / 60);
             });
-
-            
-        
-        // return Promise.resolve();         
-    
     }
 
 

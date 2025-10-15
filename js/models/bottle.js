@@ -5,7 +5,6 @@ class Bottle extends MovableObject{
         right: 20,
         bottom: 20
     };
-
     number;
 
     constructor(number, image){
@@ -16,5 +15,4 @@ class Bottle extends MovableObject{
         this.height = 80;
         this.y = 380;
     }
-
 } 

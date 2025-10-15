@@ -34,12 +34,14 @@ class StatusBar extends DrawableObject{
 
     constructor(barType, y) {
         super();
-
         this.x = 0;
         this.y = y;
         this.width = 150;
         this.height = 45;
+        this.getCorrectBarType(barType);
+    }
 
+    getCorrectBarType(barType) {
         if (barType == "energy") {
            this.loadImages(this.IMAGES_ENERGY);
            this.setPercentage(100, this.IMAGES_ENERGY);
@@ -50,7 +52,6 @@ class StatusBar extends DrawableObject{
             this.loadImages(this.IMAGES_BOTTLES);
             this.setPercentage(100, this.IMAGES_BOTTLES);
         }
-       
     }
 
 
@@ -58,7 +59,6 @@ class StatusBar extends DrawableObject{
         this.percentage = percentage;
         let path = arr[this.resolveImageIndex()];
         this.img = this.imageCache[path];
-        
     }
 
    resolveImageIndex() {

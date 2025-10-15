@@ -18,7 +18,6 @@ class BabyChicken extends MovableObject {
     ];
 
     isAlive = true;
-
     currentImage = 0;
     number;
     walkingAnimation = setInterval(() => {
@@ -27,13 +26,7 @@ class BabyChicken extends MovableObject {
 
     constructor(number){
         super().loadImg('img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
-
-        this.x = 500 + Math.random() * 1500;
-        this.width = (Math.random() * 30) + 20;
-        this.height = this.width * 1.2;
-        this.y = 430 - this.height;
-        this.walkingSpeed = 0.15 + Math.random() * 0.5;
-        this.number = number;
+        this.getPhysicalData(number);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_DEAD);
         if (this.isAlive) {
@@ -41,15 +34,20 @@ class BabyChicken extends MovableObject {
         }
     }
 
+    getPhysicalData(number) {
+        this.x = 500 + Math.random() * 1500;
+        this.width = (Math.random() * 30) + 20;
+        this.height = this.width * 1.2;
+        this.y = 430 - this.height;
+        this.walkingSpeed = 0.15 + Math.random() * 0.5;
+        this.number = number;
+    }
+
     animate() {
-        
         setInterval( () => {
             this.moveLeft();
          }, 1000 / 60);
-       
-        
         this.walkingAnimation;
-        
     }
 
 
