@@ -2,6 +2,7 @@ h1 {
     font-family: 'zabars';
     font-size: 56px !important;
     padding: 40px 0 !important;
+    text-align: center;
 }
 
 .whole_imprint {
@@ -30,4 +31,17 @@ h1 {
 .sub_heading {
     font-weight: 600;
     padding-bottom: 4px;
+}
+
+
+@media(max-width: 800px) {
+    .whole_imprint{
+        margin: 40px;
+    }
+}
+
+@media(max-width: 450px) {
+    .whole_imprint{
+        margin: 20px;
+    }
 }
