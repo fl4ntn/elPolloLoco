@@ -27,9 +27,6 @@ class StatusBar extends DrawableObject{
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/green/100.png',
     ];
 
-
-
-
     percentage = 100;
 
     constructor(barType, y) {
@@ -53,7 +50,6 @@ class StatusBar extends DrawableObject{
             this.setPercentage(100, this.IMAGES_BOTTLES);
         }
     }
-
 
     setPercentage(percentage, arr) {
         this.percentage = percentage;

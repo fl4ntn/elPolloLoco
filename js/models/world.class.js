@@ -1,6 +1,5 @@
 class World{
     gameLoopId;
-    // music = new Audio('audio/flamenco-loop-1-382455.mp3');
     CoinsEarnedAudio = new Audio('audio/Earned_Coins.m4a');
     HurtAudio = new Audio('audio/Ouch.m4a');
     throwingBottleAudio = new Audio('audio/throwingBottle.m4a');
@@ -222,7 +221,7 @@ class World{
     checkThrowableObjects() {
         if (this.keyboard.D) {
             if (this.pepeisSleeping()) {
-                this.character.playAnimation(this.character.IMAGES_FRITHENED);
+                this.character.playAnimation(this.character.IMAGES_FRIGHTENED);
             }
             this.registerTime();
             this.keyboard.D = false;
@@ -444,5 +443,4 @@ class World{
             return false;
         }
     }
-
 }

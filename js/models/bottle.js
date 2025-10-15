@@ -7,6 +7,13 @@ class Bottle extends MovableObject{
     };
     number;
 
+
+     /**
+   * Represents a bottle
+   * @constructor
+   * @param {string} image - The path of the image of the bottle.
+   * * @param {number} number - The number of the bottle.
+   */
     constructor(number, image){
         super().loadImg(image);
         this.number = number;

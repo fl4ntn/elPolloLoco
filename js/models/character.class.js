@@ -35,7 +35,7 @@ class Character extends MovableObject {
         'img/2_character_pepe/3_jump/J-39.png'
     ];
 
-     IMAGES_FRITHENED = [
+     IMAGES_FRIGHTENED = [
         'img/2_character_pepe/3_jump/J-31.png',
         'img/2_character_pepe/3_jump/J-32.png',
         'img/2_character_pepe/3_jump/J-38.png',
@@ -88,11 +88,17 @@ class Character extends MovableObject {
     sound;
     currentImage = 0;
 
+
+        /**
+   * Represents a bottle
+   * @constructor
+   * @param {boolean} sound - Informs whether the sound is on or off.
+   */
    constructor(sound) {
     super().loadImg('img/2_character_pepe/2_walk/W-21.png');
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
-    this.loadImages(this.IMAGES_FRITHENED);
+    this.loadImages(this.IMAGES_FRIGHTENED);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
     this.loadImages(this.IMAGES_IDLE);
@@ -104,6 +110,9 @@ class Character extends MovableObject {
     this.sound = sound;
    }
 
+   /**
+   * Animates the character, so that it walks towards the current direction.
+   */
     animate() {
         setInterval(() => {
             this.checkDirection();
@@ -115,12 +124,19 @@ class Character extends MovableObject {
         }, 50);
    }
 
+
+   /**
+   * Finds out which direction Pepe is currently moving to.
+   */
    checkDirection() {
         this.ifPepeIsWalkingRight();
         this.ifPepeIsWalkingLeft();
         this.ifPepeIsJumping();
    }
 
+   /**
+   * If Pepe is moving to the right, this function starts the correct animation and saves information on the direction for other functions.
+   */
    ifPepeIsWalkingRight() {
         if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) { 
             this.moveRight();
@@ -130,6 +146,9 @@ class Character extends MovableObject {
         }
    }
 
+    /**
+   * If Pepe is moving to the left, this function starts the correct animation and saves information on the direction for other functions.
+   */
    ifPepeIsWalkingLeft() {
         if(this.world.keyboard.LEFT && this.x > 0) { 
             this.moveLeft();
@@ -139,6 +158,9 @@ class Character extends MovableObject {
         }
    }
 
+    /**
+   * If Pepe is jumping, this function starts the correct animation and saves information on the direction for other functions.
+   */
    ifPepeIsJumping() {
         if (this.world.keyboard.SPACE && !this.isAboveGround() || this.world.keyboard.UP && !this.isAboveGround()) {
             this.jump(this.sound);
@@ -146,6 +168,9 @@ class Character extends MovableObject {
         }
    }
 
+    /**
+   * Checks, which status Pepe is in and starts correct animation.
+   */
    checkStatus() {
         if (this.isDead()) {
             this.endPepesLife();
@@ -162,7 +187,9 @@ class Character extends MovableObject {
         }
     }
 
-
+     /**
+   * Plays death-animation, shows game over image and ends game.
+   */
     endPepesLife() {
         this.world.clearAllIntervals();
         this.playAnimation(this.IMAGES_DEAD);
@@ -173,13 +200,19 @@ class Character extends MovableObject {
         this.world.leaveGame('lost', 0);
     }
 
+      /**
+   * Plays sleeping-animation and if Pepe wakes up plays frigthened-animation.
+   */
     putPepeinSleepingMode() {
         this.playAnimation(this.IMAGES_LONG_IDLE);
         if (this.world.keyboard.D) {
-            this.playAnimation(this.IMAGES_FRITHENED);
+            this.playAnimation(this.IMAGES_FRIGHTENED);
         }
     }
 
+      /**
+   * Plays walking-animation.
+   */
     ifPepeIsMoving() {
         if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT) { 
             this.playAnimation(this.IMAGES_WALKING);

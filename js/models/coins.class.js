@@ -26,6 +26,10 @@ class Coin extends MovableObject {
         this.animate();
     }
 
+
+    /**
+   * Animates the coin, so that it sparkles.
+   */
     animate() {
         setInterval(() => {
         this.playAnimation(this.IMAGES_TURNING);  

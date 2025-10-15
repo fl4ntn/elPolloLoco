@@ -74,6 +74,9 @@ class Endboss extends MovableObject {
         }
     }
 
+    /**
+   * Animates the endboss, so that it walks towards the game character and shows the emotional stage.
+   */
     animate() {
         this.animateEmotionalStage();
         this.animation;

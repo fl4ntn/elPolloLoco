@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" translate="no">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,9 @@
     <link rel="icon" type="image/x-icon" href="img/6_salsa_bottle/2_salsa_bottle_on_ground.png">
     <script src="js/models/drawable_object.class.js"></script>
     <script src="js/models/movable_object.class.js"></script>
-   
-     <script src="js/models/keyboard.class.js"></script>
-     <script src="js/models/soundsettings.class.js"></script>
+
+    <script src="js/models/keyboard.class.js"></script>
+    <script src="js/models/soundsettings.class.js"></script>
     <script src="js/models/character.class.js"></script>
     <script src="js/models/chicken.class.js"></script>
     <script src="js/models/babyChicken.js"></script>
@@ -26,13 +27,14 @@
     <script src="js/models/endboss.class.js"></script>
     <script src="js/levels/level1.js"></script>
     <script src="js/levels/level2.js"></script>
-   
+
 </head>
+
 <body class="height100" onload="getExplanationBoard(); mobileScreen()">
 
     <h1>El Pollo Loco</h1>
     <div>
-      
+
         <div id="fullscreen" class="game_screen">
             <canvas id="canvas" width="720" height="480"></canvas>
             <div class="pos_ab z_99">
@@ -41,29 +43,25 @@
                 <div id="sound_btn" onclick="updateSoundButton()" class="restart_game d_none"></div>
             </div>
         </div>
-        <div id="explanation_board" class="explanation_board"> 
+        <div id="explanation_board" class="explanation_board">
         </div>
-            <div id="mobile_buttons" class="mobile_buttons d_none">
-                <div id="walking_btns" class="action_buttons flex_end">
-                    <div id="move_left_btn" class="btn"><i class="arrow left"></i></div>
-                    <div id="move_right_btn" class="btn"><i class="arrow right"></i></div>
-                </div>
-                <div class="spaceholder"></div>
-                <div id="action_btns" class="action_buttons flex_estart">
-                    <div id="jump_btn" class="btn"><i class="arrow up"></i></div>
-                    <div id="throw_btn" class="btn">X</div>
-                </div>
-
+        <div id="mobile_buttons" class="mobile_buttons d_none">
+            <div id="walking_btns" class="action_buttons flex_end">
+                <div id="move_left_btn" class="btn"><i class="arrow left"></i></div>
+                <div id="move_right_btn" class="btn"><i class="arrow right"></i></div>
             </div>
+            <div class="spaceholder"></div>
+            <div id="action_btns" class="action_buttons flex_estart">
+                <div id="jump_btn" class="btn"><i class="arrow up"></i></div>
+                <div id="throw_btn" class="btn">X</div>
+            </div>
+
         </div>
-        <div onclick="openImprint()" class="imprint">Imprint</div>
-        <div id="full_screen" class="full_screen d_none">Please turn your device</div>
-
-                
-
-        
-          
-    
+    </div>
+    <div onclick="openImprint()" class="imprint">Imprint</div>
+    <div id="full_screen" class="full_screen d_none">Please turn your device</div>
 </body>
- <script src="js/game.js"></script>
+<script src="js/game.js"></script>
+<script src="js/templates.js"></script>
+
 </html>
