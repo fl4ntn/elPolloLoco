@@ -1,5 +1,6 @@
 let level2
 
+
 /** This function initializes Level 2 */
 function initLevel2(){
     

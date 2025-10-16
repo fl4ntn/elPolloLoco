@@ -15,6 +15,7 @@ function getExplanationBoardTemplate() {
     `;
 }
 
+
 function getSettingsOverlay() {
     return `
     <div style="padding-top:64px;">
@@ -49,6 +50,7 @@ function getSettingsOverlay() {
     `;
 }
 
+
 function getExplanaionOverlay() {
     return `
     <div class="settings">
@@ -76,6 +78,7 @@ function getExplanaionOverlay() {
     `;
 }
 
+
 function getYouLostScreen(i) {
     return `
     <div class="settings">
@@ -90,6 +93,7 @@ function getYouLostScreen(i) {
     </div>
     `;
 }
+
 
 function getYouWonScreen(i, enemiesKilled) {
     playSound(winnerAudio, 0.2);

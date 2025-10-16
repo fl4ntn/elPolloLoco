@@ -1,216 +1,236 @@
-@media(max-width: 2000px) {
-    .explanation_board {
-        left: 33dvw;
-        top: 24dvh;
-    }
-}
-
-@media(max-width: 1730px) {
-    .explanation_board {
-        left: 32dvw;  
-    }
-}
-
-@media(max-width: 1655px) {
-    .explanation_board {
-        left: 30dvw;
-    }
-}
-
-@media(max-width: 1515px) {
-    .explanation_board {
-        left: 28dvw;
-    }
-}
-
-@media(max-width: 1370px) {
-    .explanation_board {
-        left: 26dvw;
-    }
-}
-
-@media(max-width: 1240px) {
-    .leave_explanation {
-        gap: 340px;
-    }
-    .reason_for_loss {
-        padding: 20px;
-    }
-}
-
-@media(max-width: 1210px) {
-    .explanation_board {
-        left: 24dvw;
-    }
+@media (max-width: 2000px) {
+  .explanation_board {
+    left: 33dvw;
+    top: 24dvh;
+  }
 }
 
 
-@media(max-width: 1100px) {
-    .explanation_board {
-        top: 20dvh;
-        left: 20dvw;
-    }
+@media (max-width: 1730px) {
+  .explanation_board {
+    left: 32dvw;
+  }
 }
 
-@media(max-width: 1000px) {
-    .explanation_board {
-        left: 18dvw;
-        top: 16dvh;
-    }
-    .width_581 {
+
+@media (max-width: 1655px) {
+  .explanation_board {
+    left: 30dvw;
+  }
+}
+
+
+@media (max-width: 1515px) {
+  .explanation_board {
+    left: 28dvw;
+  }
+}
+
+
+@media (max-width: 1370px) {
+  .explanation_board {
+    left: 26dvw;
+  }
+}
+
+
+@media (max-width: 1240px) {
+  .leave_explanation {
+    gap: 340px;
+  }
+  .reason_for_loss {
+    padding: 20px;
+  }
+}
+
+
+@media (max-width: 1210px) {
+  .explanation_board {
+    left: 24dvw;
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .explanation_board {
+    top: 20dvh;
+    left: 20dvw;
+  }
+}
+
+
+@media (max-width: 1000px) {
+  .explanation_board {
+    left: 18dvw;
+    top: 16dvh;
+  }
+  .width_581 {
     width: 561px;
-    }
+  }
 }
 
-@media(max-width: 870px) {
-    .explanation_board {
-        left: 10dvw;
-    }
+
+@media (max-width: 870px) {
+  .explanation_board {
+    left: 10dvw;
+  }
 }
 
-@media(max-width: 767px) {
-    .explanation_board {
-        left: 6dvw;
-    }
+
+@media (max-width: 767px) {
+  .explanation_board {
+    left: 6dvw;
+  }
 }
+
 
 @media only screen and (max-width: 720px) {
-    canvas {
-        width: 100%;
-    }
+  canvas {
+    width: 100%;
+  }
 }
+
 
 @media screen and (orientation: landscape) {
-    .reason_for_loss {
-        padding: 10px;
-    }
-    .leave_explanation {
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        gap: 0;
-        text-shadow: -3px 0px 6px #FCDBBD;
-    }
-    .settings {
-        justify-content: space-around;
-    }
-    .pos_ab {
-        z-index: 99;
-    }
-    body {
-        overflow: hidden;
-    }
+  .reason_for_loss {
+    padding: 10px;
   }
-
-@media(max-height: 860px) {
-    .imprint {
-        display: none;
-    }
-    h1 {
-        padding: 4% 0;
-    }
+  .leave_explanation {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 0;
+    text-shadow: -3px 0px 6px #fcdbbd;
+  }
+  .settings {
+    justify-content: space-around;
+  }
+  .pos_ab {
+    z-index: 99;
+  }
+  body {
+    overflow: hidden;
+  }
 }
 
-@media(max-height: 690px) {
-    h1 {
-        padding: 2% 0;
-    }
-    .mobile_buttons {
-        top: 120px;
-    }
+
+@media (max-height: 860px) {
+  .imprint {
+    display: none;
+  }
+  h1 {
+    padding: 4% 0;
+  }
 }
 
-@media(max-height: 624px) {
-    h1 {
-        font-size: 48px;
-    }
+
+@media (max-height: 690px) {
+  h1 {
+    padding: 2% 0;
+  }
+  .mobile_buttons {
+    top: 120px;
+  }
 }
 
-@media(max-height: 600px) {
-    h1{
-        display: none;
-    }
-    .explanation_board {
-        top: 10dvh;
-    }
-    canvas {
-        margin-top: 0px;
-    }
-    .mobile_buttons {
-        top: 0px;
-    }
+
+@media (max-height: 624px) {
+  h1 {
+    font-size: 48px;
+  }
 }
+
+
+@media (max-height: 600px) {
+  h1 {
+    display: none;
+  }
+  .explanation_board {
+    top: 10dvh;
+  }
+  canvas {
+    margin-top: 0px;
+  }
+  .mobile_buttons {
+    top: 0px;
+  }
+}
+
 
 @media only screen and (max-height: 480px) {
-    canvas {
-        height: 100dvh;
-    }
+  canvas {
+    height: 100dvh;
+  }
 }
 
-@media(max-height: 455px) {
-    .you_won_img {
-        height: 180px;
-    }
-    .you_lost_img {
-        height: 220px;
-    }
-    .explanation_board {
-        top: 0;
-    }
+
+@media (max-height: 455px) {
+  .you_won_img {
+    height: 180px;
+  }
+  .you_lost_img {
+    height: 220px;
+  }
+  .explanation_board {
+    top: 0;
+  }
 }
 
-@media(max-height: 400px) {
-    .explanation_board {
-        padding-top: 0px;
-    }
-    .width_581 {
-        width: 520px;
-        margin-left: 46px;
-    }
-    .leave_settings {
-        gap: 100px;
-    }
+
+@media (max-height: 400px) {
+  .explanation_board {
+    padding-top: 0px;
+  }
+  .width_581 {
+    width: 520px;
+    margin-left: 46px;
+  }
+  .leave_settings {
+    gap: 100px;
+  }
 }
 
-@media(max-height: 375px) {
-    .you_won_img {
-        height: 140px;
-    }
-    .width_581 {
-        width: 520px;
-        margin-left: 20px;
-    }
-    .leave_explanation {
-        margin-bottom: 20px;
-    }    
-    .spaceholder {
-        width: 560px;
-    }
-    .arrow {
-        padding: 5px;
-    }
-    .action_buttons {
-        width: calc((100% - 560px) / 2);
-    }
+
+@media (max-height: 375px) {
+  .you_won_img {
+    height: 140px;
+  }
+  .width_581 {
+    width: 520px;
+    margin-left: 20px;
+  }
+  .leave_explanation {
+    margin-bottom: 20px;
+  }
+  .spaceholder {
+    width: 560px;
+  }
+  .arrow {
+    padding: 5px;
+  }
+  .action_buttons {
+    width: calc((100% - 560px) / 2);
+  }
 }
 
-@media(max-height: 361px) {
-    .width_581 {
-        margin-left: 55px;
-    }
-    .explanation_board{
-        height: 340px;
-        padding-top: 12px;
-    }
+
+@media (max-height: 361px) {
+  .width_581 {
+    margin-left: 55px;
+  }
+  .explanation_board {
+    height: 340px;
+    padding-top: 12px;
+  }
 }
 
-@media(max-height: 344px) {
-    .width_581 {
-        margin-left: 25px;
-    }
-    .explanation_board {
-        width: 500px;
-        padding-top: 2px;
-    }
 
+@media (max-height: 344px) {
+  .width_581 {
+    margin-left: 25px;
+  }
+  .explanation_board {
+    width: 500px;
+    padding-top: 2px;
+  }
 }

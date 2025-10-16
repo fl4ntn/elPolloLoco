@@ -1,5 +1,3 @@
 class Sound {
-        
-activated = false;
-
+  activated = false;
 }

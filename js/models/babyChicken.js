@@ -22,6 +22,7 @@ class BabyChicken extends MovableObject {
     this.playAnimation(this.IMAGES_WALKING);
   }, 270);
 
+
   /**
    * Represents a baby chicken.
    * @constructor
@@ -37,6 +38,7 @@ class BabyChicken extends MovableObject {
     }
   }
 
+
   /**
    * Gives information on the baby chicken like height, width and speed.
    * @param {number} number - The number of the baby chicken.
@@ -50,6 +52,7 @@ class BabyChicken extends MovableObject {
     this.number = number;
   }
 
+  
   /**
    * Animates the baby chicken, so that it walks towards the game character.
    */
