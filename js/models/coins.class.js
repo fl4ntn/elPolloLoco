@@ -14,7 +14,11 @@ class Coin extends MovableObject {
     number;
 
     currentImage = 0;
-
+    /**
+   * Represents a coin
+   * @constructor
+   * @param {number} number - The number of the coin.
+   */
     constructor(number){
         super().loadImg('img/8_coin/coin_1.png');
         this.number = number;

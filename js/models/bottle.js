@@ -9,7 +9,7 @@ class Bottle extends MovableObject{
 
 
      /**
-   * Represents a bottle
+   * Represents a bottle on the ground.
    * @constructor
    * @param {string} image - The path of the image of the bottle.
    * * @param {number} number - The number of the bottle.

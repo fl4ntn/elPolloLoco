@@ -28,7 +28,12 @@ class StatusBar extends DrawableObject{
     ];
 
     percentage = 100;
-
+  /**
+   * Represents a statusbar.
+   * @constructor
+   * @param {string} barType - The type of the statusbar.
+   * @param {number} y - The y-coordinate of the statusbar.
+   */
     constructor(barType, y) {
         super();
         this.x = 0;
@@ -37,7 +42,10 @@ class StatusBar extends DrawableObject{
         this.height = 45;
         this.getCorrectBarType(barType);
     }
-
+/**
+   * loads images and sets percentage basd on the type of the statusbar.
+   * @param {string} barType - The type of the statusbar.
+   */
     getCorrectBarType(barType) {
         if (barType == "energy") {
            this.loadImages(this.IMAGES_ENERGY);
@@ -50,13 +58,19 @@ class StatusBar extends DrawableObject{
             this.setPercentage(100, this.IMAGES_BOTTLES);
         }
     }
-
+/**
+   * saves correct image to the variable path based on the percentage to which the bar is filled.
+   * @param {number} percentage - The percentage to which the bar is filled.
+   * @param {array} arr - The array of the images to animate statusbar based on percentage.
+   */
     setPercentage(percentage, arr) {
         this.percentage = percentage;
         let path = arr[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
-
+/**
+   * returns the index of the image which represents the correct percentage.
+   */
    resolveImageIndex() {
         if (this.percentage >= 100) {
             return 5;

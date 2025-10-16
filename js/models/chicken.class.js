@@ -25,6 +25,12 @@ class Chicken extends MovableObject {
                             this.playAnimation(this.IMAGES_WALKING);  
                         }, 270);
 
+
+    /**
+   * Represents a chicken.
+   * @constructor
+   * @param {number} number - Number of the chicken.
+   */
     constructor(number){
         super().loadImg('img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
         this.x = 600 + Math.random() * 1000;

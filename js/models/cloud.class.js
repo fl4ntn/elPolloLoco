@@ -5,6 +5,12 @@ class Cloud extends MovableObject {
     width = 500;
     speed = 0;
 
+
+        /**
+   * Represents a cloud
+   * @constructor
+   * @param {number} position - x-coordinate of the cloud.
+   */
     constructor(position){
         super().loadImg('img/5_background/layers/4_clouds/1.png');
         this.x = position + (Math.random() * 500);

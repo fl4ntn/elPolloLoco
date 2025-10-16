@@ -59,7 +59,10 @@ class Endboss extends MovableObject {
     ];    
    
     currentImage = 0;
-
+/**
+   * Represents the endboss.
+   * @constructor
+   */
     constructor() {
         super().loadImg(this.IMAGES_WALKING[0]);
         this.x = 2450;
@@ -84,7 +87,9 @@ class Endboss extends MovableObject {
             this.moveLeft();
          }, 1000 / 60);
     }
-
+ /**
+   * Animates the endbosses emotioanl stage.
+   */
     animateEmotionalStage() {
         if (this.animation) {
             clearInterval(this.animation);
@@ -97,25 +102,33 @@ class Endboss extends MovableObject {
             this.endbossAttacks();
         }
     }
-
+/**
+   * Lets endboss walk to the left.
+   */
     letEndbossWalk() {
         this.animation = setInterval(() => {
                 this.playAnimation(this.IMAGES_WALKING);
             }, 700);
     }
-
+/**
+   * Lets endboss be alert.
+   */
     endbossIsAlert() {
         this.animation = setInterval(() => {
                 this.playAnimation(this.IMAGES_ALERT);  
             }, 700);
     }
-
+/**
+   * Lets endboss attack.
+   */
     endbossAttacks() {
         this.animation = setInterval(() => {
                 this.playAnimation(this.IMAGES_ATTACKING);  
         }, 700);
     }
-
+/**
+   * Lets endboss be hit and animates endboss accordingly.
+   */
     hit() {
             return new Promise ((resolve) => {
             let i = 0;

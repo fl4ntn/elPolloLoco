@@ -23,8 +23,15 @@ class ThrowableObject extends MovableObject {
     ];
 
 
-    bottleNumber
-
+    bottleNumber;
+ /**
+   * Represents a flying bottle.
+   * @constructor
+   * @param {number} x - The x-coordinate of the statusbar.
+   * @param {number} y - The y-coordinate of the statusbar.
+   * @param {boolean} direction - Whether the direction is right (true) or left (false).
+   * @param {number} bottleNumber - The number of the bottle.
+   */
     constructor(x, y, direction, bottleNumber){
         super().loadImg('img/6_salsa_bottle/salsa_bottle.png');
         this.loadImages(this.IMAGES_SPLASHING);
@@ -38,7 +45,9 @@ class ThrowableObject extends MovableObject {
         this.animate(this.IMAGES_ROTATING);
         this.throw();
     }
-
+ /**
+   * Makes a bottle fly by animating it, applying gravity and adding on or substracting from the x-coordinate to make it move horizontally.
+   */
     throw() {
         this.speedY = 30;
         this.applyGravity();
@@ -52,7 +61,9 @@ class ThrowableObject extends MovableObject {
         }, 25);
     }    
     }
-
+/**
+   * Animates images of a flying bottle.
+   */
      animate(images) {
         setInterval(() => {
         this.playAnimation(images);  

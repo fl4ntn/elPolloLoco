@@ -33,7 +33,13 @@ class World{
     camera_x = 0;
     lastAction = new Date().getTime();
     
-
+/**
+   * Represents a world.
+   * @constructor
+   * @param {string} canvas - The canvas on the screen.
+   * @param {object} keyboard - saves if keys have been pressed.
+   * @param {boolean} sound - Whether the sound is on or not.
+   */
     constructor(canvas, keyboard, sound){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -45,7 +51,9 @@ class World{
         this.setWorld();
         this.run();
     }
-
+/**
+   * sets up correct level.
+   */
     checkLevel() {
         if (currentLevel == 1) {
             this.getLevel1();
@@ -53,7 +61,9 @@ class World{
             this.getLevel2();
         }
     }
-
+/**
+   * saves all information necessary for level 1 into variables.
+   */
     getLevel1() {
         this.level = level1;
         this.enemies = level1.enemies;
@@ -62,7 +72,9 @@ class World{
         this.coins = level1.coins;
         this.bottles = level1.bottles;
     }
-
+/**
+   * saves all information necessary for level 2 into variables.
+   */
     getLevel2() {
         this.level = level2;
         this.enemies = level2.enemies;
@@ -71,7 +83,9 @@ class World{
         this.coins = level2.coins; 
         this.bottles = level2.bottles;
     }
-
+/**
+   * makes enemies an clouds start moving by adding speed to the variable.
+   */
     objectsStartMoving() {
         this.enemies.forEach((enemy) => {
            enemy.speed = enemy.walkingSpeed;
@@ -81,11 +95,15 @@ class World{
         });
     }
   
-    
+    /**
+   * saves all information from the world to the character.
+   */
     setWorld(){
         this.character.world = this;
     }
-
+ /**
+   * makes game Intervals start.
+   */
     run() {
         setInterval(() => {
             this.checkCollisions();
@@ -95,7 +113,9 @@ class World{
             this.isPepeSleeping();
         }, 1000/60 );
     }
-
+ /**
+   * checks collisions with enemies, coins and bottles.
+   */
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             this.checkCollisionWithCharacter(enemy);
@@ -108,7 +128,9 @@ class World{
         });
         
     }
-
+ /**
+   * checks collisions with character.
+   */
     checkCollisionWithCharacter(enemy) {
         if(this.character.isColliding(enemy) && enemy.isAlive) {
             this.registerTime();
@@ -122,11 +144,15 @@ class World{
             } 
         }
     }
-
+ /**
+   * returns whether it is a normal chicken or the endboss.
+   */
     enemyisNormalChicken(enemy) {
         return enemy.number >= 0;
     }
-
+ /**
+   * checks collisions with coin.
+   */
     checkCollisionWithCoin(coin) {
         if (this.character.isColliding(coin)) {
             this.coinsCollected += 12.5;
@@ -139,7 +165,9 @@ class World{
             playSound(this.CoinsEarnedAudio, 0.1);
             }
     }
-
+ /**
+   * checks collisions with bottle on the ground.
+   */
     checkCollisionWithBottle(bottle) {
         if (this.character.isColliding(bottle)) {
             for (let index = 0; index < this.bottles.length; index++) {
@@ -152,7 +180,9 @@ class World{
             };
             }
         }
-
+ /**
+   * kills enemy, plays dying/is-death-animation and stops speed.
+   */
     async killEnemy(enemy, ThrowableObject) {
         await this.checkIfEndbossWasKilled(enemy);
             enemy.speed = 0;
@@ -170,7 +200,10 @@ class World{
             playSound(this.EndbossDeadAudio, 0.2);
         } 
     }
-
+ /**
+   * Ths function clears the animation of the dead enemy.
+   * If the killed enemy is the endboss, this function plays a dying animation.
+   */
     checkIfEndbossWasKilled(enemy) {
         if (enemy.number < 0) {
             clearInterval(enemy.animation);
@@ -180,7 +213,9 @@ class World{
         }
         return Promise.resolve();         
     }
-
+ /**
+   * This functions plays the dying animation of the endboss and shows the game over screen.
+   */
     playDyingAnimation(enemy) {
         return new Promise ((resolve) => {
             let i = 0;
@@ -198,7 +233,9 @@ class World{
             this.leaveGame('won', this.coinsCollected);
         });          
     }
-
+ /**
+   * This function makes character being hurt by playing the hurt animation, removing energy and playing the hurt sound. It also saves the last time hurt into the variable currentTime.
+   */
     hurtCharacter(enemy) {
         this.character.playAnimation(this.character.IMAGES_HURT);
         let currentTime = new Date().getTime();
@@ -209,7 +246,9 @@ class World{
             playSound(this.HurtAudio, 1);
         } }
     }
-
+ /**
+   * This function decreases the coins available and updates the statusbar accordingly.
+   */
     decreaseCoins() {
         if (this.coinsCollected >= 12.5){
             this.coinsCollected += -12.5;
@@ -217,7 +256,10 @@ class World{
         }
     }
 
-
+ /**
+   * If D is pressed, this function lets Pepe throw a bottle, makes him be frightened if he was sleeping, saves time of Pepes last action and updates the number of bottles available.
+   * If there are no bottles left to kill the endboss, the game will end.
+   */
     checkThrowableObjects() {
         if (this.keyboard.D) {
             if (this.pepeisSleeping()) {
@@ -234,19 +276,30 @@ class World{
             }
         }
     }
-
+ /**
+   * updates infrmation on bottles available.
+   * Adds bottle to cnavas.
+   * Plays sound.
+   * Updates statusbar.
+   */
     updateBottles() {
         this.decreaseAwailableBottles();
             this.addBottleToCanvas();
             this.updateStatusbar(this.statusBarBottles, this.bottlesLeft, this.statusBarBottles.IMAGES_BOTTLES);
             playSound(this.throwingBottleAudio, 1);  
     }
-
+ /**
+   * Shows game over screen.
+   */
     showGameOverImage() {
         document.getElementById('explanation_board').classList.remove('d_none'); 
         document.getElementById('explanation_board').innerHTML = `<img class="game_over_img" src="img/You won, you lost/Game over A.png" alt="You Won">`;
     }
-
+ /**
+   * leaves game by stopping all intervals and showing the game over screen.
+   * @param {string} result - Indicates whether game was won or lost.
+   * @param {number} i - saves the reason to loose (1:no bottls left) or the coins that have been earned.
+   */
     leaveGame(result, i) {
         setTimeout(() => {
             this.clearAllIntervals();
@@ -254,7 +307,9 @@ class World{
             }, "2000");
     
     }
-
+ /**
+   * Returns whether there are more than 3 bottles left.
+   */
     enoughBottlesLeft(){
         return this.bottlesLeft >=3;
     }
