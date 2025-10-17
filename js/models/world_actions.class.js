@@ -167,7 +167,7 @@ world;
       this.world.keyboard.D = false;
       if (this.world.enoughBottlesLeft()) {
         this.world.updateBottles();
-      } else if (this.world.level.bottles.length < 3) {
+      } else if (this.world.level.bottles.length < 3 && this.world.enemies[this.world.enemies.length - 1].isAlive) {
         this.world.clearAllIntervals();
         this.world.showGameOverImage();
         this.world.leaveGame("lost", 1);

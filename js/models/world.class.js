@@ -367,15 +367,15 @@ class World  {
 
 
   /**
-   * if more than 10 secons have been passed since last action, function lets Pepe snooze.
-   * if more than 15 secons have been passed since last action, function lets Pepe fall asleep.
+   * if more than 0.5 seconds have been passed since last action, function lets Pepe snooze.
+   * if more than 15 seconds have been passed since last action, function lets Pepe fall asleep.
    */
   isPepeSleeping() {
     if (new Date().getTime() - this.lastAction > 15000) {
       this.character.isSnoozing = false;
       this.character.isSleeping = true;
       playSound(this.snoringSound, 0.2);
-    } else if (new Date().getTime() - this.lastAction > 1000) {
+    } else if (new Date().getTime() - this.lastAction > 500) {
       this.character.isSnoozing = true;
       stopSound(this.snoringSound);
     } else {
