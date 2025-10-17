@@ -25,7 +25,6 @@ world;
     if (this.world.character.isColliding(enemy) && enemy.isAlive) {
       this.world.registerTime();
       if (this.world.character.isFalling && this.world.character.isAboveGround() && this.enemyisNormalChicken(enemy)) {
-        this.world.character.jump(this.world.sound);
         this.killEnemy(enemy);
       } else {
         this.hurtCharacter(enemy);
@@ -132,8 +131,7 @@ world;
           enemy.currentImage = 0;
           resolve();
         }}, 1000 / 60);
-      this.world.showGameOverImage();
-      this.world.leaveGame("won", this.coinsCollected);
+      this.world.leaveGame("won", this.world.coinsCollected);
     });
   }
 
@@ -270,6 +268,11 @@ world;
    */
   letEndbossAttack() {
     this.world.veryCloseToEndboss = true;
+    // setTimeout(() => {
+    // this.world.enemies[this.world.enemies.length - 1].x -= 0.5;
+    // console.log('jumpijump')
+    // }, "1000");
+      //  this.world.enemies[this.world.enemies.length - 1].speed = 0.5;
     this.world.enemies[this.world.enemies.length - 1].emotionalStage = "attack";
     this.world.enemies[this.world.enemies.length - 1].animateEmotionalStage();
     this.world.enemies[this.world.enemies.length - 1].animation;

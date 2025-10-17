@@ -132,7 +132,15 @@ class Endboss extends MovableObject {
   endbossAttacks() {
     this.animation = setInterval(() => {
       this.playAnimation(this.IMAGES_ATTACKING);
+       setInterval(() => { 
+        this.x -= 20;
+      }, 1000); 
     }, 700);
+
+  
+
+    
+  
   }
 
   

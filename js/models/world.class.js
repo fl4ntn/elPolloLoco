@@ -231,6 +231,7 @@ class World  {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.addBasicsToCanvas();
     this.addStatusbarsToCanvas();
+    this.addCharacterToCanvas();
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.throwableObjects);
     this.ctx.translate(-this.camera_x, 0);
@@ -248,7 +249,6 @@ class World  {
   addBasicsToCanvas() {
     this.ctx.translate(this.camera_x, 0);
     this.addObjectsToMap(this.level.backgroundObjects);
-    this.addToMap(this.character);
     this.addObjectsToMap(this.level.clouds);
     this.addObjectsToMap(this.level.coins);
     this.addObjectsToMap(this.level.bottles);
@@ -264,6 +264,16 @@ class World  {
     this.addToMap(this.statusBarEnergy);
     this.addToMap(this.statusBarCoins);
     this.addToMap(this.statusBarBottles);
+  }
+
+   /**
+   * This method translates the canvas context based on the current camera position.
+   * Draws the character onto the canvas.
+   */
+  addCharacterToCanvas() {
+    this.ctx.translate(this.camera_x, 0);
+    this.addToMap(this.character);
+    this.ctx.translate(-this.camera_x, 0);
   }
 
 
