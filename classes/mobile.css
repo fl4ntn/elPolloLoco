@@ -1,43 +1,43 @@
 @media (max-width: 2000px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 33dvw;
     top: 24dvh;
-  }
+  } */
 }
 
 
 @media (max-width: 1730px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 32dvw;
-  }
+  } */
 }
 
 
 @media (max-width: 1655px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 30dvw;
-  }
+  } */
 }
 
 
 @media (max-width: 1515px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 28dvw;
-  }
+  } */
 }
 
 
 @media (max-width: 1370px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 26dvw;
-  }
+  } */
 }
 
 
 @media (max-width: 1240px) {
-  .leave_explanation {
+  /* .leave_explanation {
     gap: 340px;
-  }
+  } */
   .reason_for_loss {
     padding: 20px;
   }
@@ -45,42 +45,42 @@
 
 
 @media (max-width: 1210px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 24dvw;
-  }
+  } */
 }
 
 
 @media (max-width: 1100px) {
-  .explanation_board {
+  /* .explanation_board {
     top: 20dvh;
     left: 20dvw;
-  }
+  } */
 }
 
 
 @media (max-width: 1000px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 18dvw;
     top: 16dvh;
-  }
-  .width_581 {
+  } */
+  /* .width_581 {
     width: 561px;
-  }
+  } */
 }
 
 
 @media (max-width: 870px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 10dvw;
-  }
+  } */
 }
 
 
 @media (max-width: 767px) {
-  .explanation_board {
+  /* .explanation_board {
     left: 6dvw;
-  }
+  } */
 }
 
 
@@ -95,16 +95,16 @@
   .reason_for_loss {
     padding: 10px;
   }
-  .leave_explanation {
+  /* .leave_explanation {
     display: flex;
     justify-content: space-between;
     width: 100%;
     gap: 0;
     text-shadow: -3px 0px 6px #fcdbbd;
-  }
-  .settings {
+  } */
+  /* .settings {
     justify-content: space-around;
-  }
+  } */
   .pos_ab {
     z-index: 99;
   }
@@ -145,9 +145,9 @@
   h1 {
     display: none;
   }
-  .explanation_board {
+  /* .explanation_board {
     top: 10dvh;
-  }
+  } */
   canvas {
     margin-top: 0px;
   }
@@ -171,23 +171,23 @@
   .you_lost_img {
     height: 220px;
   }
-  .explanation_board {
+  /* .explanation_board {
     top: 0;
-  }
+  } */
 }
 
 
 @media (max-height: 400px) {
-  .explanation_board {
+  /* .explanation_board {
     padding-top: 0px;
-  }
-  .width_581 {
+  } */
+  /* .width_581 {
     width: 520px;
     margin-left: 46px;
-  }
-  .leave_settings {
+  } */
+  /* .leave_settings {
     gap: 100px;
-  }
+  } */
 }
 
 
@@ -195,13 +195,13 @@
   .you_won_img {
     height: 140px;
   }
-  .width_581 {
+  /* .width_581 {
     width: 520px;
     margin-left: 20px;
-  }
-  .leave_explanation {
+  } */
+  /* .leave_explanation {
     margin-bottom: 20px;
-  }
+  } */
   .spaceholder {
     width: 560px;
   }
@@ -215,22 +215,22 @@
 
 
 @media (max-height: 361px) {
-  .width_581 {
+  /* .width_581 {
     margin-left: 55px;
-  }
-  .explanation_board {
+  } */
+  /* .explanation_board {
     height: 340px;
     padding-top: 12px;
-  }
+  } */
 }
 
 
 @media (max-height: 344px) {
-  .width_581 {
+  /* .width_581 {
     margin-left: 25px;
-  }
-  .explanation_board {
+  } */
+  /* .explanation_board {
     width: 500px;
     padding-top: 2px;
-  }
+  } */
 }

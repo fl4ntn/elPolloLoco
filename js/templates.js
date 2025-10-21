@@ -18,7 +18,7 @@ function getExplanationBoardTemplate() {
 
 function getSettingsOverlay() {
     return `
-    <div style="padding-top:64px;">
+    <div class="settings_div">
         <div class="settings">
             <div onclick="updateSoundSettings()" class="settings_option">
                 <div class="ticked_box">
