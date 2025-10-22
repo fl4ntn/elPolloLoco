@@ -138,7 +138,8 @@ class Character extends MovableObject {
   checkDirection() {
     this.ifPepeIsWalkingRight();
     this.ifPepeIsWalkingLeft();
-    this.ifPepeIsJumping();
+    this.ifSpaceisPressed();
+    // this.ifPepeIsJumping();
   }
 
 
@@ -167,24 +168,62 @@ class Character extends MovableObject {
     }
   }
 
+  ifSpaceisPressed(){
+    if (
+      (this.world.keyboard.SPACE && !this.isAboveGround()) ||
+      (this.world.keyboard.UP && !this.isAboveGround())
+    ) {
+        this.jump(this.sound);
+        this.world.registerTime();
+    }
+  }
+
 
   /**
    * If Pepe is jumping, this function starts the correct animation and saves information on the direction for other functions.
    */
   ifPepeIsJumping() {
     if (
-      (this.world.keyboard.SPACE && !this.isAboveGround()) ||
-      (this.world.keyboard.UP && !this.isAboveGround())
+      (this.y < 200 )
     ) {
-      this.playAnimation(this.IMAGES_JUMPING);
-      this.jump(this.sound);
-      // console.log(this.isFalling);
-      // if (this.reachedVertexPoint()) {
-      //   this.playAnimation("img/2_character_pepe/3_jump/J-37.png");
+        
+        this.playAnimation(this.IMAGES_JUMPING);
+       
       // }
-      this.world.registerTime();
+    //   if (this.isFalling) {
+    //     this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
+    //   }
+    //    if (
+    //   (this.world.keyboard.SPACE && !this.isAboveGround()) ||
+    //   (this.world.keyboard.UP && !this.isAboveGround())
+    // ) {
+    //     this.jump(this.sound);
+    //     this.playAnimation(this.IMAGES_JUMPING);
+    //     console.log(this.currentImage);
+    //   // }
+    //   if (this.isFalling) {
+    //     this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
+    //   }
+      
+      
+      // this.jump(this.sound);
+      // this.playAnimation(this.IMAGES_JUMPING);
+      // // console.log(this.isFalling);
+      // // if (this.reachedVertexPoint()) {
+      // //   this.playAnimation("img/2_character_pepe/3_jump/J-37.png");
+      // // }
+      // this.world.registerTime();
     }
+    // if (this.isFalling) {
+    //   this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
+    // }
   }
+
+  // ifPepeisFalling() {
+  //   if (this.speedY <= 30 && this.y < ) {
+      
+  //   }
+  // }
 
 
   /**
@@ -212,10 +251,9 @@ class Character extends MovableObject {
       this.playAnimation(this.IMAGES_HURT);
     } else if (this.isAboveGround()) {
       this.playAnimation(this.IMAGES_JUMPING);
-       if (this.reachedVertexPoint()) {
-        // this.playAnimation("img/2_character_pepe/3_jump/J-37.png");
-        this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"]
-      }
+      //  if (this.reachedVertexPoint()) {
+      //   this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"]
+      // }
     } else {
       this.ifPepeIsMoving();
     }
