@@ -100,8 +100,11 @@ class MovableObject extends DrawableObject {
    * plays animation of the iages by saving the images into the variable currentImage.
    * @param {array} images - array of the images.
    */
-  playAnimation(images) {
+  playAnimation(images, pauseAnimation) {
     let i = this.currentImage % images.length;
+    if (i == pauseAnimation) {
+      this.x -= 60;
+    }
     let path = images[i];
     this.img = this.imageCache[path];
     this.currentImage++;
@@ -130,6 +133,7 @@ class MovableObject extends DrawableObject {
    */
   jump(sound) {
     this.speedY = 30;
+    
     if (sound.activated) {
       this.jumpingSound.play();
     }

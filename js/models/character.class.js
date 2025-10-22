@@ -27,15 +27,12 @@ class Character extends MovableObject {
     "img/2_character_pepe/3_jump/J-32.png",
     "img/2_character_pepe/3_jump/J-33.png",
     "img/2_character_pepe/3_jump/J-34.png",
-    "img/2_character_pepe/3_jump/J-34.png",
-    "img/2_character_pepe/3_jump/J-34.png",
     "img/2_character_pepe/3_jump/J-35.png",
-    "img/2_character_pepe/3_jump/J-35.png",
-    "img/2_character_pepe/3_jump/J-35.png",
-    "img/2_character_pepe/3_jump/J-36.png",
-    "img/2_character_pepe/3_jump/J-36.png",
     "img/2_character_pepe/3_jump/J-36.png",
     "img/2_character_pepe/3_jump/J-37.png",
+  ];
+
+  IMAGES_LANDING = [
     "img/2_character_pepe/3_jump/J-38.png",
     "img/2_character_pepe/3_jump/J-39.png",
   ];
@@ -179,7 +176,12 @@ class Character extends MovableObject {
       (this.world.keyboard.SPACE && !this.isAboveGround()) ||
       (this.world.keyboard.UP && !this.isAboveGround())
     ) {
+      this.playAnimation(this.IMAGES_JUMPING);
       this.jump(this.sound);
+      // console.log(this.isFalling);
+      // if (this.reachedVertexPoint()) {
+      //   this.playAnimation("img/2_character_pepe/3_jump/J-37.png");
+      // }
       this.world.registerTime();
     }
   }
@@ -210,6 +212,10 @@ class Character extends MovableObject {
       this.playAnimation(this.IMAGES_HURT);
     } else if (this.isAboveGround()) {
       this.playAnimation(this.IMAGES_JUMPING);
+       if (this.reachedVertexPoint()) {
+        // this.playAnimation("img/2_character_pepe/3_jump/J-37.png");
+        this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"]
+      }
     } else {
       this.ifPepeIsMoving();
     }
