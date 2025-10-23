@@ -100,6 +100,7 @@ class Character extends MovableObject {
     super().loadImg("img/2_character_pepe/2_walk/W-21.png");
     this.loadImages(this.IMAGES_WALKING);
     this.loadImages(this.IMAGES_JUMPING);
+    this.loadImages(this.IMAGES_LANDING);
     this.loadImages(this.IMAGES_FRIGHTENED);
     this.loadImages(this.IMAGES_HURT);
     this.loadImages(this.IMAGES_DEAD);
@@ -138,8 +139,7 @@ class Character extends MovableObject {
   checkDirection() {
     this.ifPepeIsWalkingRight();
     this.ifPepeIsWalkingLeft();
-    this.ifSpaceisPressed();
-    // this.ifPepeIsJumping();
+    this.ifPepeIsJumping();
   }
 
 
@@ -168,7 +168,7 @@ class Character extends MovableObject {
     }
   }
 
-  ifSpaceisPressed(){
+  ifPepeIsJumping(){
     if (
       (this.world.keyboard.SPACE && !this.isAboveGround()) ||
       (this.world.keyboard.UP && !this.isAboveGround())
@@ -177,54 +177,7 @@ class Character extends MovableObject {
         this.world.registerTime();
     }
   }
-
-
-  /**
-   * If Pepe is jumping, this function starts the correct animation and saves information on the direction for other functions.
-   */
-  ifPepeIsJumping() {
-    if (
-      (this.y < 200 )
-    ) {
-        
-        this.playAnimation(this.IMAGES_JUMPING);
-       
-      // }
-    //   if (this.isFalling) {
-    //     this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
-    //   }
-    //    if (
-    //   (this.world.keyboard.SPACE && !this.isAboveGround()) ||
-    //   (this.world.keyboard.UP && !this.isAboveGround())
-    // ) {
-    //     this.jump(this.sound);
-    //     this.playAnimation(this.IMAGES_JUMPING);
-    //     console.log(this.currentImage);
-    //   // }
-    //   if (this.isFalling) {
-    //     this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
-    //   }
-      
-      
-      // this.jump(this.sound);
-      // this.playAnimation(this.IMAGES_JUMPING);
-      // // console.log(this.isFalling);
-      // // if (this.reachedVertexPoint()) {
-      // //   this.playAnimation("img/2_character_pepe/3_jump/J-37.png");
-      // // }
-      // this.world.registerTime();
-    }
-    // if (this.isFalling) {
-    //   this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
-    // }
-  }
-
-  // ifPepeisFalling() {
-  //   if (this.speedY <= 30 && this.y < ) {
-      
-  //   }
-  // }
-
+  
 
   /**
    * Checks, which status Pepe is in and starts correct animation.
@@ -237,13 +190,6 @@ class Character extends MovableObject {
     } else if (this.isSleeping) {
       this.putPepeinSleepingMode();
     }
-    //  else if (this.isHurt()) {
-    //   this.playAnimation(this.IMAGES_HURT);
-    // } else if (this.isAboveGround()) {
-    //   this.playAnimation(this.IMAGES_JUMPING);
-    // } else {
-    //   this.ifPepeIsMoving();
-    // }
   }
 
     checkStatus2() {
@@ -251,9 +197,12 @@ class Character extends MovableObject {
       this.playAnimation(this.IMAGES_HURT);
     } else if (this.isAboveGround()) {
       this.playAnimation(this.IMAGES_JUMPING);
-      //  if (this.reachedVertexPoint()) {
-      //   this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"]
-      // }
+       if (this.speedY < 0 ) {
+        this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
+        if (this.speedY < -20) {
+          this.playAnimation(this.IMAGES_LANDING);
+        }
+      }
     } else {
       this.ifPepeIsMoving();
     }
