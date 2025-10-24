@@ -35,7 +35,7 @@ function init() {
  * function adapts css classes so that the design suits the game setup when starting.
  */
 function adaptCssClassesOnLoad() {
-  document.getElementById("explanation_board").classList.remove("top_290");
+  // document.getElementById("explanation_board").classList.remove("top_290");
   document.getElementById("explanation_board").classList.add("d_none");
   document.getElementById("restart_game").classList.remove("d_none");
   document.getElementById("exit_game").classList.remove("d_none");
@@ -72,7 +72,7 @@ function openSettings() {
 function getExplanationBoard() {
   document.getElementById("explanation_board").innerHTML =
     getExplanationBoardTemplate();
-  document.getElementById("explanation_board").classList.remove("top_290");
+  // document.getElementById("explanation_board").classList.remove("top_290");
 }
 
 
@@ -82,7 +82,7 @@ function getExplanationBoard() {
 function openExplanation() {
   document.getElementById("explanation_board").innerHTML =
     getExplanaionOverlay();
-  document.getElementById("explanation_board").classList.add("top_290");
+  // document.getElementById("explanation_board").classList.add("top_290");
 }
 
 
@@ -281,10 +281,10 @@ function gameOver(i, enemiesKilled) {
   exitGame();
   if (youWon) {
     document.getElementById("explanation_board").innerHTML = getYouWonScreen(i, enemiesKilled);
-    document.getElementById("explanation_board").classList.add("top_290");
+    // document.getElementById("explanation_board").classList.add("top_290");
   } else {
     document.getElementById("explanation_board").innerHTML = getYouLostScreen(i);
-    document.getElementById("explanation_board").classList.add("top_290");
+    // document.getElementById("explanation_board").classList.add("top_290");
   }
 }
 
@@ -395,5 +395,14 @@ function switchLevelSettings() {
  * opens imprint on new tab.
  */
 function openImprint() {
-  window.open((href = "imprint.html"));
+  // window.open((href = "imprint.html"));
+  document.getElementById('explanation_board').innerHTML = getImprintScreen();
+  document.getElementById('explanation_board').classList.add('scroll');
+  document.getElementsByTagName('h1')[0].innerHTML = "Terms of Use and Legal Notices";
+}
+
+function closeImprint() {
+  document.getElementsByTagName('h1')[0].innerHTML = "El Pollo Loco";
+  document.getElementById('explanation_board').classList.remove('scroll');
+  getExplanationBoard();
 }
