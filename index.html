@@ -31,7 +31,7 @@
 
 </head>
 
-<body class="height100" onload="getExplanationBoard(); mobileScreen()">
+<body class="height100" onload="getExplanationBoard()">
 
     <h1>El Pollo Loco</h1>
     
@@ -47,13 +47,13 @@
         </div>
         
         </div>
-        <div id="mobile_buttons" class="mobile_buttons d_none">
+        <div id="mobile_buttons" class="mobile_buttons">
             <div id="walking_btns" class="action_buttons flex_end">
                 <div id="move_left_btn" class="btn"><i class="arrow left"></i></div>
                 <div id="move_right_btn" class="btn"><i class="arrow right"></i></div>
             </div>
             <div class="spaceholder"></div>
-            <div id="action_btns" class="action_buttons flex_estart">
+            <div id="action_btns" class="action_buttons flex_start">
                 <div id="jump_btn" class="btn"><i class="arrow up"></i></div>
                 <div id="throw_btn" class="btn">X</div>
             </div>
@@ -61,7 +61,7 @@
         </div>
     
     <div id="imprint" onclick="openImprint()" class="imprint">Imprint</div>
-    <div id="full_screen" class="full_screen d_none">Please turn your device</div>
+    <div id="full_screen" class="full_screen">Please turn your device</div>
 </body>
 <script src="js/game.js"></script>
 <script src="js/templates.js"></script>

@@ -244,6 +244,12 @@
    canvas {
     width: 560px;
    }
+  .spaceholder {
+    width: 560px;
+  }
+  .action_buttons {
+    width: calc((100% - 560px) / 2);
+}
        
 }
 
@@ -258,9 +264,9 @@
   /* canvas {
     margin-top: 0px;
   } */
-  .mobile_buttons {
+  /* .mobile_buttons {
     top: 0px;
-  }
+  } */
   .imprint {
     font-size: 16px;
   }
@@ -274,6 +280,12 @@
   .map {
     height: 65px;
   }
+    .spaceholder {
+    width: 480px;
+  }
+  .action_buttons {
+    width: calc((100% - 480px) / 2);
+}
 }
 
 
@@ -297,6 +309,12 @@
    canvas {
     width: 400px;
    }
+     .spaceholder {
+    width: 400px;
+  }
+  .action_buttons {
+    width: calc((100% - 400px) / 2);
+}
 }
 
 
@@ -325,7 +343,7 @@
   /* .leave_explanation {
     margin-bottom: 20px;
   } */
-  .spaceholder {
+  /* .spaceholder {
     width: 560px;
   }
   .arrow {
@@ -333,7 +351,7 @@
   }
   .action_buttons {
     width: calc((100% - 560px) / 2);
-  }
+  } */
 }
 
 
@@ -356,4 +374,16 @@
     width: 500px;
     padding-top: 2px;
   } */
+}
+
+@media (pointer:coarse) {
+  .mobile_buttons {
+    display: flex;
+  }
+  @media (orientation: portrait) {
+     .full_screen {
+      display: flex;
+    } 
+    }
+
 }

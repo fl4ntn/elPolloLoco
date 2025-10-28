@@ -215,25 +215,24 @@ document.getElementById("throw_btn").addEventListener("touchend", (e) => {
 /**
  * adapts css classes based on screen orientation.
  */
-function mobileScreen() {
-  if (
-    !screen.orientation.type.startsWith("landscape") &&
-    window.innerWidth < 980
-  ) {
-    document.getElementById("full_screen").classList.remove("d_none");
-  } else {
-    document.getElementById("full_screen").classList.add("d_none");
-    document.getElementById("explanation_board").classList.add("width_581");
-  }
-}
+// function mobileScreen() {
+//   if (
+//     !screen.orientation.type.startsWith("landscape") &&
+//     window.innerWidth < 980
+//   ) {
+//     document.getElementById("full_screen").classList.remove("d_none");
+//   } else {
+//     document.getElementById("full_screen").classList.add("d_none");
+//   }
+// }
 
 
 /**
  * when screen orientation changes, mobile screen is shown.
  */
-screen.orientation.addEventListener("change", () => {
-  mobileScreen();
-});
+// screen.orientation.addEventListener("change", () => {
+//   mobileScreen();
+// });
 
 
 /**
