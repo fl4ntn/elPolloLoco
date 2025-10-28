@@ -11,7 +11,7 @@ class World  {
   sound;
   endbossWasHit = 0;
   character = new Character(sound);
-  bottlesLeft = 40;
+  bottlesLeft = 100;
   coinsCollected = 0;
   currentEnemey;
   bottleNumber = 0;
@@ -198,7 +198,7 @@ class World  {
    * decreases the amount of bottles left.
    */
   decreaseAwailableBottles() {
-    this.bottlesLeft += -3;
+    this.bottlesLeft += -10;
     this.bottleNumber += 1;
   }
 
@@ -207,7 +207,7 @@ class World  {
    * increases the amount of bottles left.
    */
   increaseAwailableBottles() {
-    this.bottlesLeft += 3;
+    this.bottlesLeft += 5;
   }
 
 

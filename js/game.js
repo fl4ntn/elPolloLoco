@@ -1,7 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let sound = new Sound();
+let sound = new Sound(getSoundInfoFromLocalStorage());
 let currentLevel = 1;
 let youWon = false;
 let reasonsToLooose = ["You ran out of energy...", "No bottles left to kill the Endboss",];
@@ -16,6 +16,7 @@ let touchDevice = window.matchMedia("(pointer: coarse)").matches;
  * It also adapts css classes and plays music if sound is on.
  */
 function init() {
+  
   if (currentLevel == 1) {
     initLevel();
   } else {
@@ -72,6 +73,7 @@ function openSettings() {
 function getExplanationBoard() {
   document.getElementById("explanation_board").innerHTML =
     getExplanationBoardTemplate();
+    // getSoundInfoFromLocalStorage();
   // document.getElementById("explanation_board").classList.remove("top_290");
 }
 
@@ -300,6 +302,21 @@ function playSound(type, volume) {
   }
 }
 
+function saveSoundInfoToLocalStorage(activated) {
+    localStorage.setItem("sound activated", activated);
+}
+
+function getSoundInfoFromLocalStorage() {
+  // saveSoundInfoToLocalStorage(sound.activated);
+  let soundON = localStorage.getItem("sound activated");
+  // if (soundON == true) {
+  //   sound.activated = true;
+  // } else {
+  //   sound.activated = false;
+  // }
+  return soundON;
+}
+
 
 /**
  * stops sound.
@@ -339,6 +356,8 @@ function updateSoundButton() {
 }
 
 
+
+
 /**
  * shows on game canvas whether sound is activated or not.
  */
@@ -360,6 +379,7 @@ function switchSoundSettings() {
   } else {
     sound.activated = true;
   }
+  saveSoundInfoToLocalStorage(sound.activated);
 }
 
 
