@@ -1,9 +1,9 @@
 class Bottle extends MovableObject {
   offset = {
     top: 20,
-    left: 20,
-    right: 20,
-    bottom: 20,
+    left: 30,
+    right: 35,
+    bottom: 10,
   };
   number;
 
@@ -21,5 +21,9 @@ class Bottle extends MovableObject {
     this.width = 80;
     this.height = 80;
     this.y = 380;
+    if (image == "img/6_salsa_bottle/1_salsa_bottle_on_ground.png") {
+      this.offset.left = 40;
+      this.offset.right = 20;
+    }
   }
 }

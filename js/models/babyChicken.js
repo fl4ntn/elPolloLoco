@@ -1,9 +1,9 @@
 class BabyChicken extends MovableObject {
   offset = {
-    top: -20,
-    left: -20,
-    right: -20,
-    bottom: -20,
+    top: 3,
+    left: 2,
+    right: 2,
+    bottom: 3,
   };
   walkingSpeed;
   speed = 0;

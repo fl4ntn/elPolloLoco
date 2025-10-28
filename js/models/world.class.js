@@ -302,6 +302,10 @@ class World  {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
+    if (mo.drawOffsetFrame) {
+      mo.drawFrame(this.ctx);
+        mo.drawOffsetFrame(this.ctx);
+    }
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }

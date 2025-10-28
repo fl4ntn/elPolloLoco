@@ -1,9 +1,9 @@
 class Chicken extends MovableObject {
   offset = {
-    top: -5,
-    left: -5,
-    right: -5,
-    bottom: -5,
+    top: 3,
+    left: 2,
+    right: 2,
+    bottom: 3,
   };
   walkingSpeed;
   speed = 0;
