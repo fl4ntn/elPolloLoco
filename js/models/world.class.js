@@ -11,7 +11,7 @@ class World  {
   sound;
   endbossWasHit = 0;
   character = new Character(sound);
-  bottlesLeft = 100;
+  bottlesLeft = 40;
   coinsCollected = 0;
   currentEnemey;
   bottleNumber = 0;
@@ -385,7 +385,7 @@ class World  {
       this.character.isSnoozing = false;
       this.character.isSleeping = true;
       playSound(this.snoringSound, 0.2);
-    } else if (new Date().getTime() - this.lastAction > 500) {
+    } else if (new Date().getTime() - this.lastAction > 1) {
       this.character.isSnoozing = true;
       stopSound(this.snoringSound);
     } else {

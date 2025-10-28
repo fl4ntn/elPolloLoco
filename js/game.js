@@ -398,11 +398,13 @@ function openImprint() {
   // window.open((href = "imprint.html"));
   document.getElementById('explanation_board').innerHTML = getImprintScreen();
   document.getElementById('explanation_board').classList.add('scroll');
+  document.getElementById('imprint').classList.add('d_none');
   document.getElementsByTagName('h1')[0].innerHTML = "Terms of Use and Legal Notices";
 }
 
 function closeImprint() {
   document.getElementsByTagName('h1')[0].innerHTML = "El Pollo Loco";
   document.getElementById('explanation_board').classList.remove('scroll');
+  document.getElementById('imprint').classList.remove('d_none');
   getExplanationBoard();
 }

@@ -73,6 +73,12 @@
   h1 {
     font-size: 36px;
   }
+  .content {
+    font-size: 14px;
+  }
+  .you_won_img {
+    height: 220px;
+}
 }
 
 
@@ -80,12 +86,12 @@
   .map {
     height: 65px;
   }
-  .imprint {
+  /* .imprint {
     font-size: 16px;
-  }
-  h1 {
+  } */
+  /* h1 {
     font-size: 64px;
-  }
+  } */
 }
 
 
@@ -101,6 +107,90 @@
     width: 100%;
   }
 }
+
+
+@media only screen and (max-width: 700px) {
+  .you_lost_img {
+    height: 200px;
+  }
+  .explanation_text {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-height: 200px;
+}
+}
+
+@media only screen and (max-width: 560px) {
+    .restart_game {
+      font-size: 20px;
+      margin: 6px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    .you_lost_img {
+      height: 160px;
+    }
+    .you_won_img {
+      height: 180px;
+    }
+    .font60 {
+      font-size: 40px;
+    }
+    .explanation_text {
+    font-size: 18px;
+    max-height: 140px;
+  }
+}
+
+@media only screen and (max-width: 464px) {
+    .results {
+      gap: 20px;
+    }
+    .font40 {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  /* .settings {
+    width: 100%;
+  } */
+  .you_lost_img {
+      height: 120px;
+  }
+  .font40 {
+    font-size: 26px;
+  }
+   .you_won_img {
+      height: 140px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .restart_game {
+      font-size: 16px;
+      margin: 4px;
+    }
+}
+
+@media only screen and (max-width: 376px) {
+  .result_div {
+    background-color: rgb(255 187 0 / 36%);
+    flex-direction: column;
+    gap: 0px;
+  }
+ .results {
+    padding-bottom: 8px;
+  }
+  .settings {
+    padding: 10px;
+  }
+   .explanation_text {
+    max-height: 100px;
+}
+}
+
 
 
 @media screen and (orientation: landscape) {

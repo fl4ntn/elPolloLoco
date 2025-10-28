@@ -186,9 +186,9 @@ function getImprintScreen(){
                 <div>If you have any questions regarding these Terms, please contact:
                     Flynn Anton - my.email@email.com - +491786806732 - Niemeyerstr. 10, 30449 Hannover</div>
             </div>
-
+            <div  class="sub_div back_btn" onclick="closeImprint()">Go back<div>
         </div>
-        <div onclick="closeImprint()">Go back<div>
+        
 
     </div>
     

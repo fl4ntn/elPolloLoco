@@ -159,7 +159,7 @@ world;
   checkThrowableObjects() {
     if (this.world.keyboard.D) {
       if (this.world.pepeisSleeping()) {
-        this.world.character.playAnimation(this.character.IMAGES_FRIGHTENED);
+        this.world.character.playAnimation(this.world.character.IMAGES_FRIGHTENED);
       }
       this.world.registerTime();
       this.world.keyboard.D = false;
