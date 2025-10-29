@@ -97,8 +97,7 @@ world;
       playSound(this.world.BabyChickenDeadAudio, 0.05);
     } else {
       playSound(this.world.EndbossDeadAudio, 0.2);
-    }
-  }
+    }}
 
 
   /**
@@ -170,8 +169,7 @@ world;
         this.world.showGameOverImage();
         this.world.leaveGame("lost", 1);
       }
-    }
-  }
+    }}
 
 
   /**
@@ -268,11 +266,6 @@ world;
    */
   letEndbossAttack() {
     this.world.veryCloseToEndboss = true;
-    // setTimeout(() => {
-    // this.world.enemies[this.world.enemies.length - 1].x -= 0.5;
-    // console.log('jumpijump')
-    // }, "1000");
-      //  this.world.enemies[this.world.enemies.length - 1].speed = 0.5;
     this.world.enemies[this.world.enemies.length - 1].emotionalStage = "attack";
     this.world.enemies[this.world.enemies.length - 1].animateEmotionalStage();
     this.world.enemies[this.world.enemies.length - 1].animation;

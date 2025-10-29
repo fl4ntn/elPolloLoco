@@ -168,6 +168,10 @@ class Character extends MovableObject {
     }
   }
 
+
+  /**
+   * If Space is pressed and Pepe is on the ground, Pepe will jump.
+   */
   ifPepeIsJumping(){
     if (
       (this.world.keyboard.SPACE && !this.isAboveGround()) ||
@@ -192,6 +196,10 @@ class Character extends MovableObject {
     }
   }
 
+
+  /**
+   * Chacks if Pepe is hurt, is above ground or is moving.
+   */
     checkStatus2() {
     if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);

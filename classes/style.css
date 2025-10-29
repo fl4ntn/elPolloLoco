@@ -3,7 +3,6 @@
     src: url('../fonts/Zabars.ttf') format('truetype');
 }
 
-
 body {
     display: flex;
     flex-direction: column;
@@ -18,11 +17,9 @@ body {
     font-family: 'zabars', Arial, Helvetica, sans-serif;
 }
 
-
 .height100 {
     height: 100dvh;
 }
-
 
 .full_screen {
     width: 100dvw;
@@ -39,7 +36,6 @@ body {
     font-size: 20px;
 }
 
-
 h1 {
     font-size: 68px;
     font-weight: 100;
@@ -48,7 +44,6 @@ h1 {
     margin: 0;
 }
 
-
 canvas {
     box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.5);
     border-radius: 2%;
@@ -56,44 +51,38 @@ canvas {
     background-color: #0000003b;
 }
 
-
 .game_screen {
     display: flex;
     justify-content: end;
     position: relative;
 }
 
+
 .scroll {
     overflow-y: scroll;
     scrollbar-width: none;
 }
 
-
 .pos_ab {
     position: absolute;
 }
 
-
 .z_99 {
     z-index: 99;
 }
-
 
 .restart_game {
     margin: 8px;
     font-size: 24px;
 }
 
-
 .restart_game:hover {
     cursor: pointer;
 }
 
-
 .map {
     height: 100px;
 }
-
 
 .explanation_board {
     display: flex;
@@ -106,12 +95,6 @@ canvas {
     width: 100%;
 }
 
-
-/* .width_581 {
-    width: 581px;
-} */
-
-
 .explanation_box {
     display: flex;
     flex-direction: column;
@@ -121,17 +104,14 @@ canvas {
     filter: saturate(0.5);
 }
 
-
 .explanation_box:hover {
     cursor: pointer;
     filter: sepia(1);
 }
 
-
 .d_none {
     display: none !important;
 }
-
 
 .settings_overlay {
     height: 480px;
@@ -151,17 +131,14 @@ canvas {
     justify-content: space-around;
 }
 
-
 .rotate {
    transform: rotate(45deg); 
 }
-
 
 .rotate:hover {
     filter: invert(1);
     opacity: 0.7;
 }
-
 
 .mobile_buttons {
     display: none;
@@ -173,28 +150,23 @@ canvas {
     margin: 0;
 }
 
-
 .spaceholder {
     width: 740px;
 }
-
 
 .flex_end {
     align-items: flex-end;
 }
 
-
 .flex_start {
     align-items: flex-start;
 }
-
 
 .action_buttons {
     display: flex;
     flex-direction: column;
     width: calc((100% - 720px) / 2);
 }
-
 
 .btn {
     height: 52px;
@@ -210,11 +182,9 @@ canvas {
     margin: 6px;
 }
 
-
 .btn:hover {
     cursor: pointer;
 }
-
 
 .arrow {
   border: solid black;
@@ -223,24 +193,20 @@ canvas {
   padding: 6px;
 }
 
-
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
 }
-
 
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
 }
 
-
 .up {
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
-
 
 .settings {
    display: flex;
@@ -248,7 +214,6 @@ canvas {
     align-items: center;
     padding: 20px;
 }
-
 
 .settings_option {
     display: flex;
@@ -258,11 +223,9 @@ canvas {
     width: 200px;
 }
 
-
 .ticked_box {
     display: flex;
 }
-
 
 .box {
     border: 3px solid black;
@@ -272,11 +235,9 @@ canvas {
     margin: 4px;
 }
 
-
 .ticked_box:hover {
     cursor: pointer;
 }
-
 
 .cross {
     position: absolute;
@@ -284,45 +245,36 @@ canvas {
     margin-left: 5px;
 }
 
-
 .font60 {
     font-size: 60px;
     margin: 0;
 }
-
 
 .font40 {
     font-size: 32px;
     margin: 0;
 }
 
-
 .font60:hover {
     cursor: pointer;
 }
 
-
 .leave_settings {
     display: flex;
-    /* gap: 200px; */
-    /* margin-top: 40px; */
     text-shadow: -3px 0px 6px #FCDBBD;
     justify-content: space-between;
     padding: 0 20px;
 }
-
 
 .explanation_text {
     font-size: 24px;
     margin-bottom: 12px;
 }
 
-
 .keyboard_explanation {
     display: flex;
     gap: 12px;
 }
-
 
 .leave_explanation {
     display: flex;
@@ -331,11 +283,9 @@ canvas {
     text-shadow: -3px 0px 6px #fcdbbd;
 }
 
-
 .hover:hover {
     cursor: pointer;
 }
-
 
 .imprint {
     font-size: 20px;
@@ -345,34 +295,28 @@ canvas {
     font-family: 'Helvetica' !important;
 }
 
-
 .imprint:hover {
     cursor: pointer;
     text-decoration: underline;
 }
-
 
 .game_over_img {
     height: 200px;
     padding-top:64px;
 }
 
-
 .you_lost_img {
     height: 260px;
 }
-
 
 .you_won_img {
     height: 300px;
 }
 
-
 .reason_for_loss {
     padding: 40px;
     padding-bottom: 80px;
 }
-
 
 .result_div {
     display: flex;
@@ -380,7 +324,6 @@ canvas {
     background-color: rgb(255, 187, 0);
     border-radius: 7px;
 }
-
 
 .results {
     display: flex;
@@ -420,4 +363,3 @@ canvas {
 .back_btn:hover {
     cursor: pointer;
 }
-

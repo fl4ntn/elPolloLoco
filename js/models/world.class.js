@@ -145,10 +145,7 @@ class World  {
 
 
   /**
-   * updates infrmation on bottles available.
-   * Adds bottle to cnavas.
-   * Plays sound.
-   * Updates statusbar.
+   * updates information on bottles available, adds bottle to cnavas, plays sound, updates statusbar.
    */
   updateBottles() {
     this.decreaseAwailableBottles();
@@ -243,8 +240,7 @@ class World  {
 
 
   /**
-   * This method translates the canvas context based on the current camera position.
-   * Draws all basic game elements onto the canvas.
+   * Translates the canvas context based on the current camera position and draws all basic game elements onto the canvas.
    */
   addBasicsToCanvas() {
     this.ctx.translate(this.camera_x, 0);
@@ -267,8 +263,7 @@ class World  {
   }
 
    /**
-   * This method translates the canvas context based on the current camera position.
-   * Draws the character onto the canvas.
+   * This method translates the canvas context based on the current camera position and draws the character onto the canvas.
    */
   addCharacterToCanvas() {
     this.ctx.translate(this.camera_x, 0);
@@ -289,23 +284,16 @@ class World  {
 
 
   /**
-   *  Adds a single movable object to the canvas.
-   *
-   * If the object is facing the opposite direction (otherDirection = true),
-   * its image is temporarily flipped horizontally before drawing.
+   * Adds a single movable object to the canvas.
+   * If the object is facing the opposite direction (otherDirection = true), its image is temporarily flipped horizontally before drawing.
    * After rendering the object, the image orientation is restored.
    * @param {object} mo - single movable object.
-   *
    */
   addToMap(mo) {
     if (mo.otherDirection) {
       this.flipImage(mo);
     }
     mo.draw(this.ctx);
-    if (mo.drawOffsetFrame) {
-      mo.drawFrame(this.ctx);
-        mo.drawOffsetFrame(this.ctx);
-    }
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }
@@ -325,8 +313,7 @@ class World  {
 
 
   /**
-   * This method resets the object's horizontal position and restores the
-   * canvas context to its previous state.
+   * This method resets the object's horizontal position and restores the canvas context to its previous state.
    * @param {object} mo - single movable object.
    */
   flipImageBack(mo) {
@@ -381,7 +368,7 @@ class World  {
 
 
   /**
-   * if more than 0.5 seconds have been passed since last action, function lets Pepe snooze.
+   * if more than 0.01 seconds have been passed since last action, function lets Pepe snooze.
    * if more than 15 seconds have been passed since last action, function lets Pepe fall asleep.
    */
   isPepeSleeping() {

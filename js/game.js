@@ -36,7 +36,6 @@ function init() {
  * function adapts css classes so that the design suits the game setup when starting.
  */
 function adaptCssClassesOnLoad() {
-  // document.getElementById("explanation_board").classList.remove("top_290");
   document.getElementById("explanation_board").classList.add("d_none");
   document.getElementById("restart_game").classList.remove("d_none");
   document.getElementById("exit_game").classList.remove("d_none");
@@ -71,10 +70,7 @@ function openSettings() {
  * opens explanation board on home screen.
  */
 function getExplanationBoard() {
-  document.getElementById("explanation_board").innerHTML =
-    getExplanationBoardTemplate();
-    // getSoundInfoFromLocalStorage();
-  // document.getElementById("explanation_board").classList.remove("top_290");
+  document.getElementById("explanation_board").innerHTML = getExplanationBoardTemplate();
 }
 
 
@@ -82,9 +78,7 @@ function getExplanationBoard() {
  * opens explanation on home screen.
  */
 function openExplanation() {
-  document.getElementById("explanation_board").innerHTML =
-    getExplanaionOverlay();
-  // document.getElementById("explanation_board").classList.add("top_290");
+  document.getElementById("explanation_board").innerHTML = getExplanaionOverlay();
 }
 
 
@@ -159,9 +153,7 @@ document.getElementById("move_left_btn").addEventListener("touchend", (e) => {
 /**
  * ontouchstart, the specific keyboard functions are set to true.
  */
-document
-  .getElementById("move_right_btn")
-  .addEventListener("touchstart", (e) => {
+document.getElementById("move_right_btn").addEventListener("touchstart", (e) => {
     preventDefault(e);
     keyboard.RIGHT = true;
   });
@@ -170,8 +162,6 @@ document
 /**
  * ontouchend, the specific keyboard functions are set to false.
  */
-
-
 document.getElementById("move_right_btn").addEventListener("touchend", (e) => {
   preventDefault(e);
   keyboard.RIGHT = false;
@@ -212,29 +202,6 @@ document.getElementById("throw_btn").addEventListener("touchend", (e) => {
   preventDefault(e);
   keyboard.D = false;
 });
-
-
-/**
- * adapts css classes based on screen orientation.
- */
-// function mobileScreen() {
-//   if (
-//     !screen.orientation.type.startsWith("landscape") &&
-//     window.innerWidth < 980
-//   ) {
-//     document.getElementById("full_screen").classList.remove("d_none");
-//   } else {
-//     document.getElementById("full_screen").classList.add("d_none");
-//   }
-// }
-
-
-/**
- * when screen orientation changes, mobile screen is shown.
- */
-// screen.orientation.addEventListener("change", () => {
-//   mobileScreen();
-// });
 
 
 /**
@@ -282,16 +249,14 @@ function gameOver(i, enemiesKilled) {
   exitGame();
   if (youWon) {
     document.getElementById("explanation_board").innerHTML = getYouWonScreen(i, enemiesKilled);
-    // document.getElementById("explanation_board").classList.add("top_290");
   } else {
     document.getElementById("explanation_board").innerHTML = getYouLostScreen(i);
-    // document.getElementById("explanation_board").classList.add("top_290");
   }
 }
 
 
 /**
- * plays sound if sound is om.
+ * plays sound if sound is on.
  */
 function playSound(type, volume) {
   if (sound.activated) {
@@ -302,18 +267,22 @@ function playSound(type, volume) {
   }
 }
 
+
+/**
+ * saves soundsettings to local storage.
+ * @param {boolean} activated - True if sound is on.
+ */
 function saveSoundInfoToLocalStorage(activated) {
     localStorage.setItem("sound activated", activated);
 }
 
+
+/**
+ * gets soundsettings from local storage and returns the boolean.
+ * @param {boolean} activated - True if sound is on.
+ */
 function getSoundInfoFromLocalStorage() {
-  // saveSoundInfoToLocalStorage(sound.activated);
-  let soundON = localStorage.getItem("sound activated");
-  // if (soundON == true) {
-  //   sound.activated = true;
-  // } else {
-  //   sound.activated = false;
-  // }
+  let soundON = JSON.parse(localStorage.getItem("sound activated"));
   return soundON;
 }
 
@@ -354,8 +323,6 @@ function updateSoundButton() {
   switchSoundSettings();
   ShowUnMuteTextBtn();
 }
-
-
 
 
 /**
@@ -411,16 +378,19 @@ function switchLevelSettings() {
 
 
 /**
- * opens imprint on new tab.
+ * opens imprint.
  */
 function openImprint() {
-  // window.open((href = "imprint.html"));
   document.getElementById('explanation_board').innerHTML = getImprintScreen();
   document.getElementById('explanation_board').classList.add('scroll');
   document.getElementById('imprint').classList.add('d_none');
   document.getElementsByTagName('h1')[0].innerHTML = "Terms of Use and Legal Notices";
 }
 
+
+/**
+ * closes imprint.
+ */
 function closeImprint() {
   document.getElementsByTagName('h1')[0].innerHTML = "El Pollo Loco";
   document.getElementById('explanation_board').classList.remove('scroll');
