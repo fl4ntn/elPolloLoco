@@ -36,6 +36,9 @@ class BabyChicken extends MovableObject {
     if (this.isAlive) {
       this.animate();
     }
+    if (this.height < 40) {
+      this.offset.top = -10;
+    }
   }
 
 

@@ -8,6 +8,7 @@ class Endboss extends MovableObject {
   animation;
   walkingSpeed = 0.15;
   number = -1;
+  isHitting = false;
 
     offset = {
     top: 100,

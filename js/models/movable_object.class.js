@@ -138,4 +138,24 @@ class MovableObject extends DrawableObject {
       this.jumpingSound.play();
     }
   }
+
+    drawOffsetFrame(ctx) {
+        if (this instanceof Character) {
+            ctx.beginPath();
+            ctx.lineWidth = '2';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.left - this.offset.right, this.height - this.offset.bottom - this.offset.top);
+            ctx.stroke();  
+        }
+    }
+
+     drawFrame(ctx) {
+        if (this instanceof Character || this instanceof Chicken || this instanceof DrawableObject) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x + this.offset.left, this.y + this.offset.top, this.width - this.offset.left - this.offset.right, this.height - this.offset.bottom - this.offset.top);
+            ctx.stroke();  
+        }
+    }
 }

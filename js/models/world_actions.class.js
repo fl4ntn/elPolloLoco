@@ -71,10 +71,10 @@ world;
       for (let index = 0; index < this.world.bottles.length; index++) {
         if (bottle.number == this.world.bottles[index].number) {
           this.world.bottles.splice(index, 1);
+          playSound(this.world.takeBottleAudio, 0.4);
+          this.world.increaseAwailableBottles();
+          this.world.updateStatusbar(this.world.statusBarBottles, this.world.bottlesLeft, this.world.statusBarBottles.IMAGES_BOTTLES);
         }
-        playSound(this.world.takeBottleAudio, 0.4);
-        this.world.increaseAwailableBottles();
-        this.world.updateStatusbar(this.world.statusBarBottles, this.world.bottlesLeft, this.world.statusBarBottles.IMAGES_BOTTLES);
       }
     }
   }
@@ -162,6 +162,7 @@ world;
       }
       this.world.registerTime();
       this.world.keyboard.D = false;
+      this.world.enemies[this.world.enemies.length - 1].isHitting = false;
       if (this.world.enoughBottlesLeft()) {
         this.world.updateBottles();
       } else if (this.world.level.bottles.length < 3 && this.world.enemies[this.world.enemies.length - 1].isAlive) {
@@ -208,7 +209,7 @@ world;
       this.checkIfEndbossWasHit(enemy);
       if (
         enemy.number >= 0 ||
-        (this.world.endbossWasHit > 33 && this.world.endbossWasHit < 50)
+        (this.world.endbossWasHit >= 3)
       ) {
         this.killEnemy(enemy, ThrowableObject);
         playSound(this.world.BreakingBottleAudio, 0.1);
@@ -222,10 +223,12 @@ world;
    * @param {object} enemy - the enemy in question.
    */
   async checkIfEndbossWasHit(enemy) {
-    if (enemy.number < 0 && this.world.endbossWasHit < 33) {
-      this.world.endbossWasHit += 0.2;
+    if (enemy.number < 0 && this.world.endbossWasHit < 3 && enemy.isHitting == false) {
+      enemy.isHitting = true;
+      this.world.endbossWasHit += 1;
       await enemy.hit();
     }
+    
   }
 
 

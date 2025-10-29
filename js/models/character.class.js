@@ -7,9 +7,9 @@ class Character extends MovableObject {
   isFalling = false;
 
   offset = {
-    top: 100,
+    top: 95,
     left: 20,
-    right: 40,
+    right: 30,
     bottom: 10,
   };
 

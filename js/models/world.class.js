@@ -11,7 +11,7 @@ class World  {
   sound;
   endbossWasHit = 0;
   character = new Character(sound);
-  bottlesLeft = 100;
+  bottlesLeft = 0;
   coinsCollected = 0;
   currentEnemey;
   bottleNumber = 0;
@@ -187,7 +187,7 @@ class World  {
    * Returns whether there are more than 3 bottles left.
    */
   enoughBottlesLeft() {
-    return this.bottlesLeft >= 3;
+    return this.bottlesLeft >= 1;
   }
 
 
@@ -195,7 +195,7 @@ class World  {
    * decreases the amount of bottles left.
    */
   decreaseAwailableBottles() {
-    this.bottlesLeft += -10;
+    this.bottlesLeft += -1;
     this.bottleNumber += 1;
   }
 
@@ -204,7 +204,7 @@ class World  {
    * increases the amount of bottles left.
    */
   increaseAwailableBottles() {
-    this.bottlesLeft += 5;
+    this.bottlesLeft += 1;
   }
 
 
@@ -293,7 +293,12 @@ class World  {
     if (mo.otherDirection) {
       this.flipImage(mo);
     }
+
     mo.draw(this.ctx);
+     if (mo.drawOffsetFrame) {
+      mo.drawFrame(this.ctx);
+        mo.drawOffsetFrame(this.ctx);
+    }
     if (mo.otherDirection) {
       this.flipImageBack(mo);
     }
