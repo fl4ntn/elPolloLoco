@@ -125,6 +125,7 @@ function getImprintScreen(){
     <div class="whole_imprint">
        
         <div class="content">
+            <div onclick="closeImprint()" class="close_btn">X</div>
             <div class="sub_div">
                 <div class="sub_heading">1. Acceptance of Terms</div>
                 <div>By accessing or playing El Pollo Loco, you agree to be bound by these Terms of Use and all

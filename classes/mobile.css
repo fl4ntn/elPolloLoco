@@ -15,12 +15,6 @@
  canvas {
     width: 560px;
    }
-  .spaceholder {
-    width: 560px;
-  }
-  .action_buttons {
-    width: calc((100% - 560px) / 2);
-}    
 }
 
 @media (max-height: 600px) {
@@ -36,12 +30,6 @@
   .map {
     height: 65px;
   }
-    .spaceholder {
-    width: 480px;
-  }
-  .action_buttons {
-    width: calc((100% - 480px) / 2);
-}
 .explanation_text {
     font-size: 18px;
     
@@ -55,16 +43,6 @@
   .map {
     height: 65px;
   }
-    .spaceholder {
-    width: 480px;
-  }
-  .action_buttons {
-    width: calc((100% - 480px) / 2);
-}
-/* .explanation_text {
-    font-size: 18px;
-    
-} */
 }
 @media (max-height: 509px) {
   .you_won_img {
@@ -76,12 +54,6 @@
    canvas {
     width: 400px;
    }
-     .spaceholder {
-    width: 400px;
-  }
-  .action_buttons {
-    width: calc((100% - 400px) / 2);
-}
 h1{
   padding: 8px;
 }
@@ -220,21 +192,12 @@ h1{
       padding: 2% 0;
       font-size: 48px;
     }
-    .mobile_buttons {
-      top: 120px;
-    }
   }
 
   @media (max-height: 666px) {
     canvas {
       width: 560px;
     }
-    .spaceholder {
-      width: 560px;
-    }
-    .action_buttons {
-      width: calc((100% - 560px) / 2);
-  }    
   }
 
   @media (max-height: 600px) {
@@ -250,12 +213,6 @@ h1{
   .map {
     height: 65px;
   }
-    .spaceholder {
-    width: 480px;
-  }
-  .action_buttons {
-    width: calc((100% - 480px) / 2);
-}
 }
 
 @media (max-height: 455px) {
@@ -268,12 +225,6 @@ h1{
    canvas {
     width: 400px;
    }
-     .spaceholder {
-    width: 400px;
-  }
-  .action_buttons {
-    width: calc((100% - 400px) / 2);
-}
 }
 
 @media (max-height: 375px) {

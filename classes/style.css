@@ -142,17 +142,15 @@ canvas {
 
 .mobile_buttons {
     display: none;
-    justify-content: space-evenly;
-    left: 0;
-    top: 230px;
-    position: fixed;
-    width: 100vw;
-    margin: 0;
+    bottom: 0;
+    position: absolute;
+        width: 100%;
+    justify-content: space-between;
 }
 
-.spaceholder {
+/* .spaceholder {
     width: 740px;
-}
+} */
 
 .flex_end {
     align-items: flex-end;
@@ -164,33 +162,56 @@ canvas {
 
 .action_buttons {
     display: flex;
-    flex-direction: column;
-    width: calc((100% - 720px) / 2);
+    /* flex-direction: column;
+    width: calc((100% - 720px) / 2); */
 }
 
 .btn {
-    height: 52px;
-    background-color: #0000003b;
+    height: 28px;
+    background-color: #f5b15cb5;
     border-radius: 50%;
-    width: 52px;
+    width: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
+    font-size: 18px;
     font-family: Arial;
-    font-weight: 100;
+    font-weight: 700;
+    margin: 3px;
+    color: #A0220A;
+}
+
+.close_btn {
+    height: 28px;
+    background-color: #fcdec3ab;
+    border-radius: 50%;
+    width: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: 700;
     margin: 6px;
+    color: #572A2A;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .btn:hover {
     cursor: pointer;
 }
 
+.close_btn:hover {
+    cursor: pointer;
+}
+
 .arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 6px;
+    border: solid #A0220A;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
 }
 
 .right {

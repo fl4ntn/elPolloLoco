@@ -31,7 +31,7 @@
 
 </head>
 
-<body class="height100" onload="getExplanationBoard()">
+<body class="height100" onload="getExplanationBoard(); getSoundInfoFromLocalStorage()">
 
     <h1>El Pollo Loco</h1>
     
@@ -44,19 +44,19 @@
                 <div id="exit_game" onclick="exitGame()" class="restart_game d_none">exit game</div>
                 <div id="sound_btn" onclick="updateSoundButton()" class="restart_game d_none"></div>
             </div>
-        </div>
-        
-        </div>
-        <div id="mobile_buttons" class="mobile_buttons">
+            <div id="mobile_buttons" class="mobile_buttons">
             <div id="walking_btns" class="action_buttons flex_end">
                 <div id="move_left_btn" class="btn"><i class="arrow left"></i></div>
                 <div id="move_right_btn" class="btn"><i class="arrow right"></i></div>
             </div>
-            <div class="spaceholder"></div>
             <div id="action_btns" class="action_buttons flex_start">
                 <div id="jump_btn" class="btn"><i class="arrow up"></i></div>
                 <div id="throw_btn" class="btn">X</div>
             </div>
+        </div>
+        
+        </div>
+        
 
         </div>
     
