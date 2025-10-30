@@ -152,7 +152,7 @@ class World  {
     this.worldActions.addBottleToCanvas();
     this.updateStatusbar(
       this.statusBarBottles,
-      this.bottlesLeft,
+      (this.bottlesLeft*21),
       this.statusBarBottles.IMAGES_BOTTLES
     );
     playSound(this.throwingBottleAudio, 1);

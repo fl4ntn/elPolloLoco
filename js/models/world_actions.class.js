@@ -73,7 +73,7 @@ world;
           this.world.bottles.splice(index, 1);
           playSound(this.world.takeBottleAudio, 0.4);
           this.world.increaseAwailableBottles();
-          this.world.updateStatusbar(this.world.statusBarBottles, this.world.bottlesLeft, this.world.statusBarBottles.IMAGES_BOTTLES);
+          this.world.updateStatusbar(this.world.statusBarBottles, (this.world.bottlesLeft*21), this.world.statusBarBottles.IMAGES_BOTTLES);
         }
       }
     }
