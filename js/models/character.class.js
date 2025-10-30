@@ -121,14 +121,15 @@ class Character extends MovableObject {
     setInterval(() => {
       this.checkDirection();
       this.world.camera_x = -this.x + 100;
+      this.ifPepeIsFalling();
     }, 1000 / 60);
 
     setInterval(() => {
-      this.checkStatus();
+      this.ifPepeIsInactive();
     }, 1000 );
 
     setInterval(() => {
-      this.checkStatus2();
+      this.ifPepeIsInAction();
     }, 300 );
   } 
 
@@ -186,7 +187,7 @@ class Character extends MovableObject {
   /**
    * Checks, which status Pepe is in and starts correct animation.
    */
-  checkStatus() {
+  ifPepeIsInactive() {
     if (this.isDead()) {
       this.endPepesLife();
     } else if (this.isSnoozing) {
@@ -200,21 +201,28 @@ class Character extends MovableObject {
   /**
    * Chacks if Pepe is hurt, is above ground or is moving.
    */
-    checkStatus2() {
+    ifPepeIsInAction() {
     if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
-    } else if (this.isAboveGround()) {
+    } else if (this.isAboveGround() && this.speedY > 0) {
       this.playAnimation(this.IMAGES_JUMPING);
+    } else {
+      this.ifPepeIsMoving();
+    }
+  }
+
+  ifPepeIsFalling(){
+    if (this.isAboveGround()) {
        if (this.speedY < 0 ) {
         this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
         if (this.speedY < -20) {
           this.playAnimation(this.IMAGES_LANDING);
         }
+        if (this.speedY < -25) {
+          this.playAnimation(this.IMAGES_IDLE);
+        }
       }
-    } else {
-      this.ifPepeIsMoving();
-    }
-  }
+    }}
 
 
   /**

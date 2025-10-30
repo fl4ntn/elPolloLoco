@@ -1,3 +1,101 @@
+@media (min-width: 1200px) {
+  
+  @media (max-height: 860px) {
+  h1 {
+    padding: 4% 0;
+  }
+}
+@media (max-height: 774px) {
+  h1 {
+    padding: 2% 0;
+    font-size: 48px;
+  }
+}
+@media (max-height: 666px) {
+ canvas {
+    width: 560px;
+   }
+  .spaceholder {
+    width: 560px;
+  }
+  .action_buttons {
+    width: calc((100% - 560px) / 2);
+}    
+}
+
+@media (max-height: 600px) {
+  .imprint {
+    font-size: 16px;
+  }
+}
+@media (max-height: 560px) {
+  canvas {
+    width: 480px;
+    
+  }
+  .map {
+    height: 65px;
+  }
+    .spaceholder {
+    width: 480px;
+  }
+  .action_buttons {
+    width: calc((100% - 480px) / 2);
+}
+.explanation_text {
+    font-size: 18px;
+    
+}
+}
+@media (max-height: 552px) {
+  canvas {
+    width: 480px;
+    
+  }
+  .map {
+    height: 65px;
+  }
+    .spaceholder {
+    width: 480px;
+  }
+  .action_buttons {
+    width: calc((100% - 480px) / 2);
+}
+/* .explanation_text {
+    font-size: 18px;
+    
+} */
+}
+@media (max-height: 509px) {
+  .you_won_img {
+    height: 180px;
+  }
+  .you_lost_img {
+    height: 220px;
+  }
+   canvas {
+    width: 400px;
+   }
+     .spaceholder {
+    width: 400px;
+  }
+  .action_buttons {
+    width: calc((100% - 400px) / 2);
+}
+h1{
+  padding: 8px;
+}
+.font60 {
+  font-size: 36px;
+}
+ .explanation_text {
+    overflow-y: scroll;
+    scrollbar-width: none;
+    max-height: 100px;
+}
+}
+}
+
 @media (max-width: 1240px) {
   .reason_for_loss {
     padding: 20px;
@@ -116,41 +214,35 @@
   }
 }
 
-@media (max-height: 860px) {
-  h1 {
-    padding: 4% 0;
+@media (max-width: 1800px) {
+  @media (max-height: 690px) {
+    h1 {
+      padding: 2% 0;
+      font-size: 48px;
+    }
+    .mobile_buttons {
+      top: 120px;
+    }
   }
-}
 
-@media (max-height: 690px) {
-  h1 {
-    padding: 2% 0;
-    font-size: 48px;
+  @media (max-height: 666px) {
+    canvas {
+      width: 560px;
+    }
+    .spaceholder {
+      width: 560px;
+    }
+    .action_buttons {
+      width: calc((100% - 560px) / 2);
+  }    
   }
-  .mobile_buttons {
-    top: 120px;
-  }
-}
 
-@media (max-height: 629px) {
-   canvas {
-    width: 560px;
-   }
-  .spaceholder {
-    width: 560px;
+  @media (max-height: 600px) {
+    .imprint {
+      font-size: 16px;
+    }
   }
-  .action_buttons {
-    width: calc((100% - 560px) / 2);
-}    
-}
-
-@media (max-height: 600px) {
-  .imprint {
-    font-size: 16px;
-  }
-}
-
-@media (max-height: 506px) {
+  @media (max-height: 506px) {
   canvas {
     width: 480px;
     
@@ -200,3 +292,10 @@
     } 
     }
 }
+
+
+}
+
+
+
+
