@@ -1,5 +1,8 @@
+/**
+ * returns the overlay showing the ehome screen of the game.
+ */
 function getExplanationBoardTemplate() {
-    return `
+  return `
     <div onclick="openExplanation()" class="explanation_box">
         <img class="map" src="img/map.png" alt="map">
         <p>EXPLANATION</p>
@@ -16,8 +19,11 @@ function getExplanationBoardTemplate() {
 }
 
 
+/**
+ * returns the overlay showing the game settings.
+ */
 function getSettingsOverlay() {
-    return `
+  return `
     <div class="settings_div">
         <div class="settings">
             <div onclick="updateSoundSettings()" class="settings_option">
@@ -51,8 +57,11 @@ function getSettingsOverlay() {
 }
 
 
+/**
+ * returns the overlay showing the explanation of the game.
+ */
 function getExplanaionOverlay() {
-    return `
+  return `
     <div class="settings">
         <div class="explanation_text">
             You are about to guide the tireless Pepe across the scorching desert. Along the way, enemies will block his path. Defeat them by jumping on their heads or by throwing one of your precious salsa bottles. <br>But be careful—at the end of the journey awaits a mighty final boss, so make sure to save a few bottles for the showdown.<br><br>
@@ -79,8 +88,12 @@ function getExplanaionOverlay() {
 }
 
 
+/**
+ * returns the loosing screen when game has been lost.
+ * @param {number} i - returns the index of an array which stands for a reason why the game has been lost.
+ */
 function getYouLostScreen(i) {
-    return `
+  return `
     <div class="settings">
         <img class="you_lost_img" src="img/You won, you lost/You lost.png" alt="You Lost">
         <div class="reason_for_loss">
@@ -95,9 +108,14 @@ function getYouLostScreen(i) {
 }
 
 
+/**
+ * returns winner screen when game has been won.
+ * @param {number} i - Amount of coins collected.
+ * @param {number} enemiesKilled - Number of enemies killed during the game.
+ */
 function getYouWonScreen(i, enemiesKilled) {
-    playSound(winnerAudio, 0.2);
-    return `
+  playSound(winnerAudio, 0.2);
+  return `
     <div class="settings">
         <img class="you_won_img" src="img/You won, you lost/You won A.png" alt="You Won">
         <div class="results">
@@ -119,11 +137,12 @@ function getYouWonScreen(i, enemiesKilled) {
 }
 
 
-function getImprintScreen(){
-    return `
-    
+/**
+ * returns imprint.
+ */
+function getImprintScreen() {
+  return `
     <div class="whole_imprint">
-       
         <div class="content">
             <div onclick="closeImprint()" class="close_btn">X</div>
             <div class="sub_div">
@@ -190,9 +209,6 @@ function getImprintScreen(){
             </div>
             <div  class="sub_div back_btn" onclick="closeImprint()">Go back<div>
         </div>
-        
-
     </div>
-    
-    `
+    `;
 }

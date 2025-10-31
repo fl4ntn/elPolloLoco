@@ -1,91 +1,3 @@
-@media (min-width: 1200px) {
-  
-  @media (max-height: 860px) {
-  h1 {
-    padding: 4% 0;
-  }
-}
-@media (max-height: 774px) {
-  h1 {
-    padding: 2% 0;
-    font-size: 48px;
-  }
-}
-@media (max-height: 666px) {
- canvas {
-    width: 560px;
-   }
-}
-
-@media (max-height: 600px) {
-  .imprint {
-    font-size: 16px;
-  }
-}
-@media (max-height: 560px) {
-  canvas {
-    width: 480px;
-    
-  }
-  .map {
-    height: 65px;
-  }
-.explanation_text {
-    font-size: 18px;
-    
-}
-}
-@media (max-height: 552px) {
-  canvas {
-    width: 480px;
-    
-  }
-  .map {
-    height: 65px;
-  }
-}
-@media (max-height: 509px) {
-  .you_won_img {
-    height: 180px;
-  }
-  .you_lost_img {
-    height: 220px;
-  }
-   canvas {
-    width: 400px;
-   }
-h1{
-  padding: 8px;
-}
-.font60 {
-  font-size: 36px;
-}
- .explanation_text {
-    overflow-y: scroll;
-    scrollbar-width: none;
-    max-height: 100px;
-}
-}
-
-@media (max-height: 382px) {
-  .imprint {
-    font-size: 12px;
-  }
-  h1 {
-    font-size: 32px;
-  }
-  canvas {
-    width: 320px;
-  }
-}
-}
-
-@media (max-width: 1240px) {
-  .reason_for_loss {
-    padding: 20px;
-  }
-}
-
 @media (max-width: 666px) {
   h1 {
     font-size: 36px;
@@ -95,7 +7,7 @@ h1{
   }
   .you_won_img {
     height: 220px;
-}
+  }
 }
 
 @media (max-width: 500px) {
@@ -103,8 +15,6 @@ h1{
     height: 65px;
   }
 }
-
-
 
 @media only screen and (max-width: 700px) {
   .you_lost_img {
@@ -114,58 +24,58 @@ h1{
     overflow-y: scroll;
     scrollbar-width: none;
     max-height: 200px;
-}
+  }
 }
 
 @media only screen and (max-width: 560px) {
-    .restart_game {
-      font-size: 20px;
-      margin: 6px;
-    }
+  .restart_game {
+    font-size: 20px;
+    margin: 6px;
+  }
 }
 
 @media only screen and (max-width: 540px) {
-    .you_lost_img {
-      height: 160px;
-    }
-    .you_won_img {
-      height: 180px;
-    }
-    .font60 {
-      font-size: 40px;
-    }
-    .explanation_text {
+  .you_lost_img {
+    height: 160px;
+  }
+  .you_won_img {
+    height: 180px;
+  }
+  .font60 {
+    font-size: 40px;
+  }
+  .explanation_text {
     font-size: 18px;
     max-height: 140px;
   }
 }
 
 @media only screen and (max-width: 464px) {
-    .results {
-      gap: 20px;
-    }
-    .font40 {
+  .results {
+    gap: 20px;
+  }
+  .font40 {
     font-size: 28px;
   }
 }
 
 @media only screen and (max-width: 420px) {
   .you_lost_img {
-      height: 120px;
+    height: 120px;
   }
   .font40 {
     font-size: 26px;
   }
-   .you_won_img {
-      height: 140px;
-    }
+  .you_won_img {
+    height: 140px;
+  }
 }
 
 @media only screen and (max-width: 400px) {
-    .restart_game {
-      font-size: 16px;
-      margin: 4px;
-    }
+  .restart_game {
+    font-size: 16px;
+    margin: 4px;
+  }
 }
 
 @media only screen and (max-width: 376px) {
@@ -174,15 +84,15 @@ h1{
     flex-direction: column;
     gap: 0px;
   }
- .results {
+  .results {
     padding-bottom: 8px;
   }
   .settings {
     padding: 10px;
   }
-   .explanation_text {
+  .explanation_text {
     max-height: 100px;
-}
+  }
 }
 
 @media screen and (orientation: landscape) {
@@ -197,118 +107,222 @@ h1{
 @media (max-width: 1200px) {
   @media (max-height: 761px) {
     h1 {
-    padding: 2% 0;
-    font-size: 48px;
-  }
+      padding: 2% 0;
+      font-size: 48px;
+    }
 
-  @media (min-width: 605px) {
-   @media (max-height: 666px) {
-    canvas {
-      width: 560px;
+    @media (min-width: 605px) {
+      @media (max-height: 666px) {
+        canvas {
+          width: 560px;
+        }
+        .you_won_img {
+          height: 260px;
+        }
+        .you_lost_img {
+          height: 200px;
+        }
+      }
+
+      @media (max-height: 600px) {
+        .imprint {
+          font-size: 16px;
+        }
+      }
+      @media (max-height: 506px) {
+        canvas {
+          width: 480px;
+        }
+        .you_won_img {
+          height: 180px;
+        }
+        .you_lost_img {
+          height: 200px;
+        }
+        .game_over_img {
+          height: 100px;
+          padding-top: 40px;
+        }
+        .map {
+          height: 65px;
+        }
+      }
+
+      @media (max-height: 455px) {
+        .you_won_img {
+          height: 180px;
+        }
+        .you_lost_img {
+          height: 220px;
+        }
+        canvas {
+          width: 400px;
+        }
+        .result_div {
+          display: block;
+        }
+        .you_won_img {
+          height: 120px;
+        }
+        .you_lost_img {
+          height: 160px;
+        }
+        .content {
+          font-size: 14px;
+        }
+        .explanation_text {
+          max-height: 120px;
+        }
+        .settings {
+          padding: 0;
+        }
+        .font60 {
+          font-size: 40px;
+        }
+        .game_over_img {
+          height: 100px;
+          padding-top: 40px;
+        }
+      }
     }
   }
 
-  @media (max-height: 600px) {
-    .imprint {
+  @media only screen and (max-width: 720px) {
+    canvas {
+      width: 480px;
+    }
+    .you_won_img {
+      height: 180px;
+    }
+    .you_lost_img {
+      height: 200px;
+    }
+    .game_over_img {
+      height: 100px;
+      padding-top: 40px;
+    }
+    .map {
+      height: 65px;
+    }
+    .explanation_text {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 491px) {
+  @media (min-height: 440px) {
+    canvas {
+      width: 400px;
+    }
+    .result_div {
+      display: block;
+    }
+    .you_won_img {
+      height: 120px;
+    }
+    .you_lost_img {
+      height: 160px;
+    }
+    .content {
+      font-size: 14px;
+    }
+    .explanation_text {
+      max-height: 120px;
+    }
+    .game_over_img {
+      height: 100px;
+      padding-top: 40px;
+    }
+  }
+}
+
+@media (max-width: 417px) {
+  @media (min-height: 440px) {
+    canvas {
+      width: 320px;
+    }
+    .you_won_img {
+      height: 100px;
+    }
+    .font40 {
+      font-size: 22px;
+    }
+    .you_lost_img {
+      height: 120px;
+    }
+    .settings {
+      padding: 8px;
+    }
+    .explanation_text {
       font-size: 16px;
+      max-height: 80px;
+    }
+    .game_over_img {
+      height: 80px;
+      padding-top: 20px;
     }
   }
-  @media (max-height: 506px) {
-  canvas {
-    width: 480px;
-    
-  }
- .map {
-    height: 65px;
-  }}
-  @media (max-height: 455px) {
-  .you_won_img {
-    height: 180px;
-  }
-  .you_lost_img {
-    height: 220px;
-  }
-   canvas {
-    width: 400px;
-   }
-  }
 }
-}
-@media only screen and (max-width: 720px) {
-  /* canvas {
-    width: 400px;
-  } */
-    canvas {
-    width: 480px;
-    
-  }
-  .map {
-    height: 65px;
-  }
-.explanation_text {
-    font-size: 18px;
-    
-}
-}
-}
-  
 
-  @media (max-width: 491px) {
-   @media (min-height: 440px) {
-  canvas {
-    width: 400px;
-  }
-  }
-  }
-
-   @media (max-width: 417px) {
-   @media (min-height: 440px) {
-  canvas {
-    width: 320px;
-  }
-  }
-  }
-
-
-
-
- @media (max-height: 412px) {
-    h1 {
+@media (max-height: 412px) {
+  h1 {
     padding: 8px;
     font-size: 32px;
   }
-  }
+}
 
 @media (max-height: 440px) {
   .you_won_img {
     height: 140px;
   }
+  .settings {
+    padding: 0;
+  }
   canvas {
-            width: 320px;
-        }
+    width: 320px;
+  }
+  .you_won_img {
+    height: 100px;
+  }
+  .font40 {
+    font-size: 22px;
+  }
+  .you_lost_img {
+    height: 120px;
+  }
+  .game_over_img {
+    height: 80px;
+    padding-top: 20px;
+  }
   .imprint {
     font-size: 12px;
   }
   .restart_game {
     margin: 4px;
     font-size: 16px;
-}
+  }
+  .settings {
+    padding: 8px;
+  }
+  .explanation_text {
+    font-size: 16px;
+    max-height: 80px;
+  }
+  .game_over_img {
+    height: 80px;
+    padding-top: 20px;
+  }
 }
 
-@media (pointer:coarse) {
+@media (pointer: coarse) {
   .mobile_buttons {
     display: flex;
   }
+
   @media (orientation: portrait) {
-     .full_screen {
+    A .full_screen {
       display: flex;
-    } 
     }
+  }
 }
-
-
-
-
-
-
-

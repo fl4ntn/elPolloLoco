@@ -1,0 +1,153 @@
+@media (min-width: 1200px) {
+  @media (max-height: 860px) {
+    h1 {
+      padding: 4% 0;
+    }
+  }
+  @media (max-height: 774px) {
+    h1 {
+      padding: 2% 0;
+      font-size: 48px;
+    }
+  }
+  @media (max-height: 666px) {
+    canvas {
+      width: 560px;
+    }
+    .you_won_img {
+      height: 260px;
+    }
+    .you_lost_img {
+      height: 200px;
+    }
+    .game_over_img {
+      height: 100px;
+      padding-top: 40px;
+    }
+  }
+
+  @media (max-height: 600px) {
+    .imprint {
+      font-size: 16px;
+    }
+  }
+  @media (max-height: 560px) {
+    canvas {
+      width: 480px;
+    }
+    .you_won_img {
+      height: 180px;
+    }
+    .you_lost_img {
+      height: 200px;
+    }
+    .game_over_img {
+      height: 100px;
+      padding-top: 40px;
+    }
+    .map {
+      height: 65px;
+    }
+    .explanation_text {
+      font-size: 18px;
+    }
+  }
+  @media (max-height: 552px) {
+    canvas {
+      width: 480px;
+    }
+    .you_won_img {
+      height: 180px;
+    }
+    .you_lost_img {
+      height: 200px;
+    }
+    .game_over_img {
+      height: 100px;
+      padding-top: 40px;
+    }
+    .map {
+      height: 65px;
+    }
+  }
+  @media (max-height: 509px) {
+    .you_won_img {
+      height: 180px;
+    }
+    .you_lost_img {
+      height: 160px;
+    }
+    canvas {
+      width: 400px;
+    }
+    .result_div {
+      display: block;
+    }
+    .you_won_img {
+      height: 120px;
+    }
+    .content {
+      font-size: 14px;
+    }
+    .explanation_text {
+      max-height: 120px;
+    }
+    .game_over_img {
+      height: 80px;
+      padding-top: 40px;
+    }
+    h1 {
+      padding: 8px;
+    }
+    .font60 {
+      font-size: 36px;
+    }
+    .explanation_text {
+      overflow-y: scroll;
+      scrollbar-width: none;
+      max-height: 100px;
+    }
+  }
+
+  @media (max-height: 382px) {
+    .imprint {
+      font-size: 12px;
+    }
+    h1 {
+      font-size: 32px;
+    }
+    canvas {
+      width: 320px;
+    }
+    .you_won_img {
+      height: 100px;
+    }
+    .font40 {
+      font-size: 22px;
+    }
+    .you_lost_img {
+      height: 120px;
+    }
+    .game_over_img {
+      height: 80px;
+      padding-top: 40px;
+    }
+    .settings {
+      padding: 8px;
+    }
+    .explanation_text {
+      font-size: 16px;
+      max-height: 80px;
+    }
+    .game_over_img {
+      height: 80px;
+      padding-top: 20px;
+    }
+  }
+}
+
+@media (max-width: 1240px) {
+  .reason_for_loss {
+    padding: 20px;
+  }
+}

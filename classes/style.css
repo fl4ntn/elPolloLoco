@@ -1,151 +1,150 @@
 @font-face {
-    font-family: 'zabars';
-    src: url('../fonts/Zabars.ttf') format('truetype');
+  font-family: "zabars";
+  src: url("../fonts/Zabars.ttf") format("truetype");
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background-image: url('../img/5_background/desert1.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
-    width: 100%;
-    background-position: center;
-    font-family: 'zabars', Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url("../img/5_background/desert1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  width: 100%;
+  background-position: center;
+  font-family: "zabars", Arial, Helvetica, sans-serif;
 }
 
 .height100 {
-    height: 100dvh;
+  height: 100dvh;
 }
 
 .full_screen {
-    width: 100dvw;
-    height: 100dvh;
-    background-color: #000000f0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: white;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #000000f0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 
 h1 {
-    font-size: 68px;
-    font-weight: 100;
-    text-shadow: 2px 2px 2px rgba(45, 1, 1, 0.25);
-    padding: 6% 0;
-    margin: 0;
+  font-size: 68px;
+  font-weight: 100;
+  text-shadow: 2px 2px 2px rgba(45, 1, 1, 0.25);
+  padding: 6% 0;
+  margin: 0;
 }
 
 canvas {
-    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.5);
-    border-radius: 2%;
-    display: block;
-    background-color: #0000003b;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 2%;
+  display: block;
+  background-color: #0000003b;
 }
 
 .game_screen {
-    display: flex;
-    justify-content: end;
-    position: relative;
+  display: flex;
+  justify-content: end;
+  position: relative;
 }
 
-
 .scroll {
-    overflow-y: scroll;
-    scrollbar-width: none;
+  overflow-y: scroll;
+  scrollbar-width: none;
 }
 
 .pos_ab {
-    position: absolute;
+  position: absolute;
 }
 
 .z_99 {
-    z-index: 99;
+  z-index: 99;
 }
 
 .restart_game {
-    margin: 8px;
-    font-size: 24px;
+  margin: 8px;
+  font-size: 24px;
 }
 
 .restart_game:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .map {
-    height: 100px;
+  height: 100px;
 }
 
 .explanation_board {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
 }
 
 .explanation_box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    letter-spacing: 0.1rem;
-    font-size: 18px;
-    filter: saturate(0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  letter-spacing: 0.1rem;
+  font-size: 18px;
+  filter: saturate(0.5);
 }
 
 .explanation_box:hover {
-    cursor: pointer;
-    filter: sepia(1);
+  cursor: pointer;
+  filter: sepia(1);
 }
 
 .d_none {
-    display: none !important;
+  display: none !important;
 }
 
 .settings_overlay {
-    height: 480px;
-    width: 100px;
-    background-color: antiquewhite;
-    display: flex;
-    width: 720px;
-    position: absolute;
-    top: 236px;
+  height: 480px;
+  width: 100px;
+  background-color: antiquewhite;
+  display: flex;
+  width: 720px;
+  position: absolute;
+  top: 236px;
 }
 
 .settings_div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .rotate {
-   transform: rotate(45deg); 
+  transform: rotate(45deg);
 }
 
 .rotate:hover {
-    filter: invert(1);
-    opacity: 0.7;
+  filter: invert(1);
+  opacity: 0.7;
 }
 
 .mobile_buttons {
-    display: none;
-    bottom: 0;
-    position: absolute;
-        width: 100%;
-    justify-content: space-between;
+  display: none;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  justify-content: space-between;
 }
 
 /* .spaceholder {
@@ -153,65 +152,65 @@ canvas {
 } */
 
 .flex_end {
-    align-items: flex-end;
+  align-items: flex-end;
 }
 
 .flex_start {
-    align-items: flex-start;
+  align-items: flex-start;
 }
 
 .action_buttons {
-    display: flex;
-    /* flex-direction: column;
+  display: flex;
+  /* flex-direction: column;
     width: calc((100% - 720px) / 2); */
 }
 
 .btn {
-    height: 28px;
-    background-color: #f5b15cb5;
-    border-radius: 50%;
-    width: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-family: Arial;
-    font-weight: 700;
-    margin: 3px;
-    color: #A0220A;
+  height: 28px;
+  background-color: #f5b15cb5;
+  border-radius: 50%;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: 700;
+  margin: 3px;
+  color: #a0220a;
 }
 
 .close_btn {
-    height: 28px;
-    background-color: #fcdec3ab;
-    border-radius: 50%;
-    width: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    font-family: Arial;
-    font-weight: 700;
-    margin: 6px;
-    color: #572A2A;
-    position: absolute;
-    right: 0;
-    top: 0;
+  height: 28px;
+  background-color: #fcdec3ab;
+  border-radius: 50%;
+  width: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-family: Arial;
+  font-weight: 700;
+  margin: 6px;
+  color: #572a2a;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .close_btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .arrow {
-    border: solid #A0220A;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 4px;
+  border: solid #a0220a;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 4px;
 }
 
 .right {
@@ -230,157 +229,157 @@ canvas {
 }
 
 .settings {
-   display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .settings_option {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    width: 200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  width: 200px;
 }
 
 .ticked_box {
-    display: flex;
+  display: flex;
 }
 
 .box {
-    border: 3px solid black;
-    height: 36px;
-    width: 24px;
-    border-radius: 7px;
-    margin: 4px;
+  border: 3px solid black;
+  height: 36px;
+  width: 24px;
+  border-radius: 7px;
+  margin: 4px;
 }
 
 .ticked_box:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .cross {
-    position: absolute;
-    font-size: 60px;
-    margin-left: 5px;
+  position: absolute;
+  font-size: 60px;
+  margin-left: 5px;
 }
 
 .font60 {
-    font-size: 60px;
-    margin: 0;
+  font-size: 60px;
+  margin: 0;
 }
 
 .font40 {
-    font-size: 32px;
-    margin: 0;
+  font-size: 32px;
+  margin: 0;
 }
 
 .font60:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .leave_settings {
-    display: flex;
-    text-shadow: -3px 0px 6px #FCDBBD;
-    justify-content: space-between;
-    padding: 0 20px;
+  display: flex;
+  text-shadow: -3px 0px 6px #fcdbbd;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .explanation_text {
-    font-size: 24px;
-    margin-bottom: 12px;
+  font-size: 24px;
+  margin-bottom: 12px;
 }
 
 .keyboard_explanation {
-    display: flex;
-    gap: 12px;
+  display: flex;
+  gap: 12px;
 }
 
 .leave_explanation {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    text-shadow: -3px 0px 6px #fcdbbd;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-shadow: -3px 0px 6px #fcdbbd;
 }
 
 .hover:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .imprint {
-    font-size: 20px;
-    position: absolute;
-    bottom: 20px;
-    color: #FCDBBD;
-    font-family: 'Helvetica' !important;
+  font-size: 20px;
+  position: absolute;
+  bottom: 20px;
+  color: #fcdbbd;
+  font-family: "Helvetica" !important;
 }
 
 .imprint:hover {
-    cursor: pointer;
-    text-decoration: underline;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .game_over_img {
-    height: 200px;
-    padding-top:64px;
+  height: 200px;
+  padding-top: 64px;
 }
 
 .you_lost_img {
-    height: 260px;
+  height: 260px;
 }
 
 .you_won_img {
-    height: 300px;
+  height: 300px;
 }
 
 .reason_for_loss {
-    padding: 40px;
-    padding-bottom: 80px;
+  padding: 40px;
+  padding-bottom: 80px;
 }
 
 .result_div {
-    display: flex;
-    gap: 12px;
-    background-color: rgb(255, 187, 0);
-    border-radius: 7px;
+  display: flex;
+  gap: 12px;
+  background-color: rgb(255, 187, 0);
+  border-radius: 7px;
 }
 
 .results {
-    display: flex;
-    gap: 40px;
-    padding-bottom: 18px;
-    justify-content: center;
+  display: flex;
+  gap: 40px;
+  padding-bottom: 18px;
+  justify-content: center;
 }
 
 .whole_imprint {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .content {
-    padding: 20px;
-    font-size: 16px;
-    background-color: #451d25c9;
+  padding: 20px;
+  font-size: 16px;
+  background-color: #451d25c9;
 }
 
 .sub_heading {
-    font-weight: 600;
-    padding-bottom: 4px;
+  font-weight: 600;
+  padding-bottom: 4px;
 }
 
 .sub_div {
-    color: antiquewhite;
-    font-family: Helvetica;
-    padding-bottom: 20px;
+  color: antiquewhite;
+  font-family: Helvetica;
+  padding-bottom: 20px;
 }
 
 .back_btn {
-    padding: 0;
-    text-align: center;
-    font-weight: 900;
+  padding: 0;
+  text-align: center;
+  font-weight: 900;
 }
 
 .back_btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }

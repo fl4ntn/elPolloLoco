@@ -10,13 +10,11 @@ let backgroundMusic = new Audio("audio/flamenco-loop-1-382455.mp3");
 let bgMusicInterval;
 let touchDevice = window.matchMedia("(pointer: coarse)").matches;
 
-
 /**
  * function initializes the game with the correct level, sets up a new world.
  * It also adapts css classes and plays music if sound is on.
  */
 function init() {
-  
   if (currentLevel == 1) {
     initLevel();
   } else {
@@ -36,6 +34,8 @@ function init() {
  * function adapts css classes so that the design suits the game setup when starting.
  */
 function adaptCssClassesOnLoad() {
+  document.getElementById('imprint').classList.add('d_none');
+  document.getElementById('mobile_buttons').classList.remove('d_none');
   document.getElementById("explanation_board").classList.add("d_none");
   document.getElementById("restart_game").classList.remove("d_none");
   document.getElementById("exit_game").classList.remove("d_none");
@@ -224,10 +224,11 @@ function restartGame() {
 
 
 /**
- * lets game end, including all intervals and background music.
- * Shows explanation board.
+ * lets game end, including all intervals and background music and shows explanation board.
  */
 function exitGame() {
+  document.getElementById('mobile_buttons').classList.add('d_none');
+  document.getElementById('imprint').classList.remove('d_none');
   document.getElementById("explanation_board").classList.remove("d_none");
   getExplanationBoard();
   world.clearAllIntervals();

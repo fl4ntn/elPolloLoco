@@ -211,6 +211,10 @@ class Character extends MovableObject {
     }
   }
 
+
+  /**
+   * Chacks if Pepe is falling.
+   */
   ifPepeIsFalling(){
     if (this.isAboveGround()) {
        if (this.speedY < 0 ) {

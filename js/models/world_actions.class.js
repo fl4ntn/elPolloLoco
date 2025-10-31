@@ -1,7 +1,6 @@
 class WorldActions{
 world;
 
-
   /**
    * checks collisions with enemies, coins and bottles.
    */
@@ -169,8 +168,7 @@ world;
         this.world.clearAllIntervals();
         this.world.showGameOverImage();
         this.world.leaveGame("lost", 1);
-      }
-    }}
+      }}}
 
 
   /**
