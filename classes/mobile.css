@@ -66,6 +66,18 @@ h1{
     max-height: 100px;
 }
 }
+
+@media (max-height: 382px) {
+  .imprint {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+  canvas {
+    width: 320px;
+  }
+}
 }
 
 @media (max-width: 1240px) {
@@ -92,11 +104,7 @@ h1{
   }
 }
 
-@media only screen and (max-width: 720px) {
-  canvas {
-    width: 100%;
-  }
-}
+
 
 @media only screen and (max-width: 700px) {
   .you_lost_img {
@@ -186,15 +194,15 @@ h1{
   }
 }
 
-@media (max-width: 1800px) {
-  @media (max-height: 690px) {
+@media (max-width: 1200px) {
+  @media (max-height: 761px) {
     h1 {
-      padding: 2% 0;
-      font-size: 48px;
-    }
+    padding: 2% 0;
+    font-size: 48px;
   }
 
-  @media (max-height: 666px) {
+  @media (min-width: 605px) {
+   @media (max-height: 666px) {
     canvas {
       width: 560px;
     }
@@ -210,12 +218,10 @@ h1{
     width: 480px;
     
   }
-  .map {
+ .map {
     height: 65px;
-  }
-}
-
-@media (max-height: 455px) {
+  }}
+  @media (max-height: 455px) {
   .you_won_img {
     height: 180px;
   }
@@ -225,12 +231,68 @@ h1{
    canvas {
     width: 400px;
    }
+  }
 }
+}
+@media only screen and (max-width: 720px) {
+  /* canvas {
+    width: 400px;
+  } */
+    canvas {
+    width: 480px;
+    
+  }
+  .map {
+    height: 65px;
+  }
+.explanation_text {
+    font-size: 18px;
+    
+}
+}
+}
+  
 
-@media (max-height: 375px) {
+  @media (max-width: 491px) {
+   @media (min-height: 440px) {
+  canvas {
+    width: 400px;
+  }
+  }
+  }
+
+   @media (max-width: 417px) {
+   @media (min-height: 440px) {
+  canvas {
+    width: 320px;
+  }
+  }
+  }
+
+
+
+
+ @media (max-height: 412px) {
+    h1 {
+    padding: 8px;
+    font-size: 32px;
+  }
+  }
+
+@media (max-height: 440px) {
   .you_won_img {
     height: 140px;
   }
+  canvas {
+            width: 320px;
+        }
+  .imprint {
+    font-size: 12px;
+  }
+  .restart_game {
+    margin: 4px;
+    font-size: 16px;
+}
 }
 
 @media (pointer:coarse) {
@@ -245,7 +307,7 @@ h1{
 }
 
 
-}
+
 
 
 
