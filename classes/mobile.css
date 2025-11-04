@@ -321,7 +321,7 @@
   }
 
   @media (orientation: portrait) {
-    A .full_screen {
+    .full_screen {
       display: flex;
     }
   }
