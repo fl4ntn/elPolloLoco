@@ -33,7 +33,7 @@ class World  {
   camera_x = 0;
   lastAction = new Date().getTime();
   worldActions = new WorldActions();
-
+  
 
   /**
    * Represents a world.

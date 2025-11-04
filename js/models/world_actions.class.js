@@ -1,4 +1,4 @@
-class WorldActions{
+class WorldActions {
 world;
 
   /**
@@ -151,11 +151,22 @@ world;
 
 
   /**
-   * If D is pressed, this function lets Pepe throw a bottle, makes him be frightened if he was sleeping, saves time of Pepes last action and updates the number of bottles available.
-   * If there are no bottles left to kill the endboss, the game will end.
+   * If D is pressed, and if the last bottle thrown has reached the ground, this function triggers the bottle action.
    */
   checkThrowableObjects() {
     if (this.world.keyboard.D) {
+      if (this.world.throwableObjects.length == 0 || this.world.throwableObjects[this.world.bottleNumber - 1].y > 240) {
+      this.handleBottleAction();
+      }
+    }
+  }
+
+ 
+ /**
+   * This function lets Pepe throw a bottle, makes him be frightened if he was sleeping, saves time of Pepes last action and updates the number of bottles available.
+   * If there are no bottles left to kill the endboss, the game will end.
+   */
+  handleBottleAction() {
       if (this.world.pepeisSleeping()) {
         this.world.character.playAnimation(this.world.character.IMAGES_FRIGHTENED);
       }
@@ -168,14 +179,15 @@ world;
         this.world.clearAllIntervals();
         this.world.showGameOverImage();
         this.world.leaveGame("lost", 1);
-      }}}
-
+      }
+    } 
+      
 
   /**
    * adds a flying bottle to the canvas.
    */
   addBottleToCanvas() {
-    let bottle;
+      let bottle;
     if (!this.world.character.otherDirection) {
       bottle = new ThrowableObject(this.world.character.x + 70, this.world.character.y + 70, this.world.character.otherDirection, this.world.bottleNumber);
     } else {
@@ -270,7 +282,6 @@ world;
     this.world.enemies[this.world.enemies.length - 1].animateEmotionalStage();
     this.world.enemies[this.world.enemies.length - 1].animation;
   }
-
 }
 
 

@@ -123,15 +123,15 @@ class Character extends MovableObject {
       this.world.camera_x = -this.x + 100;
       this.ifPepeIsFalling();
     }, 1000 / 60);
-
     setInterval(() => {
       this.ifPepeIsInactive();
     }, 1000 );
-
     setInterval(() => {
       this.ifPepeIsInAction();
-    }, 300 );
-  } 
+    }, 100 );
+    setInterval(() => {
+      this.ifPepeIsAboveGround();
+    }, 300 );} 
 
 
   /**
@@ -208,6 +208,16 @@ class Character extends MovableObject {
       this.playAnimation(this.IMAGES_JUMPING);
     } else {
       this.ifPepeIsMoving();
+    }
+  }
+
+
+  /**
+   * If Pepe is jumping, plays jumping animation.
+   */
+  ifPepeIsAboveGround() {
+    if (this.isAboveGround() && this.speedY > 0) {
+      this.playAnimation(this.IMAGES_JUMPING);
     }
   }
 
