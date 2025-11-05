@@ -246,14 +246,14 @@ world;
    * checks the distance of the character to the endboss and animates endboss accordingly.
    */
   checkDistanceToEndboss() {
-    if (this.world.enemies[this.world.enemies.length - 1].x - this.world.character.x <= 480 && this.world.enemies[this.world.enemies.length - 1].x - this.world.character.x > 250 && this.world.closeToEndboss == false) {
+    if (this.world.enemies[this.world.enemies.length - 1].x - this.world.character.x <= 380 && this.world.enemies[this.world.enemies.length - 1].x - this.world.character.x > 350 && this.world.closeToEndboss == false) {
       if (currentLevel == 2) {
         this.letEndbossAttack();
       } else {
         this.letEndbossBeAlert();
       }
     }
-    if (this.world.enemies[this.world.enemies.length - 1].x - this.world.character.x <= 250 && this.world.veryCloseToEndboss == false) {
+    if (this.world.enemies[this.world.enemies.length - 1].x - this.world.character.x <= 350 && this.world.veryCloseToEndboss == false) {
       if (currentLevel == 1) {
         this.letEndbossAttack();
       }
@@ -278,6 +278,7 @@ world;
    */
   letEndbossAttack() {
     this.world.veryCloseToEndboss = true;
+    this.world.enemies[this.world.enemies.length - 1].speed = 0;
     this.world.enemies[this.world.enemies.length - 1].emotionalStage = "attack";
     this.world.enemies[this.world.enemies.length - 1].animateEmotionalStage();
     this.world.enemies[this.world.enemies.length - 1].animation;
