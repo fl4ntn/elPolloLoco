@@ -190,7 +190,7 @@ class Character extends MovableObject {
   ifPepeIsInactive() {
     if (this.isDead()) {
       this.endPepesLife();
-    } else if (this.isSnoozing) {
+    } else if (this.isSnoozing && !this.isAboveGround()) {
       this.playAnimation(this.IMAGES_IDLE);
     } else if (this.isSleeping) {
       this.putPepeinSleepingMode();
@@ -204,8 +204,6 @@ class Character extends MovableObject {
     ifPepeIsInAction() {
     if (this.isHurt()) {
       this.playAnimation(this.IMAGES_HURT);
-    } else if (this.isAboveGround() && this.speedY > 0) {
-      this.playAnimation(this.IMAGES_JUMPING);
     } else {
       this.ifPepeIsMoving();
     }
@@ -227,16 +225,17 @@ class Character extends MovableObject {
    */
   ifPepeIsFalling(){
     if (this.isAboveGround()) {
-       if (this.speedY < 0 ) {
+       if (this.speedY < 0 && this.speedY > -20) {
         this.img = this.imageCache["img/2_character_pepe/3_jump/J-37.png"];
-        if (this.speedY < -20) {
+        }
+        if (this.speedY < -20 && this.speedY > -28) {
           this.playAnimation(this.IMAGES_LANDING);
         }
-        if (this.speedY < -25) {
+        if (this.speedY < -28) {
           this.playAnimation(this.IMAGES_IDLE);
         }
       }
-    }}
+    }
 
 
   /**
@@ -268,7 +267,7 @@ class Character extends MovableObject {
    * Plays walking-animation.
    */
   ifPepeIsMoving() {
-    if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+    if ((this.world.keyboard.RIGHT || this.world.keyboard.LEFT) && !this.isAboveGround()) {
       this.playAnimation(this.IMAGES_WALKING);
     }
   }

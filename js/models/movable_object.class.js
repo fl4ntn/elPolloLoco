@@ -69,7 +69,7 @@ class MovableObject extends DrawableObject {
    * decreases energy, or sets it 0 if too little is left. If enough is left, it saves the time character was hit.
    */
   hit() {
-    this.energy -= 0.5;
+    this.energy -= 1;
     if (this.energy < 0) {
       this.energy = 0;
     } else {

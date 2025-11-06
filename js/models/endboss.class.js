@@ -143,22 +143,29 @@ class Endboss extends MovableObject {
     }, 250);
   }
 
+
+  /**
+   * Plays hurt-animation.
+   */
+  endbossIsHurt()  {
+    clearInterval(this.animation);
+      this.animation = setInterval(() => {
+      this.playAnimation(this.IMAGES_HURT);
+    }, 300);
+  }
+
   
   /**
    * Lets endboss be hit and animates endboss accordingly.
+   * After one secons, endboss continues with the current emotional stage.
    */
   hit() {
     return new Promise((resolve) => {
-      let i = 0;
-      const interval = setInterval(() => {
-        this.currentImage = 0;
-        this.playAnimation(this.IMAGES_HURT);
-        i++;
-        if (i >= this.IMAGES_HURT.length) {
-          clearInterval(interval);
-          this.currentImage = 0;
-          resolve();
-        }
-      }, 100 / 60);
+    this.endbossIsHurt();
+    setTimeout(() => {
+    this.animateEmotionalStage();
+    }, 1000);
+      resolve();
     });
   }}
+  

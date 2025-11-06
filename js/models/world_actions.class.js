@@ -118,19 +118,12 @@ world;
    * This functions plays the dying animation of the endboss and shows the game over screen.
    */
   playDyingAnimation(enemy) {
-    return new Promise((resolve) => {
-      let i = 0;
-      const interval = setInterval(() => {
-        this.world.currentImage = 0;
-        enemy.playAnimation(enemy.IMAGES_DYING);
-        i++;
-        if (i >= enemy.IMAGES_DYING.length) {
-          clearInterval(interval);
-          enemy.currentImage = 0;
-          resolve();
-        }}, 1000 / 60);
+    clearInterval(enemy.animation);
+    enemy.emotionalStage = "dead";
+      enemy.animation = setInterval(() => {
+      enemy.playAnimation(enemy.IMAGES_DYING, -1);
+      }, 300);
       this.world.leaveGame("won", this.world.coinsCollected);
-    });
   }
 
 
