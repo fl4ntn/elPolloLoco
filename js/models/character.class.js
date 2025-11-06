@@ -202,7 +202,7 @@ class Character extends MovableObject {
    * Chacks if Pepe is hurt, is above ground or is moving.
    */
     ifPepeIsInAction() {
-    if (this.isHurt()) {
+    if (this.isHurt() && !this.isAboveGround()) {
       this.playAnimation(this.IMAGES_HURT);
     } else {
       this.ifPepeIsMoving();
